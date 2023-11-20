@@ -116,12 +116,12 @@
 </blockquote>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/medias/blogpics/1.png" alt="图片"></p>
+<p><img src="/2023/11/20/%E5%8D%83%E5%A5%87%E7%99%BE%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/1.png" alt="图片"></p>
 <pre><code> 参考来自菜鸟教程
 (https://www.runoob.com/cprogramming/c-strings.html)
 </code></pre>
 <p>这是我们在平时做题时常用的几个函数，比较易懂。<br>除此之外我还在string.h中为大家多找了几个关于<strong>搜索匹配字符</strong>的。<br>是下面这两个</p>
-<p><img src="/medias/img/blogpics/2.png" alt="图片1"><br><img src="/medias/img/blogpics/3.png" alt="图片2"><br>（看起来可能参数与返回值都有点吓人，但也就那样。）</p>
+<p><img src="/2023/11/20/%E5%8D%83%E5%A5%87%E7%99%BE%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/2.png" alt="图片1"><br><img src="/2023/11/20/%E5%8D%83%E5%A5%87%E7%99%BE%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/3.png" alt="图片2"><br>（看起来可能参数与返回值都有点吓人，但也就那样。）</p>
 <pre><code> 参考来自菜鸟教程
  (https://www.runoob.com/cprogramming/c-standard-library-string-h.html)
 </code></pre>
@@ -183,7 +183,9 @@
   <entry>
     <title>OJ中的那些小丑行为</title>
     <url>/2023/11/20/OJ%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%B8%91%E8%A1%8C%E4%B8%BA/</url>
-    <content><![CDATA[<p>在平时做OJ的时候，我们会经常遇到很多不经意间犯的错误，<br>我想的是把寻找错误的思路与错误会导致的结果总结一下，给自己以指导。</p>
+    <content><![CDATA[<p>在平时做OJ的时候，我们会经常遇到很多不经意间犯的错误，<br>有些时候错得自己像小丑一样。</p>
+<p><img src="/2023/11/20/OJ%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%B8%91%E8%A1%8C%E4%B8%BA/OJclown.png" alt="My feelings"></p>
+<p>我想的是把寻找错误的思路与错误会导致的结果总结一下，给自己以指导。</p>
 <ol>
 <li>编译错误引火线</li>
 </ol>

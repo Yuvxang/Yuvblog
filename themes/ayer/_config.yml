@@ -82,7 +82,7 @@ word_count:
 # 打赏type设定：0-关闭打赏； 1-文章对应的md文件里有reward:true属性，才有打赏； 2-所有文章均有打赏
 reward_type: 2
 # 打赏wording
-reward_wording: "请我喝杯咖啡吧~"
+reward_wording: "请我喝杯奶茶吧~"
 # 支付宝二维码图片地址，跟你设置logo的方式一样。比如：/images/alipay.jpg
 alipay: /images/alipay.jpg
 # 微信二维码图片地址
@@ -182,11 +182,11 @@ gongan:
 friends_link:
   Ayer主题: #网站名称
     #网站地址
-    url: https://github.com/Shen-Yu/hexo-theme-ayer
+    url: https://github.com/Yuvxang/Yuvblog
     #网站图片(可忽略不写)
     img: /images/ayer.png
   GitHub:
-    url: https://github.com/Shen-Yu
+    url: https://github.com/Yuvxang
     img: /images/github.png
   码云:
     url: https://gitee.com/shen-yu
