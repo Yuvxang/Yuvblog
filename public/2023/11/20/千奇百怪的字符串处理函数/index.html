@@ -1,0 +1,887 @@
+<!--
+	作者：Sariay
+	时间：2018-08-26
+	描述：There may be a bug, but don't worry, Qiling(器灵) says that it can work normally! aha!
+-->
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head>
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      千奇百怪的字符串处理函数 | 夜暮微暖
+    
+  </title>
+  <meta name="author" content="大学生暮暖">
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  
+<link rel="stylesheet" href="/css/Annie.css">
+
+  
+  <!-- jquery -->
+	
+<script src="/plugin/jquery/jquery.min.js"></script>
+
+
+<script>
+    const CONFIG_BGIMAGE = {
+      mode: 'normal',
+      normalSrc: '/img/header-bg.jpg',
+      randomYouMax: 110,
+      randomYouSrc: 'https://sariay.github.io/Random-img/',
+	  randomOtherSrc: 'https://api.berryapi.net/?service=App.Bing.Images&day=-0',
+	  preloaderEnable: true
+    }
+	
+    const CONFIG_LEACLOUD_COUNT = {
+      enable: false,
+	  appId: 'AU8...',
+	  appKey: '4cU...',
+	  serverURLs: 'http' || ' '
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="夜暮微暖" type="application/atom+xml">
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="spinner">
+					<div class="double-bounce1"></div>
+					<div class="double-bounce2"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground bg-pan-br">
+	<div class="mask">
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<div class="motto text-shadow-pop-left">
+					<p class="content" id="motto-content">获取中...</p>
+					<p>-<p>
+					<p class="author" id="motto-author">Just a minute...</p>
+				</div>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more" class="scroll-down">
+				<span class="icon-anchor1 animation-scroll-down"></span>
+			</a>
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><span>0.0%</span></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			「千奇百怪的字符串处理函数」
+		
+	</p>
+
+	
+	
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<span class="logo"> 
+			<img src="/img/logo.png">
+		</span>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	
+	<div class="nav-body">
+		<ul id="global-nav">
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home" target="_blank">主页</a>
+		</li>
+		
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive" target="_blank">归档</a>
+		</li>
+		
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories" target="_blank">分类</a>
+		</li>
+		
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags" target="_blank">标签</a>
+		</li>
+		
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about" target="_blank">关于</a>
+		</li>
+		
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery" target="_blank">相册</a>
+		</li>
+		
+	
+
+	
+</ul>
+	</div>
+	
+	<div class="nav-footer">
+		<ul id="global-social">
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<span class="icon-one"><span class="path1"></span><span class="path2"></span></span>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<span class="icon-zhihu"></span>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<span class="icon-github"></span>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<span class="icon-sina-weibo "></span>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<span class="icon-pinterest2"></span>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<span class="icon-instagram"></span>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<span class="icon-twitter"></span>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<span class="icon-rss"></span>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+<script src="/plugin/toc/katelog.min.js"></script>
+
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+		<div class="article-title">
+			
+	<a href="/2023/11/20/%E5%8D%83%E5%A5%87%E7%99%BE%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/" itemprop="url">
+		千奇百怪的字符串处理函数
+	</a>
+
+		</div>
+
+		<div class="article-meta">
+			<span>
+				<i class="icon-calendar1"></i>
+				
+				
+
+
+
+
+	更新于
+
+	<a href="/2023/11/20/%E5%8D%83%E5%A5%87%E7%99%BE%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/" itemprop="url">
+		<time datetime="2023-11-20T01:46:11.000Z" itemprop="dateUpdated">
+	  		2023-11-20
+	  </time>
+	</a> 
+
+
+
+			</span>
+			<span>
+				
+	<i class="icon-price-tags"></i>
+	
+		<a href="/tags/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" class=" ">
+			C语言学习
+		</a>
+	
+		
+			</span>
+			
+			
+
+
+
+		</div>
+
+		<div class="article-content" id="article-content">
+			<p>最近的周赛与直播都涉及了很多我们大多没有学习过的C语言细节问题<br>今天学习了一些关于字符串、输入输出函数的知识，<br>以及整理了一下昨天晚上直播的重点内容 @21级学长zyb<br>希望能够帮到大家</p>
+<h2 id="千奇百怪的字符串处理函数"><a href="#千奇百怪的字符串处理函数" class="headerlink" title="千奇百怪的字符串处理函数"></a>千奇百怪的字符串处理函数</h2><blockquote>
+<p>首先声明，此处使用的函数（如图），需要加入<strong>string.h</strong>标准库<br>加入方式如下</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>![[Pasted image 20231119081701.png]]</p>
+<pre><code> 参考来自菜鸟教程
+(https://www.runoob.com/cprogramming/c-strings.html)
+</code></pre>
+<p>这是我们在平时做题时常用的几个函数，比较易懂。<br>除此之外我还在string.h中为大家多找了几个关于<strong>搜索匹配字符</strong>的。<br>是下面这两个</p>
+<p>![[屏幕截图 2023-11-19 082223.png]]<br>![[Pasted image 20231119082242.png]]<br>（看起来可能参数与返回值都有点吓人，但也就那样。）</p>
+<pre><code> 参考来自菜鸟教程
+ (https://www.runoob.com/cprogramming/c-standard-library-string-h.html)
+</code></pre>
+<p>相信作为已经学习过函数知识的我们，已经能够学习这些新的函数了<br>要学习字符串，我们得先拥有一个字符串，字符串的定义方式如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义方式</span></span><br><span class="line"><span class="type">char</span> 标识符[字符串长度];</span><br><span class="line"><span class="comment">//标识符即为名字，字符串长度可以省略。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//为字符串赋值的方式</span></span><br><span class="line"><span class="type">char</span> <span class="built_in">string</span>[] = <span class="string">&quot;I&#x27;m a string!&quot;</span>;   <span class="comment">//第一种方法</span></span><br><span class="line"><span class="type">char</span> string2[<span class="number">6</span>] = <span class="string">&quot;Hello!&quot;</span>;        <span class="comment">//第二种方法</span></span><br><span class="line"></span><br><span class="line"><span class="type">char</span> string3[<span class="number">10</span>];                  <span class="comment">//第三种方法</span></span><br><span class="line">gets(string3);</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);                    <span class="comment">//第四种，应该是最常用的一种方法</span></span><br><span class="line"><span class="type">char</span> <span class="built_in">string</span>[<span class="number">1000</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; n;i++)</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%c&quot;</span>,&amp;<span class="built_in">string</span>[i]);</span><br><span class="line"></span><br><span class="line"><span class="comment">//sprintf(被写入字符串,&quot;写入字符串&quot;，格式化符列表)</span></span><br><span class="line"><span class="comment">//括号的后半部分与printf类似，但是它不是为了输出的。</span></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="built_in">sprintf</span>(string1,<span class="string">&quot;%d&quot;</span>,n);</span><br><span class="line"></span><br><span class="line"><span class="comment">//字符串输出的方式</span></span><br><span class="line"><span class="built_in">puts</span>(<span class="built_in">string</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; n;i++)</span><br><span class="line">	<span class="built_in">putchar</span>(<span class="built_in">string</span>[i]);</span><br><span class="line">	<span class="comment">//此处n也可以不定义，在使用第一或者第二种方式时</span></span><br><span class="line">	<span class="comment">//可以使用strlen函数或者sizeof运算符 - 1来代替</span></span><br><span class="line">	<span class="comment">//len代表length sizeof代表大小，sizeof包含最后的\0，那个不</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>所谓的<strong>字符串</strong>，其实就是[由字符组成，以’ \0‘为结束的一维数组]。<br>’\0’标志着字符串输出的结束，\是<strong>转义符号</strong>，为了提示它不是数字0</p>
+<blockquote>
+<p>注意，对于字符串的scanf都不需要加取地址符&amp;。<br>包括sscanf()，虽然它是把字符串内的东西赋给变量或者其他。<br>和字符串本身无关。</p>
+</blockquote>
+<p>上面的函数给出了几种给字符串赋值的方式，<br>我觉得你们可能不太好理解的是以下内容：</p>
+<ul>
+<li>gets()与puts()函数的用法</li>
+<li>1000是可以随机的吗</li>
+<li>strlen函数以及sizeof的用法</li>
+</ul>
+<p>这里简单一说</p>
+<ol>
+<li>gets()就是获取一段字符串，在括号中需要加入参数，<br> 参数为字符串（字符数组）<br> puts是把字符串打印出来<br> 其实这两个相似于字符的getchar与putchar</li>
+<li>1000看题目要求，看字符串的最大容量。</li>
+<li>strlen是返回字符串的长度，不包含结尾的\0符号，<br> sizeof运算符对于字符串来说，是返回包括\0的长度。<br> 所以sizeof要减一。</li>
+</ol>
+<p>下面再说一下这些函数的效果。（看图也可。）</p>
+<blockquote>
+<p>1.strcpy(s1,s2);</p>
+</blockquote>
+<p>s1与s2是形式参数，代表两个字符串，<br>通过这个函数我们能够覆盖式地把s2复制粘贴到s1上<br>甚至长度不允许也没关系。</p>
+<p>关于记忆，str是string的缩写，cpy是copy的缩写，所以strcpy嘛。<br>对于很多的函数是可以通过这种方式记忆的<br>其实用多了就自然记住了。</p>
+<blockquote>
+<p>2.strcat(s1,s2);</p>
+</blockquote>
+<p>s1,s2作用不再赘述。<br>把s2连接到s1的末尾，改变s1。<br>可以通过输出看s1的变化，</p>
+<blockquote>
+<p>3.strlen(s1)<br>返回s1的去掉结尾符号的长度，已经讲过。</p>
+</blockquote>
+<blockquote>
+<p>4.strcmp(s1,s2);<br>从第一个字符开始比较，找到不一样的字符，看哪一个更大，哪个字符串就更大。<br>昨晚在直播中学长讲过了。<br>大小与返回值的关系请见图。</p>
+</blockquote>
+<blockquote>
+<p>5.strpbrk(const char* str1, const char* str2);</p>
+</blockquote>
+<pre><code>关于常量字符串为什么这样写我还不太明白，我想让群里的大佬给我解释解释。
+</code></pre>
+<p>分析第一个字符串的字符，与第二个字符串内的字符比对<br>只要找出两个字符串都包含的字符就返回那个字符。</p>
+<pre><code>很好理解。
+比如，&quot;AABB&quot;与&quot;BCDE&quot;，就会返回B。
+</code></pre>
+<blockquote>
+<p>6.strspn(const char* str1, const char* str2);</p>
+</blockquote>
+<p>也是分析两个字符串的字符，逐对分析，直到找到两字符串位置一样但不一样的字符。<br>返回那个字符的下标，注意不是字符。</p>
+<p>想要给大家说这些的原因是，有些数字的位数处理用字符串可能会更快，<br>比如在周五的练习六题解里的那一道题，去第一位与最后一位为素数。<br>这在我刚开始学习C语言的时候就感觉到了。<br>Python中的字符串处理有很多的内建函数，处理起来很方便。<br>但是C语言中竟然连字符串变量都不能定义，而且定义与赋值起来很麻烦。<br>所以学好字符串还是很有必要的。</p>
+<p>还有一个是 @空梦Kmar 的建议<br>尽量使用C标准库函数，这样能够极大地优化程序的效率。<br>详细的建议在他的博客里，第一条就是优先使用库函数。<br><a target="_blank" rel="noopener" href="https://kmar.top/posts/51979312/">关于C语言编码的一些建议 | 山岳库博 (kmar.top)</a><br>包括昨晚学长提到的qsort函数，就解决了我们排序数组的问题<br>还有用于交换数组排序的swap函数。<br>所以学习C语言标准库而不是自己写还是很好的，而且很省事。</p>
+	
+		</div>
+		
+		<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+
+		<!-- relate post, comment...-->
+		<div class="investment-container">
+			<div class="investment-header">
+				<div class="investment-title-1">
+					<div class="on">相关文章</div>
+					<div>评论</div>
+					<div>分享</div>
+				</div>
+				<div class="investment-title-2">	            
+					
+	<span>
+		<a id="totop-post-page">返回顶部</a>
+		
+			<a href="/2023/11/20/%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" title="输入与输出" rel="prev">
+				&laquo;上一篇
+			</a>
+		
+		
+			<a href="/2023/11/20/OJ%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%B8%91%E8%A1%8C%E4%B8%BA/" title="OJ中的那些小丑行为" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+				</div>	
+			</div>
+			
+			<div class="investment-content">
+				<div class="investment-content-list">
+					
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2023/11/20/%E7%9B%B4%E6%92%AD%E5%86%85%E5%AE%B9%E5%A4%8D%E7%9B%98-%E6%8E%92%E5%BA%8F%E4%B8%8E%E4%BA%A4%E6%8D%A2/" title="直播内容复盘-排序与交换">
+								直播内容复盘-排序与交换			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十一月 20日, 2023				
+							</p>
+							<p class="relate-post-content">
+								昨天晚上的重点是归并排序的算法，虽然我们还没有学到函数递归我还需要再联系联系，不太能独立写出来。那就整理一下昨天晚上听到的一些点，
+qsort函数的用法以及swap函数
+首先声明，需要添加stdlib库
+
+上定义
+1void qsor...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2023/11/20/%E7%9B%B4%E6%92%AD%E5%86%85%E5%AE%B9%E5%A4%8D%E7%9B%98-%E6%8E%92%E5%BA%8F%E4%B8%8E%E4%BA%A4%E6%8D%A2/" title="直播内容复盘-排序与交换">				
+								
+								<img class="lazy" src="/img/lazy.gif" data-src="/img/cart_cover.jpg" alt="直播内容复盘-排序与交换"/>
+							</a>
+						</div>
+					</li>												
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2023/11/20/%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" title="输入与输出">
+								输入与输出			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十一月 20日, 2023				
+							</p>
+							<p class="relate-post-content">
+								从字符串那里，包括之前听C语言群里大佬说也获取到了一些关于printf与scanf的更多形式与更多玩法的知识。今天也一并分享给大家。
+1.stdio.h中的更多的函数(关于stream与参数列表的不讲，还没学到。)
+类似的，应该你们也...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2023/11/20/%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" title="输入与输出">				
+								
+								<img class="lazy" src="/img/lazy.gif" data-src="/img/cart_cover.jpg" alt="输入与输出"/>
+							</a>
+						</div>
+					</li>												
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2023/11/20/OJ%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%B8%91%E8%A1%8C%E4%B8%BA/" title="OJ中的那些小丑行为">
+								OJ中的那些小丑行为			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十一月 20日, 2023				
+							</p>
+							<p class="relate-post-content">
+								在平时做OJ的时候，我们会经常遇到很多不经意间犯的错误，我想的是把寻找错误的思路与错误会导致的结果总结一下，给自己以指导。
+
+编译错误引火线
+
+
+复制到做题平台上时复制漏了一些东西。 -不必多讲。
+if语句后加了分号，导致出现对于el...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2023/11/20/OJ%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%B8%91%E8%A1%8C%E4%B8%BA/" title="OJ中的那些小丑行为">				
+								
+								<img class="lazy" src="/img/lazy.gif" data-src="/img/cart_cover.jpg" alt="OJ中的那些小丑行为"/>
+							</a>
+						</div>
+					</li>												
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2023/11/07/%E6%95%B0%E7%BB%84-1/" title="数组">
+								数组			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十一月 7日, 2023				
+							</p>
+							<p class="relate-post-content">
+								数组概论（Ver 2）战友们晚上好！今晚因为电脑的原因本来写好的稿子不能提前交上了，抱歉。今天大体讲一下关于数组的内容，看完就可以使用来做题了。
+目录请见群里发送的图片
+1.数组基本用法1.1 数组的初始化我们知道，要使用一个变量，我...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2023/11/07/%E6%95%B0%E7%BB%84-1/" title="数组">				
+								
+								<img class="lazy" src="/img/lazy.gif" data-src="/img/cart_cover.jpg" alt="数组"/>
+							</a>
+						</div>
+					</li>												
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2023/11/20/%E7%BD%91%E7%AB%99%E9%9B%86%E5%90%88/" title="网站集合">
+								网站集合			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十一月 20日, 2023				
+							</p>
+							<p class="relate-post-content">
+								总体网站集合
+1.菜鸟教程 www.runoob.com2.空梦博客 www.kmar.top3.昨日学长的B站号 [@zyoobn]学长的CSDN [@郑轻大不知名]4.编程爱好者协会 www.godyu.comB站直播号 [@郑轻...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2023/11/20/%E7%BD%91%E7%AB%99%E9%9B%86%E5%90%88/" title="网站集合">				
+								
+								<img class="lazy" src="/img/lazy.gif" data-src="/img/cart_cover.jpg" alt="网站集合"/>
+							</a>
+						</div>
+					</li>												
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2023/11/07/hello-world/" title="Hello World">
+								Hello World			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十一月 7日, 2023				
+							</p>
+							<p class="relate-post-content">
+								Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2023/11/07/hello-world/" title="Hello World">				
+								
+								<img class="lazy" src="/img/lazy.gif" data-src="/img/cart_cover.jpg" alt="Hello World"/>
+							</a>
+						</div>
+					</li>												
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2023/08/30/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E6%96%B9%E6%B3%95/" title="流程控制方法">
+								流程控制方法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 30日, 2023				
+							</p>
+							<p class="relate-post-content">
+								今天，在大多数编程语言中，都提供两种循环结构，一种是以数据容器为基础的，一种是以条件为基础的。
+#if语句
+if语句你其实能发现，这一页可以构成一个粗略的if嵌套循环。
+if语句的最简单构成是
+12if expression:	sta...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2023/08/30/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E6%96%B9%E6%B3%95/" title="流程控制方法">				
+								
+								<img class="lazy" src="/img/lazy.gif" data-src="/img/cart_cover.jpg" alt="流程控制方法"/>
+							</a>
+						</div>
+					</li>												
+			
+		</ul>
+	
+</div>	
+				</div>
+				<div class="investment-content-list">
+					<div class="layout-comment">
+
+	
+		<div class="config-info">
+			Please check the parameter of <b>comment</b> in config.yml of hexo-theme-Annie!
+		</div>	
+	
+
+</div>
+				</div>
+				<div class="investment-content-list">
+					<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+
+<!-- show math formula -->
+
+
+
+	 
+	
+<script src="/plugin/clipboard/clipboard.js"></script>
+
+	<script>
+		// Copy code !
+	    function preprocessing() {
+	        $("#article-content .highlight").each(function() {
+	            $(this).wrap('<div id="post-code"></div>');
+	        })
+
+	        $("#article-content #post-code").each(function() {
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            let languageClass = $(this).next().attr('class'),
+	                language = ((languageClass.length > 9) && (languageClass != null)) ? languageClass.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+	            $(this).append('<span class="copy-btn icon-paste"></span>');
+	        });
+	    }
+
+		function copy() {
+		    $('#article-content #post-code').each(function(i) {
+		        let codeCopyId = 'codeCopy-' + i;
+
+		        let codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+   
+			let clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn icon-clipboard1');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn icon-paste');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');   
+			});
+			
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		}
+		
+		(function copyCode(){
+			if ($('.layout-post').length) {
+			    preprocessing();
+			    copy();
+			} 
+		})();
+	</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+
+
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+
+<script type="text/javascript">
+	(function gallerySet(){
+		let titleID = $('.article-title a'),
+			imageID = $('.article-content img'),
+			videoID = $('.article-content video');
+		
+		let postTitle = titleID.text() ? titleID.text() : "No post title!";
+		
+		imageID.each(function() {
+			let imgPath = $(this).attr('src'),
+				imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+		
+			//给每个匹配的<img>元素打包, 即添加父元素<a>
+			$(this).wrap('<a data-fancybox="gallery" data-caption="《 ' + postTitle + ' 》' + imgTitle + '"href="' + imgPath + '"> </a>');
+		});
+		
+		videoID.each(function() {
+			let videoPath = $(this).attr('src');
+		
+			//给每个匹配的<img>元素打包, 即添加父元素<a>
+			$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+		});
+		
+		//TODO：支持html5 video
+
+		if($('#layout-post').length) {
+			$('[data-fancybox="gallery"]').fancybox({
+				loop: true,
+				buttons: [
+					"zoom",
+					"share",
+					"slideShow",
+					"fullScreen",
+					//"download",
+					"thumbs",
+					"close"
+				],
+				protect: true
+			});
+		}
+	})();
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div id="navigation-show">
+		<ul id="global-nav">
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home" target="_blank">主页</a>
+		</li>
+		
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive" target="_blank">归档</a>
+		</li>
+		
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories" target="_blank">分类</a>
+		</li>
+		
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags" target="_blank">标签</a>
+		</li>
+		
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about" target="_blank">关于</a>
+		</li>
+		
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery" target="_blank">相册</a>
+		</li>
+		
+	
+
+	
+</ul>
+	</div>
+
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2023, content by Sariay. All Rights Reserved.
+			
+			
+				<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			
+		</p>
+		<p>
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+
+
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- Local or hitokoto! -->
+
+	
+<script src="/plugin/motto/motto.js"></script>
+
+	
+	<script type="text/javascript">
+		(function motto(){
+			let mottoText = getMingYanContent().split('</br> - </br>'),
+			
+			mottoTextContent = mottoText[0]?mottoText[0]:'请刷新...',
+			
+			mottoTextFrom = mottoText[1]?mottoText[1]:'one/一个';
+			
+			mottoTextContent = mottoTextContent.trim().substring(0, 100);
+		
+			$("#motto-content").html( mottoTextContent);
+			$("#motto-author").html( mottoTextFrom  );
+		})();	
+	</script>	
+
+
+
+<!-- love effect -->
+
+
+<!-- back to top -->
+
+	<div id="totop">
+	<span class="icon-circle-up"></span>
+</div>
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<!-- leancloud -->
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+  
+
+
+
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imagelazyloader/yall.min.js"></script>
+<script src="/plugin/imageloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/plugin/resizediv/resizediv.js"></script>
+<script src="/js/main.js"></script>
+
+	</body>	
+</html>
