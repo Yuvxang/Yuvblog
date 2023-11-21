@@ -51,6 +51,9 @@
   <div id="app">
     
       
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
     <main class="content on">
       <section class="outer">
   <article
@@ -107,19 +110,21 @@
        
   <h1 id="数组概论（Ver-2）"><a href="#数组概论（Ver-2）" class="headerlink" title="数组概论（Ver 2）"></a>数组概论（Ver 2）</h1><p>战友们晚上好！今晚因为电脑的原因本来写好的稿子不能提前交上了，抱歉。<br>今天大体讲一下关于数组的内容，看完就可以使用来做题了。</p>
 <p>目录请见群里发送的图片</p>
+<span id="more"></span>
+
 <h2 id="1-数组基本用法"><a href="#1-数组基本用法" class="headerlink" title="1.数组基本用法"></a>1.数组基本用法</h2><h3 id="1-1-数组的初始化"><a href="#1-1-数组的初始化" class="headerlink" title="1.1 数组的初始化"></a>1.1 数组的初始化</h3><p>我们知道，要使用一个变量，我们需要先“声明”才能够使用，<br>数组也是这样的，但作为一个数据容器，它还有大小这个参数。<br>大体格式是这样的。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;数据类型&gt; &lt;标识符&gt;[长度];</span><br><span class="line"><span class="comment">//也可以在长度后面加上=&#123;&#125;，但是数组不确定的时候，没必要。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C">&lt;数据类型&gt; &lt;标识符&gt;[长度];<br><span class="hljs-comment">//也可以在长度后面加上=&#123;&#125;，但是数组不确定的时候，没必要。</span><br></code></pre></td></tr></table></figure>
 <p>这里的<strong>数据类型</strong>就是我们常用的int,double,char等等，<br>表示数组内元素的数据类型</p>
 <p><strong>标识符</strong>是数组的名称，命名时也符合变量的命名规范<br>比如这样</p>
 <blockquote>
 <p>不能以数字、标点符号（很多标点符号如，或者括号都是运算符）开头，<br>不能使用关键字（会语法高亮的字比如int）<br>最好使用这种形式 数据类型的首字母加上名称，如iArray1</p>
 </blockquote>
 <p><strong>长度</strong>是可以省略的，但只在数组完全确定的时候。<br>但是我们在做题的过程中一般不使用确定的数组<br>（数组可以预先指定好元素的值，如下例）<br>一般是题目告诉我们最多的时候数据有多少个，<br>我们一般取很大的数，如1000、10000等。<br>像iArray0这样。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> iArray0[<span class="number">1000</span>]; <span class="comment">//相信我，这会是你们用的频率最多的那种。</span></span><br><span class="line"><span class="type">int</span> iArray1[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;; <span class="comment">//确定数组</span></span><br><span class="line"><span class="type">int</span> iArray2[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;      <span class="comment">//int与double类型都是空位补零。</span></span><br><span class="line"><span class="type">int</span> iArray3[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;   <span class="comment">//省略长度，相当于iArray1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">int</span> iArray0[<span class="hljs-number">1000</span>]; <span class="hljs-comment">//相信我，这会是你们用的频率最多的那种。</span><br><span class="hljs-type">int</span> iArray1[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;; <span class="hljs-comment">//确定数组</span><br><span class="hljs-type">int</span> iArray2[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;      <span class="hljs-comment">//int与double类型都是空位补零。</span><br><span class="hljs-type">int</span> iArray3[] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;   <span class="hljs-comment">//省略长度，相当于iArray1</span><br></code></pre></td></tr></table></figure>
 
 <p>其中，对于iArray3，规定了长度，但是没有确定完5个元素，<br>其他的元素对于int类型数组用0填上<br>但对于char类型的数组，用的是一个字符<code>\0</code>，以后学字符串的时候会接触到<br>这个字符提前，那么输出的时候就会提前结束。</p>
 <h3 id="1-2-数组的数据储存输出"><a href="#1-2-数组的数据储存输出" class="headerlink" title="1.2 数组的数据储存输出"></a>1.2 数组的数据储存输出</h3><p>已经声明完了，那么接下来就是往容器里加入数据<br>方式依旧是我们惯用的scanf函数。<br>但是这里就要到一个很容易错的点了：<strong>下标</strong><br>先看下面的演示，我们这样来写入数据</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这也是一种惯用模式吧，像今天下午老师总结的那个</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt;= n;i++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;iArray0[i])</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 这里拿iArray来举例子，长度为n，n的定义与赋值这里省略掉</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-comment">//这也是一种惯用模式吧，像今天下午老师总结的那个</span><br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt;= n;i++)<br>&#123;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;iArray0[i])<br>&#125;<br><span class="hljs-comment">// 这里拿iArray来举例子，长度为n，n的定义与赋值这里省略掉</span><br></code></pre></td></tr></table></figure>
 
 <p>相信聪明的你已经看到了，我们的<strong>i是从0开始取的</strong>，<br>那么<code>iArray0[0]</code>也就表示在<code>iArray0</code>数组里的第一项，所以最后的一项的下标是n - 1。<br>这个特性一定要记好，要好好练习啊！<br>（不然以后写for循环的时候用了0-n，错在哪都不知道，找谁哭去？）</p>
 <p>那么也像储存一样，我们也是用printf函数加上for循环来输出的<br>（这比起某种语言真的太麻烦啦！差评）</p>
@@ -128,7 +133,7 @@
 <blockquote>
 <p>1.空位自动补上对应的数值<br>2.在数组确定的时候是可以省略长度参数的<br>3.确定的时候稍有不同，可以有两种确定方式，如下。</p>
 </blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> iArray4[<span class="number">1000</span>][<span class="number">1000</span>];  <span class="comment">//最常用的,等待输入</span></span><br><span class="line"><span class="type">int</span> iArray5[<span class="number">2</span>][<span class="number">5</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;,&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;&#125;;</span><br><span class="line"><span class="comment">//或者int iArray5[2][5] = &#123;1,2,3,4,5,2,3,4,5,6&#125;;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">int</span> iArray4[<span class="hljs-number">1000</span>][<span class="hljs-number">1000</span>];  <span class="hljs-comment">//最常用的,等待输入</span><br><span class="hljs-type">int</span> iArray5[<span class="hljs-number">2</span>][<span class="hljs-number">5</span>] = &#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;,&#123;<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>&#125;&#125;;<br><span class="hljs-comment">//或者int iArray5[2][5] = &#123;1,2,3,4,5,2,3,4,5,6&#125;;</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="3-数组的应用场景"><a href="#3-数组的应用场景" class="headerlink" title="3.数组的应用场景"></a>3.数组的应用场景</h2><p>从这几次周赛的题目来看，我们使用数组的目的是<strong>储存数据</strong>，<br>也就是当我们<strong>需要不止一次地遍历数据，而且数据很多</strong>的时候，我们就可以使用数组。<br>（不多的时候，两三个直接用变量存就好了）<br>这里拿出两种题，<br>一种是n个数求和，我们定义一个sum变量，<br>直接输入一个加一次就可以，每一个数据加完就不再用了，不需要用数组。<br>但是，这次周赛的群友发言计数器那道题就需要对于ID统计出现次数，<br>这就需要遍历数组了，需要在输入之后再次使用所有数据。</p>
 <p>所以这就是数组我了解的大致内容，如果有不懂的地方欢迎交流提问。<br>我的分享到此结束！谢谢大家的时间！</p>
@@ -324,22 +329,6 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">标签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags/%E6%91%84%E5%BD%B1">摄影</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/friends">友链</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
     </li>
     
   </ul>
@@ -540,7 +529,9 @@
 <!-- ClickBoom1 -->
 
 <!-- ClickBoom2 -->
-
+ 
+<script src="/js/clickBoom2.js"></script>
+ 
 <!-- CodeCopy -->
  
 <link rel="stylesheet" href="/css/clipboard.css">
@@ -613,8 +604,8 @@
     
     
     
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=8267787193&auto=1&height=32"></iframe>
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=1973754489&auto=1&height=66"></iframe>
 </div>
 
 <style>

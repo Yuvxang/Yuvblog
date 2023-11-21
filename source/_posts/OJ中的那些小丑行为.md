@@ -2,11 +2,12 @@
 title: OJ中的那些小丑行为
 date: 2023-11-20 08:55:43
 tags: C语言学习
+index_img: /img/OJclown.png
 ---
 在平时做OJ的时候，我们会经常遇到很多不经意间犯的错误，
 有些时候错得自己像小丑一样。
 
-![My feelings](OJclown.png)
+![My feelings](/img/OJclown.png)
 
 我想的是把寻找错误的思路与错误会导致的结果总结一下，给自己以指导。<!--more-->
 

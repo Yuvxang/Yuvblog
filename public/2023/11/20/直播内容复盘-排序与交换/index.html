@@ -51,6 +51,9 @@
   <div id="app">
     
       
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
     <main class="content on">
       <section class="outer">
   <article
@@ -105,15 +108,17 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>昨天晚上的重点是归并排序的算法，虽然我们还没有学到函数递归<br>我还需要再联系联系，不太能独立写出来。<br>那就整理一下昨天晚上听到的一些点，</p>
+  <p>昨天晚上的重点是归并排序的算法，虽然我们还没有学到函数递归<br>我还需要再联系联系，不太能独立写出来。<br>那就整理一下昨天晚上听到的一些点.</p>
+<span id="more"></span>
+
 <h2 id="qsort函数的用法以及swap函数"><a href="#qsort函数的用法以及swap函数" class="headerlink" title="qsort函数的用法以及swap函数"></a>qsort函数的用法以及swap函数</h2><blockquote>
 <p>首先声明，需要添加stdlib库</p>
 </blockquote>
 <p>上定义</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">qsort</span><span class="params">(<span class="type">void</span> *base, <span class="type">size_t</span> nitems, <span class="type">size_t</span> size, <span class="type">int</span> (*compar)(<span class="type">const</span> <span class="type">void</span> *, <span class="type">const</span> <span class="type">void</span>*))</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">void</span> <span class="hljs-title function_">qsort</span><span class="hljs-params">(<span class="hljs-type">void</span> *base, <span class="hljs-type">size_t</span> nitems, <span class="hljs-type">size_t</span> size, <span class="hljs-type">int</span> (*compar)(<span class="hljs-type">const</span> <span class="hljs-type">void</span> *, <span class="hljs-type">const</span> <span class="hljs-type">void</span>*))</span><br></code></pre></td></tr></table></figure>
 
 <p>这个定义有点太复杂，我们可以把它特殊化处理</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">qsort</span><span class="params">(排序数组,排序个数，<span class="keyword">sizeof</span>(数组数据类型)，排序规则(cmp))</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">void</span> <span class="hljs-title function_">qsort</span><span class="hljs-params">(排序数组,排序个数，<span class="hljs-keyword">sizeof</span>(数组数据类型)，排序规则(cmp))</span>;<br></code></pre></td></tr></table></figure>
 
 <p>这样的话就明了了，我们输入一个数组，经过qsort函数的的一通操作，返回一个排过序的数组。</p>
 <p>因为我们学习过全局变量，所以这个注意事项也好懂</p>
@@ -122,12 +127,12 @@
 </blockquote>
 <p>因为这样数组才对qsort函数“可见“。</p>
 <p>cmp函数需要自己写，写的思路用到了指针，不过照抄就好。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">cmp</span> <span class="params">(<span class="type">const</span> <span class="type">void</span> * a, <span class="type">const</span> <span class="type">void</span> * b)</span>  </span><br><span class="line">&#123;  </span><br><span class="line">   <span class="keyword">return</span> ( *(<span class="type">int</span>*)a - *(<span class="type">int</span>*)b );  </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//先强转为对应类型的指针，然后再相减，</span></span><br><span class="line"><span class="comment">//a-b为从小到大，b-a为从大到小</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">int</span> <span class="hljs-title function_">cmp</span> <span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">void</span> * a, <span class="hljs-type">const</span> <span class="hljs-type">void</span> * b)</span>  <br>&#123;  <br>   <span class="hljs-keyword">return</span> ( *(<span class="hljs-type">int</span>*)a - *(<span class="hljs-type">int</span>*)b );  <br>&#125;<br><span class="hljs-comment">//先强转为对应类型的指针，然后再相减，</span><br><span class="hljs-comment">//a-b为从小到大，b-a为从大到小</span><br></code></pre></td></tr></table></figure>
 
 <p>如果是字符串排序的话，需要用到strcmp函数，之前已经讲过。</p>
 <p>所以这就是qsort库函数的用法。</p>
 <p>还有是swap函数，可以在我们写排序的时候用到。<br>可以交换数组内的数据，非常好用。<br>形式如下</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swap(&amp;a,&amp;b);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">swap(&amp;a,&amp;b);<br></code></pre></td></tr></table></figure>
 <p>到用的时候可以把a和b换成数组的元素，如array[1].<br>可以便捷地实现交换。<br>这个函数实际上自己写也可以。</p>
 <p>这就是昨天晚上在学长的直播中学到的除了归并排序外的东西。</p>
  
@@ -322,22 +327,6 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">标签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags/%E6%91%84%E5%BD%B1">摄影</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/friends">友链</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
     </li>
     
   </ul>
@@ -538,7 +527,9 @@
 <!-- ClickBoom1 -->
 
 <!-- ClickBoom2 -->
-
+ 
+<script src="/js/clickBoom2.js"></script>
+ 
 <!-- CodeCopy -->
  
 <link rel="stylesheet" href="/css/clipboard.css">
@@ -611,8 +602,8 @@
     
     
     
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=8267787193&auto=1&height=32"></iframe>
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=1973754489&auto=1&height=66"></iframe>
 </div>
 
 <style>

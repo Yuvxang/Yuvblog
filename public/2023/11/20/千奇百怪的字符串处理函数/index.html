@@ -51,6 +51,9 @@
   <div id="app">
     
       
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
     <main class="content on">
       <section class="outer">
   <article
@@ -106,22 +109,24 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p>最近的周赛与直播都涉及了很多我们大多没有学习过的C语言细节问题<br>今天学习了一些关于字符串、输入输出函数的知识，<br>以及整理了一下昨天晚上直播的重点内容 @21级学长zyb<br>希望能够帮到大家</p>
+<span id="more"></span>
+
 <h2 id="千奇百怪的字符串处理函数"><a href="#千奇百怪的字符串处理函数" class="headerlink" title="千奇百怪的字符串处理函数"></a>千奇百怪的字符串处理函数</h2><blockquote>
 <p>首先声明，此处使用的函数（如图），需要加入<strong>string.h</strong>标准库<br>加入方式如下</p>
 </blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/11/20/%E5%8D%83%E5%A5%87%E7%99%BE%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/1.png" alt="图片"></p>
-<pre><code> 参考来自菜鸟教程
+<p><img src="/img/1.png" alt="图片"></p>
+<pre><code class="hljs"> 参考来自菜鸟教程
 (https://www.runoob.com/cprogramming/c-strings.html)
 </code></pre>
 <p>这是我们在平时做题时常用的几个函数，比较易懂。<br>除此之外我还在string.h中为大家多找了几个关于<strong>搜索匹配字符</strong>的。<br>是下面这两个</p>
-<p><img src="/2023/11/20/%E5%8D%83%E5%A5%87%E7%99%BE%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/2.png" alt="图片1"><br><img src="/2023/11/20/%E5%8D%83%E5%A5%87%E7%99%BE%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/3.png" alt="图片2"><br>（看起来可能参数与返回值都有点吓人，但也就那样。）</p>
-<pre><code> 参考来自菜鸟教程
+<p><img src="/img/2.png" alt="图片1"><br><img src="/img/3.png" alt="图片2"><br>（看起来可能参数与返回值都有点吓人，但也就那样。）</p>
+<pre><code class="hljs"> 参考来自菜鸟教程
  (https://www.runoob.com/cprogramming/c-standard-library-string-h.html)
 </code></pre>
 <p>相信作为已经学习过函数知识的我们，已经能够学习这些新的函数了<br>要学习字符串，我们得先拥有一个字符串，字符串的定义方式如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义方式</span></span><br><span class="line"><span class="type">char</span> 标识符[字符串长度];</span><br><span class="line"><span class="comment">//标识符即为名字，字符串长度可以省略。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//为字符串赋值的方式</span></span><br><span class="line"><span class="type">char</span> <span class="built_in">string</span>[] = <span class="string">&quot;I&#x27;m a string!&quot;</span>;   <span class="comment">//第一种方法</span></span><br><span class="line"><span class="type">char</span> string2[<span class="number">6</span>] = <span class="string">&quot;Hello!&quot;</span>;        <span class="comment">//第二种方法</span></span><br><span class="line"></span><br><span class="line"><span class="type">char</span> string3[<span class="number">10</span>];                  <span class="comment">//第三种方法</span></span><br><span class="line">gets(string3);</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);                    <span class="comment">//第四种，应该是最常用的一种方法</span></span><br><span class="line"><span class="type">char</span> <span class="built_in">string</span>[<span class="number">1000</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; n;i++)</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%c&quot;</span>,&amp;<span class="built_in">string</span>[i]);</span><br><span class="line"></span><br><span class="line"><span class="comment">//sprintf(被写入字符串,&quot;写入字符串&quot;，格式化符列表)</span></span><br><span class="line"><span class="comment">//括号的后半部分与printf类似，但是它不是为了输出的。</span></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="built_in">sprintf</span>(string1,<span class="string">&quot;%d&quot;</span>,n);</span><br><span class="line"></span><br><span class="line"><span class="comment">//字符串输出的方式</span></span><br><span class="line"><span class="built_in">puts</span>(<span class="built_in">string</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; n;i++)</span><br><span class="line">	<span class="built_in">putchar</span>(<span class="built_in">string</span>[i]);</span><br><span class="line">	<span class="comment">//此处n也可以不定义，在使用第一或者第二种方式时</span></span><br><span class="line">	<span class="comment">//可以使用strlen函数或者sizeof运算符 - 1来代替</span></span><br><span class="line">	<span class="comment">//len代表length sizeof代表大小，sizeof包含最后的\0，那个不</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-comment">//定义方式</span><br><span class="hljs-type">char</span> 标识符[字符串长度];<br><span class="hljs-comment">//标识符即为名字，字符串长度可以省略。</span><br><br><span class="hljs-comment">//为字符串赋值的方式</span><br><span class="hljs-type">char</span> <span class="hljs-built_in">string</span>[] = <span class="hljs-string">&quot;I&#x27;m a string!&quot;</span>;   <span class="hljs-comment">//第一种方法</span><br><span class="hljs-type">char</span> string2[<span class="hljs-number">6</span>] = <span class="hljs-string">&quot;Hello!&quot;</span>;        <span class="hljs-comment">//第二种方法</span><br><br><span class="hljs-type">char</span> string3[<span class="hljs-number">10</span>];                  <span class="hljs-comment">//第三种方法</span><br>gets(string3);<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);                    <span class="hljs-comment">//第四种，应该是最常用的一种方法</span><br><span class="hljs-type">char</span> <span class="hljs-built_in">string</span>[<span class="hljs-number">1000</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%c&quot;</span>,&amp;<span class="hljs-built_in">string</span>[i]);<br><br><span class="hljs-comment">//sprintf(被写入字符串,&quot;写入字符串&quot;，格式化符列表)</span><br><span class="hljs-comment">//括号的后半部分与printf类似，但是它不是为了输出的。</span><br><span class="hljs-type">int</span> n;<br><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br><span class="hljs-built_in">sprintf</span>(string1,<span class="hljs-string">&quot;%d&quot;</span>,n);<br><br><span class="hljs-comment">//字符串输出的方式</span><br><span class="hljs-built_in">puts</span>(<span class="hljs-built_in">string</span>);<br><br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>	<span class="hljs-built_in">putchar</span>(<span class="hljs-built_in">string</span>[i]);<br>	<span class="hljs-comment">//此处n也可以不定义，在使用第一或者第二种方式时</span><br>	<span class="hljs-comment">//可以使用strlen函数或者sizeof运算符 - 1来代替</span><br>	<span class="hljs-comment">//len代表length sizeof代表大小，sizeof包含最后的\0，那个不</span><br><br><br></code></pre></td></tr></table></figure>
 
 <p>所谓的<strong>字符串</strong>，其实就是[由字符组成，以’ \0‘为结束的一维数组]。<br>’\0’标志着字符串输出的结束，\是<strong>转义符号</strong>，为了提示它不是数字0</p>
 <blockquote>
@@ -158,10 +163,10 @@
 <blockquote>
 <p>5.strpbrk(const char* str1, const char* str2);</p>
 </blockquote>
-<pre><code>关于常量字符串为什么这样写我还不太明白，我想让群里的大佬给我解释解释。
+<pre><code class="hljs">关于常量字符串为什么这样写我还不太明白，我想让群里的大佬给我解释解释。
 </code></pre>
 <p>分析第一个字符串的字符，与第二个字符串内的字符比对<br>只要找出两个字符串都包含的字符就返回那个字符。</p>
-<pre><code>很好理解。
+<pre><code class="hljs">很好理解。
 比如，&quot;AABB&quot;与&quot;BCDE&quot;，就会返回B。
 </code></pre>
 <blockquote>
@@ -364,22 +369,6 @@
       <a class="nav-item-link" href="/tags">标签</a>
     </li>
     
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags/%E6%91%84%E5%BD%B1">摄影</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/friends">友链</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
-    </li>
-    
   </ul>
 </nav>
 <nav class="navbar navbar-bottom">
@@ -578,7 +567,9 @@
 <!-- ClickBoom1 -->
 
 <!-- ClickBoom2 -->
-
+ 
+<script src="/js/clickBoom2.js"></script>
+ 
 <!-- CodeCopy -->
  
 <link rel="stylesheet" href="/css/clipboard.css">
@@ -651,8 +642,8 @@
     
     
     
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=8267787193&auto=1&height=32"></iframe>
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=1973754489&auto=1&height=66"></iframe>
 </div>
 
 <style>

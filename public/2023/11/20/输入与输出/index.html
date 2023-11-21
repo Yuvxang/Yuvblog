@@ -51,6 +51,9 @@
   <div id="app">
     
       
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
     <main class="content on">
       <section class="outer">
   <article
@@ -105,10 +108,10 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>从字符串那里，包括之前听C语言群里大佬说<br>也获取到了一些关于printf与scanf的更多形式与更多玩法的知识。<br>今天也一并分享给大家。</p>
+  <p>从字符串那里，包括之前听C语言群里大佬说<br>也获取到了一些关于printf与scanf的更多形式与更多玩法的知识。<br>今天也一并分享给大家。<span id="more"></span></p>
 <h2 id="1-stdio-h中的更多的函数"><a href="#1-stdio-h中的更多的函数" class="headerlink" title="1.stdio.h中的更多的函数"></a>1.stdio.h中的更多的函数</h2><p>(关于stream与参数列表的不讲，还没学到。)</p>
 <p>类似的，应该你们也听说过，这里列一下。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">sprintf</span><span class="params">(<span class="type">char</span> *str, <span class="type">const</span> <span class="type">char</span> *format)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">sscanf</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *str, <span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">int</span> <span class="hljs-title function_">sprintf</span><span class="hljs-params">(<span class="hljs-type">char</span> *str, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *format)</span>;<br><span class="hljs-type">int</span> <span class="hljs-title function_">sscanf</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *str, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *format, ...)</span>;<br></code></pre></td></tr></table></figure>
 <h3 id="一-函数定义读法"><a href="#一-函数定义读法" class="headerlink" title="一.函数定义读法"></a>一.函数定义读法</h3><p>这里是纯纯的函数函数定义，看起来可能很抽象，<br><strong>没关系，我会出手。</strong></p>
 <p>总体上一讲，以后见到<strong>前面带f</strong>的一般是有关<code>stream</code>的<br><strong>带v的</strong>一般是有关<code>参数列表</code>的，<br>以后看到学长写类似的函数就知道该多学习了!😂</p>
 <p>对于以后看这样的函数定义，首先看[返回值类型]，<br>一般是，返回处理的结果或者返回一个数值（int&#x2F;double)</p>
@@ -120,11 +123,11 @@
 <p>在最后一篇文章的最后会给大家列出来用过的这些网站。</p>
 <h3 id="二-浅谈没讲过的sscanf-函数"><a href="#二-浅谈没讲过的sscanf-函数" class="headerlink" title="二.浅谈没讲过的sscanf()函数"></a>二.浅谈没讲过的sscanf()函数</h3><p>上一篇我们已经讲过sprintf函数了，知道了它可以用来写入字符串。<br>现在就来讲一讲相对的sscanf函数。</p>
 <p>不多说，直接上函数定义。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">sscanf</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *str, <span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">int</span> <span class="hljs-title function_">sscanf</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *str, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *format, ...)</span>;<br></code></pre></td></tr></table></figure>
 
 <p>首先看<strong>返回值</strong><br>这个函数返回的是一个数值，也就像scanf一样<br>函数返回的是成功赋值与匹配的个数。<br>如果到达文件末尾或者错误返回EOF。</p>
 <p>然后看<strong>形参</strong><br>获取的是字符串常量(<code>const char *str</code>)，<br>    这个字符串，是包含着我们想要赋值数据的字符串。<br>写入形式(<code>const char *format</code>)<br>    写入形式相当于格式化符，相当于赋值的顺序）<br>    尽量不要加新的形式。<br>与参数列表(<code>...</code>)。<br>    对应之前的格式化符。<br>关于参数列表，其实简单的说<br>就是我们printf中标准符后边逗号中的内容<br>见下方。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a,b,c;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d %d %d&quot;</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line"><span class="comment">//后面的a,b,c就是参数列表</span></span><br><span class="line"><span class="comment">//%d的这个字符串就是写入形式的一种形式</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">int</span> a,b,c;<br><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>,&amp;a,&amp;b,&amp;c);<br><span class="hljs-comment">//后面的a,b,c就是参数列表</span><br><span class="hljs-comment">//%d的这个字符串就是写入形式的一种形式</span><br></code></pre></td></tr></table></figure>
 
 <p>所以这个函数的<strong>功能</strong>就是</p>
 <blockquote>
@@ -353,22 +356,6 @@
       <a class="nav-item-link" href="/tags">标签</a>
     </li>
     
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags/%E6%91%84%E5%BD%B1">摄影</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/friends">友链</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
-    </li>
-    
   </ul>
 </nav>
 <nav class="navbar navbar-bottom">
@@ -567,7 +554,9 @@
 <!-- ClickBoom1 -->
 
 <!-- ClickBoom2 -->
-
+ 
+<script src="/js/clickBoom2.js"></script>
+ 
 <!-- CodeCopy -->
  
 <link rel="stylesheet" href="/css/clipboard.css">
@@ -640,8 +629,8 @@
     
     
     
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=8267787193&auto=1&height=32"></iframe>
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=1973754489&auto=1&height=66"></iframe>
 </div>
 
 <style>

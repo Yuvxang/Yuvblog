@@ -4,10 +4,6 @@ menu:
   归档: /archives
   分类: /categories
   标签: /tags
-  旅行: /tags/旅行/
-  摄影: /tags/摄影
-  友链: /friends
-  关于我: /2019/about
 
 # 站点次标题和打字动效
 # https://github.com/mattboldt/typed.js
@@ -30,7 +26,7 @@ logo: /images/ayer-side.svg
 # enable-是否启用封面；path-封面背景图；logo-封面logo
 cover:
   enable: true
-  path: http://tool.liumingye.cn/bingimg/img.php # /source/images目录下附送多张美图，可更换
+  path: https://api.suyanw.cn/api/scenery # /source/images目录下附送多张美图，可更换
   logo: false #/images/ayer.svg，如果不要直接设置成false
 
 # 页面顶部进度条
@@ -112,7 +108,7 @@ mouse:
   path: /images/mouse.cur
 
 # 鼠标点击效果：0-关闭，1-爱心，2-爆炸烟花，3-粒子烟花
-click_effect: 0
+click_effect: 3
 
 # 页面宽度自定义（不建议修改，可能造成布局混乱），article_width文章宽度，sidebar_width侧边栏宽度
 layout:
@@ -129,9 +125,10 @@ github:
 music:
   enable: true
   # 播放器尺寸类型(1：小尺寸、2：大尺寸)
-  type: 1
-  id: 8267787193 # 网易云分享的音乐ID(更换音乐请更改此配置项)
+  type: 2
+  id: 1973754489 # 网易云分享的音乐ID(更换音乐请更改此配置项)
   autoPlay: true # 是否开启自动播放
+
 
 # 访问量统计(不蒜子)
 busuanzi:
@@ -234,3 +231,4 @@ ads:
 lock:
   enable: false
   password: 123456
+
