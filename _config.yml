@@ -52,10 +52,10 @@ highlight:
   auto_detect: false
   tab_replace: ''
   wrap: true
-  hljs: false
+  hljs: true
 prismjs:
   enable: false
-  preprocess: false
+  preprocess: true
   line_number: true
   line_threshold: 0
   tab_replace: ''
@@ -101,7 +101,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: ayer
+theme: Annie
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
