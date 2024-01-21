@@ -47,17 +47,14 @@ marked:
 relative_link: false
 future: true
 highlight:
-  enable: false
+  enable: true
   line_number: true
   auto_detect: false
-  line_threshold: 0
   tab_replace: ''
-    exclude_languages:
-    - example
   wrap: true
   hljs: false
 prismjs:
-  enable: true
+  enable: false
   preprocess: false
   line_number: true
   line_threshold: 0
