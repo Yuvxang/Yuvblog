@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY First HTML Page</title>
+    <link rel="stylesheet" href="./webgl.css" type="text/css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+      integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+      crossorigin="anonymous"
+      defer></script>
+    <script src="webgl-demo.js" type="module" defer></script>
+</head>
+<body>
+    
+<p id = "Greetings">
+Hello, this is the first step of my webplaying.
+Hope that I can stick to it!!
+</p>
+
+<script>
+document.write("<h1>Moniwarmth</h1>");
+document.write("<p>And his little cute icon!:)</p>");
+function clickfunction()
+{
+    x = document.getElementById("Greetings");
+    if(x == null)
+      document.write("Oops! We don't find the expected text!");
+    else 
+    {
+      alert("Hahaha, any problems?");
+      x.innerHTML = "Hello Js World!!";
+    }
+
+}
+function changeImage()
+{
+    element=document.getElementById('myimage')
+    if (element.src.match("sit"))
+    {
+        element.src="girl.jpg";
+    }
+    else
+    {
+        element.src="girlsit.gif";
+    }
+}
+</script>
+
+<img id="myimage" onclick="changeImage()" src="girl.jpg" width="180" height="180">
+
+
+
+<button_type = "button" onclick = "clickfunction()">点我!</button_type>
+
+</body>
+</html>
