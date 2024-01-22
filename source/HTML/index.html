@@ -4,20 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MY First HTML Page</title>
-    <link rel="stylesheet" href="./webgl.css" type="text/css" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
-      integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
-      crossorigin="anonymous"
-      defer></script>
-    <script src="webgl-demo.js" type="module" defer></script>
 </head>
 <body>
-    
-<p id = "Greetings">
-Hello, this is the first step of my webplaying.
-Hope that I can stick to it!!
-</p>
 
 <script>
 document.write("<h1>Moniwarmth</h1>");
@@ -32,7 +20,6 @@ function clickfunction()
       alert("Hahaha, any problems?");
       x.innerHTML = "Hello Js World!!";
     }
-
 }
 function changeImage()
 {
@@ -48,11 +35,17 @@ function changeImage()
 }
 </script>
 
+<p id = "Greetings">
+  Hello, this is the first step of my webplaying.
+  Hope that I can stick to it!!
+</p>
+
 <img id="myimage" onclick="changeImage()" src="girl.jpg" width="180" height="180">
 
+<button_type = "button" onclick = "clickfunction()">点我!(本来在HTML中可以点图片的, 然后会出现一张动态图, 这里被覆盖了 ToT)</button_type>
 
+<img id="gifgirl" src = "girlsit.gif" width = "180" height = "180">
 
-<button_type = "button" onclick = "clickfunction()">点我!</button_type>
-
+<p>嘿嘿, 这是我的第一个HTML文件,Javascript学习的第一步!! </p>
 </body>
 </html>
