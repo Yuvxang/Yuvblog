@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>算法学习：归并排序以及插入排序 | 夜暮微暖</title><meta name="author" content="大学生暮暖"><meta name="copyright" content="大学生暮暖"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="今天是大学第一个寒假的第一天，昨天玩了半天。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法学习：归并排序以及插入排序">
+<meta property="og:url" content="http://moniwarmth.top/2024/01/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E4%BB%A5%E5%8F%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:site_name" content="夜暮微暖">
+<meta property="og:description" content="今天是大学第一个寒假的第一天，昨天玩了半天。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-01-20T01:28:55.000Z">
+<meta property="article:modified_time" content="2024-01-20T01:39:55.852Z">
+<meta property="article:author" content="大学生暮暖">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://moniwarmth.top/2024/01/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E4%BB%A5%E5%8F%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '算法学习：归并排序以及插入排序',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-20 09:39:55'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="夜暮微暖" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="夜暮微暖"><span class="site-name">夜暮微暖</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">算法学习：归并排序以及插入排序</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-20T01:28:55.000Z" title="发表于 2024-01-20 09:28:55">2024-01-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-20T01:39:55.852Z" title="更新于 2024-01-20 09:39:55">2024-01-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="算法学习：归并排序以及插入排序"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>今天是大学第一个寒假的第一天，昨天玩了半天。</p>
+<span id="more"></span>
+<p>到了晚上临时起志：<br>既然上个暑假啥都没学精，那么这个寒假还是集中一个目标尽力往前进吧。<br>于是在B站上翻视频，一直到了23点。</p>
+<p>今天找到了点生活的奔头，看了MIT学院的算法课程，又学习了两种排序方法，<br>虽然不像之前那么多事情了，如果有啥别的重要的话再说嘛，现在才第一天。<br>心里也想着，既然生活又有希望起来了，期待下学期的精彩旅途。<br>因为我一直都在说着：放假了就快开学了，<br>这样只看起点终点就很给人压迫，所以我还是喜欢去把每一天过得尽量好。</p>
+<p>今天学习了归并排序（Merge Sort）与插入排序（Insertion Sort）<br>经过1-2小时的代码编辑，两种算法都已经以C语言实现完毕了，<br>这里就再复盘一下自己今天学习过的内容。<br>看到应该已经是第二天了，不过都一样。</p>
+<h2 id="1-算法分析"><a href="#1-算法分析" class="headerlink" title="1. 算法分析"></a>1. 算法分析</h2><p>对于一个算法，注重的是它的性能，性能并不是最重要的，<br>但在软件设计过程中，它充当着一种货币，可以通过损失性能来换取其他的特性。</p>
+<p>一般来说，分析算法有三种方式：<br>    1.最坏情况分析<br>    2.平均值分析<br>    3.最好情况分析</p>
+<p>这里的情况指的是对于不同数据的运行时间，<br>我们认为时间T(n)与输入的数组大小n是一个相关映射。</p>
+<p>最坏情况分析就是对于(1, n)下所有的输入中的时间最大值。<br>最好情况分析就是同理的最大值，但是并不一定反映程序运行的一般情况。</p>
+<p>平均值严谨来说应该是时间期望，也就是每种情况的时间乘发生概率求和。<br>概率无从可知，所以我们需要假设一些概率分布模型。</p>
+<h2 id="2-插入排序"><a href="#2-插入排序" class="headerlink" title="2. 插入排序"></a>2. 插入排序</h2><ol>
+<li>算法演示<blockquote>
+<p>代码毕竟只是表达它而已，理解它能够让我们自己写出它来。</p>
+</blockquote>
+</li>
+</ol>
+<p>设想一个序列，我们用连续的小方格表示。<br><img src="/img/InsertionSort.png" alt="插入排序"><br>从2开始遍历数组（假定下标从1开始），然后对于每一个元素进行上图的操作。<br>上图的操作，就好像是移动前面的元素，使得中间空出一个合适的位置，<br>然后将这个拿出来的<code>key</code>插入这个位置一样。</p>
+<ol start="2">
+<li>代码表示<br> 对于一个下标从1到n的数组a<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">2</span>;j &lt; n;j++)</span><br><span class="line">&#123;</span><br><span class="line">	key = a[j];</span><br><span class="line">	i = j - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(a[i] &gt; key &amp;&amp; i &gt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i + <span class="number">1</span>] = a[i];</span><br><span class="line">		i = i - <span class="number">1</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	a[i + <span class="number">1</span>] = key;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>实现的方法极其易懂，想记住打几遍代码也可以<br>道理就与上图中讲的类似。</p>
+<p>当然，我们在C语言中的下标是从0开始的，<br>这样我们可以将<code>j</code>的初始值改变为<code>1</code>，将i的限定条件改为<code>i &gt;= 0</code><br>就可以对平常的C语言数组使用了。</p>
+<ol start="3">
+<li>算法分析</li>
+</ol>
+<p>一般来说，比较性能有两种方式：<br>    一个是不同机器相同算法的相对速度<br>    一个是不同算法相同机器的绝对速度</p>
+<p>描述时间复杂度的符号有O、θ或者Ω，它们叫做渐进符号。<br>渐进分析是算法中的一个伟大的观点，<br>因为它不仅能够反映相对速度的大小，还能反映绝对速度的大小。<br>这些符号如何使用呢？</p>
+<p>步骤<br>    1.将一个式子中的低阶项去掉。<br>    2.将最高阶的参数去掉。</p>
+<p>比如一个式子 y &#x3D; 3 * x^3 + 2 * x^2 （x^2即为x的平方）<br>    去掉低阶项，则为y &#x3D; 3 * x^3<br>    去掉最高阶参数，则为θ(x^3).<br>（这个式子，是通过对于程序所有语句执行的次数累加的结果）</p>
+<p>这就是我们说的时间复杂度刻画方式，实际上复杂度阶数大的时间并不一定大，<br>只是增长过程中一定能够找到超过复杂度阶小的时间的点，之后就一直比它大。<br>这是个临界点。</p>
+<ul>
+<li>最坏情况分析<br>  对于这个算法，它的最坏情况即为完全逆序的情况，需要排序与移动项数n次，假设运行每一个语句的时间都是相等的常数C。</li>
+</ul>
+<p>首先是一个2~n的循环，然后是一个从j - 1到0的循环</p>
+<blockquote>
+<p>(j 2<del>n)ΣjC C是一个常数，从1到n - 1.<br>这样jC也就是θ(j)，所以就变成了 (j 2</del>n)Σθ(j)<br>因为每一项都是j * θ(j)，一共有n项，所以相当于θ(n ^ 2)</p>
+</blockquote>
+<p>说实话，我不觉得排序是很高端的算法，甚至都不算算法。<br>至少在很久之前只知道选择与冒泡的时候是这样想的。<br>只觉得那些听不懂的，比如最短路径的迪杰斯特拉、二分查找、广度优先搜索这些才是。<br>实际上，面对这些较为简单的算法，我们反而更轻松地学习对于一个算法如何分析。</p>
+<h2 id="3-归并排序"><a href="#3-归并排序" class="headerlink" title="3. 归并排序"></a>3. 归并排序</h2><ol>
+<li>算法演示</li>
+</ol>
+<p><img src="/img/MergeSort.png" alt="归并排序"></p>
+<p>这个算法看起来并不是很难，但是实现起来实在不容易，我这里是写了约90行代码。<br>它的道理就是，如果总共只有一个元素，那么就返回这个元素。<br>如果不是，就是两边先排序再归并，<br>归并方式就是挨个比，然后移除元素，直到所有元素都被移到排序后表。<br>实际上可以使用函数递归，这里还用的不熟练。</p>
+<ol start="2">
+<li>代码演示</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> l = <span class="number">0</span>, i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//i为a的下标，j位b的下标，l为c也就是排序后表的下标</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//在表的最后一个元素没有被去掉的时候</span></span><br><span class="line">	<span class="keyword">if</span>(i != (n / <span class="number">2</span>) &amp;&amp; j != n - (n / <span class="number">2</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(a[i] &gt; b[j])</span><br><span class="line">		&#123;	</span><br><span class="line">			c[l] = b[j];</span><br><span class="line">			j += <span class="number">1</span>;</span><br><span class="line">			l += <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(a[i] &lt; b[j])</span><br><span class="line">		&#123;</span><br><span class="line">			c[l] = a[i];</span><br><span class="line">			i += <span class="number">1</span>;</span><br><span class="line">			l += <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(a[i] == b[j])</span><br><span class="line">		&#123;</span><br><span class="line">			c[l] = a[i];</span><br><span class="line">			l += <span class="number">1</span>;</span><br><span class="line">			c[l] = b[j];</span><br><span class="line">			i += <span class="number">1</span>;</span><br><span class="line">			j += <span class="number">1</span>;</span><br><span class="line">			l += <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//左表的最后一个元素被去掉</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(i == n / <span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(;j &lt; n - (n / <span class="number">2</span>);j++)</span><br><span class="line">			c[l++] = b[j];</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//右表的最后一个元素被去掉</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(j == n - (n / <span class="number">2</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(;i &lt; n / <span class="number">2</span>;i++)</span><br><span class="line">			c[l++] = a[i];</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>算法分析<br>对于这个算法，课程使用了递归树的模型<br> 对于两个表的排序，需要两个T(n&#x2F;2)的时间，<br> 对于最后的归并，因为只是对于n个元素的操作，所以为θ(n)的时间。</li>
+</ol>
+<p>最后的时间就是T(n) &#x3D; 2 * T(n&#x2F;2) + θ(n)</p>
+<p><img src="/img/RecursionTree.png" alt="递归树"></p>
+<p>递归树还没有整体学习，现在需要知道的就是，这个递归树的高度是log2n，最后的节点数是θ(n).<br>总共加起来等于θ(n) + logn * θ(n) 省去第一项就是θ(n * logn)，这样的话在性能上是优于插入排序的，而且它的临界点只在30左右，这也就是说归并排序在大多数情况下都是更快的。</p>
+<p>开了个好头，总之希望好运，希望寒假快乐。</p>
+<blockquote>
+<p>End…</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://moniwarmth.top">大学生暮暖</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://moniwarmth.top/2024/01/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E4%BB%A5%E5%8F%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/">http://moniwarmth.top/2024/01/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E4%BB%A5%E5%8F%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://moniwarmth.top" target="_blank">夜暮微暖</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/01/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E4%BB%A5%E5%8F%8A%E6%B8%90%E8%BF%9B%E7%AC%A6%E5%8F%B7/" title="算法学习：解递归式以及渐进符号"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">算法学习：解递归式以及渐进符号</div></div></a></div><div class="next-post pull-right"><a href="/2024/01/04/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E7%BB%93%E6%9E%84%E4%BD%93/" title="如何使用结构体"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">如何使用结构体</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/01/21/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%88%86%E6%B2%BB%E6%B3%95%E4%B8%AD%E7%9A%84%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="算法学习：分治法中的二分查找"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-21</div><div class="title">算法学习：分治法中的二分查找</div></div></a></div><div><a href="/2024/01/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E4%BB%A5%E5%8F%8A%E6%B8%90%E8%BF%9B%E7%AC%A6%E5%8F%B7/" title="算法学习：解递归式以及渐进符号"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-20</div><div class="title">算法学习：解递归式以及渐进符号</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">大学生暮暖</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">1. 算法分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">2. 插入排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-number">3.</span> <span class="toc-text">3. 归并排序</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/22/Javascript%E5%AD%A6%E4%B9%A0%EF%BC%9A%E4%B8%80%E4%B8%AA%E6%96%B0%E8%B5%B7%E7%82%B9/" title="Javascript学习：一个新起点">Javascript学习：一个新起点</a><time datetime="2024-01-22T15:31:11.000Z" title="发表于 2024-01-22 23:31:11">2024-01-22</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2024/01/21/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%88%86%E6%B2%BB%E6%B3%95%E4%B8%AD%E7%9A%84%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="算法学习：分治法中的二分查找">算法学习：分治法中的二分查找</a><time datetime="2024-01-21T15:20:20.000Z" title="发表于 2024-01-21 23:20:20">2024-01-21</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2024/01/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E4%BB%A5%E5%8F%8A%E6%B8%90%E8%BF%9B%E7%AC%A6%E5%8F%B7/" title="算法学习：解递归式以及渐进符号">算法学习：解递归式以及渐进符号</a><time datetime="2024-01-20T15:27:36.000Z" title="发表于 2024-01-20 23:27:36">2024-01-20</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2024/01/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E4%BB%A5%E5%8F%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" title="算法学习：归并排序以及插入排序">算法学习：归并排序以及插入排序</a><time datetime="2024-01-20T01:28:55.000Z" title="发表于 2024-01-20 09:28:55">2024-01-20</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2024/01/04/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E7%BB%93%E6%9E%84%E4%BD%93/" title="如何使用结构体">如何使用结构体</a><time datetime="2024-01-04T02:34:40.000Z" title="发表于 2024-01-04 10:34:40">2024-01-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 大学生暮暖</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

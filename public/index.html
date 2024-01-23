@@ -1,1430 +1,248 @@
-<!DOCTYPE html>
-
-
-<html lang="zh-CN">
-  
-
-    <head>
-      <meta charset="utf-8" />
-        
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1"
-      />
-      <title> 夜暮微暖</title>
-  <meta name="generator" content="hexo-theme-ayer">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>夜暮微暖</title><meta name="author" content="大学生暮暖"><meta name="copyright" content="大学生暮暖"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="夜暮微暖">
+<meta property="og:url" content="http://moniwarmth.top/index.html">
+<meta property="og:site_name" content="夜暮微暖">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="大学生暮暖">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://moniwarmth.top/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '夜暮微暖',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-01-23 08:08:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
       
-      <link rel="shortcut icon" href="/favicon.ico" />
-       
-<link rel="stylesheet" href="/dist/main.css">
-
+        get: key => {
+          const itemStr = localStorage.getItem(key)
       
-<link rel="stylesheet" href="/css/fonts/remixicon.css">
-
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
       
-<link rel="stylesheet" href="/css/custom.css">
- 
-      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
-       
- 
-
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
-      />
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
-
-      <!-- mermaid -->
-      
-      <style>
-        .swal2-styled.swal2-confirm {
-          font-size: 1.6rem;
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
         }
-      </style>
-    <link rel="alternate" href="/atom.xml" title="夜暮微暖" type="application/atom+xml">
-</head>
-  </html>
-</html>
-
-
-<body>
-  <div id="app">
-    
-      
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
-      
-    <main class="content on">
-      
-<section class="cover">
-    
-      
-      <a class="forkMe" href="https://github.com/Yuvxang/Yuvblog"
-        target="_blank"><img width="149" height="149" src="/images/forkme.png"
-          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
-    
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="http://tool.liumingye.cn/bingimg/img.php" alt="image frame" />
-    </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">夜暮微暖</a></h1>
-      <div id="subtitle-box">
-        
-        <span id="subtitle"></span>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
-
-
-
-<script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
-
-
-<!-- Subtitle -->
-
-  <script>
-    try {
-      var typed = new Typed("#subtitle", {
-        strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
-        startDelay: 0,
-        typeSpeed: 200,
-        loop: true,
-        backSpeed: 100,
-        showCursor: true
-      });
-    } catch (err) {
-      console.log(err)
-    }
-  </script>
-  
-<div id="main">
-  <section class="outer">
-  
-  <ul class="ads">
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-</ul>
-  
-  
-  
-
-<div class="notice" style="margin-top:50px">
-    <i class="ri-heart-fill"></i>
-    <div class="notice-content" id="broad"></div>
-</div>
-<script type="text/javascript">
-    fetch('https://v1.hitokoto.cn')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("broad").innerHTML = data.hitokoto;
-        })
-        .catch(console.error)
-</script>
-
-<style>
-    .notice {
-        padding: 20px;
-        border: 1px dashed #e6e6e6;
-        color: #969696;
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        background: #fbfbfb50;
-        border-radius: 10px;
-    }
-
-    .notice i {
-        float: left;
-        color: #999;
-        font-size: 16px;
-        padding-right: 10px;
-        vertical-align: middle;
-        margin-top: -2px;
-    }
-
-    .notice-content {
-        display: initial;
-        vertical-align: middle;
-    }
-</style>
-  
-  <article class="articles">
-    
-    
-    
-    
-    <article
-  id="post-C语言练习7讲解"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/11/24/C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A07%E8%AE%B2%E8%A7%A3/"
-    >C语言练习7讲解</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/11/24/C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A07%E8%AE%B2%E8%A7%A3/" class="article-date">
-  <time datetime="2023-11-24T13:37:44.000Z" itemprop="datePublished">2023-11-24</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>可能因为课题的深入吧，我们的题目难度也与日俱增。今天关于数组的题目有些很值得讲的，今天和大家分享一下我的看法。</p>
-<h2 id="逆序"><a href="#逆序" class="headerlink" title="逆序"></a>逆序</h2><p>因为今天上午已经学过并且讲过，所以这题没啥好说的。<br>从0到n - 1输入数组，从n - 1到0输出数组。<br>两个for循环搞定。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>	<span class="hljs-type">int</span> n;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>	<span class="hljs-type">int</span> <span class="hljs-built_in">array</span>[<span class="hljs-number">11</span>];     <span class="hljs-comment">//1-10 略大一点，留有余地。</span><br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>	&#123;<br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;<span class="hljs-built_in">array</span>[i]);<br>	&#125;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = n - <span class="hljs-number">1</span>;i &gt; <span class="hljs-number">0</span>;i--)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%4d&quot;</span>,<span class="hljs-built_in">array</span>[i]);<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="数组最小值"><a href="#数组最小值" class="headerlink" title="数组最小值"></a>数组最小值</h2><p>审题得：题目的要求是求最小值以及其下标，然后输出下标最小的一个<br>最小值我们知道怎么求，一个for循环搞定。<br>其实因为你找到了第一个值，把它设置为最小值之后，<br>就算另一个值与它相等，我们找的是比它小的数，而不是相等，<br>相当于没关系了。</p>
-<p>那么开写</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>	<span class="hljs-type">int</span> n, min, iPosit;<br>	<span class="hljs-type">int</span> <span class="hljs-built_in">array</span>[<span class="hljs-number">1001</span>]<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>	<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>	&#123;<br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;<span class="hljs-built_in">array</span>[i]);<br>	&#125;<br>	min = <span class="hljs-built_in">array</span>[<span class="hljs-number">0</span>];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i &lt; n;i++)<br>	&#123;<br>		<span class="hljs-keyword">if</span>(min &gt; <span class="hljs-built_in">array</span>[i])<br>		&#123;<br>			min = <span class="hljs-built_in">array</span>[i];<br>			iPosit = i;<br>		&#125;<br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>,min,iPosit);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>数组n个输入的模版-仅供参考。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>	<span class="hljs-type">int</span> n;<br>	<span class="hljs-type">int</span> <span class="hljs-built_in">array</span>[<span class="hljs-number">101</span>]<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>	<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>	&#123;<br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;<span class="hljs-built_in">array</span>[i]);<br>	&#125;<br>	<span class="hljs-comment">//...</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="删除元素："><a href="#删除元素：" class="headerlink" title="删除元素："></a>删除元素：</h2><p>在直播中我们只讲函数，思路今天上午已经讲过了。</p>
-<p>一个是PrintArr，相信不太用多说</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">void</span> <span class="hljs-title function_">PrintArr</span><span class="hljs-params">(<span class="hljs-type">int</span> a[], <span class="hljs-type">int</span> n)</span><br>&#123;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>	&#123;<br>		print(<span class="hljs-string">&quot;%d&quot;</span>, a[i]);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>另一个就是我们的del函数，用的是覆盖的思路。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">void</span> <span class="hljs-title function_">del</span><span class="hljs-params">(<span class="hljs-type">int</span> a[], <span class="hljs-type">int</span> n, <span class="hljs-type">int</span> i)</span><br>&#123;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k = i;k &lt; n - <span class="hljs-number">1</span>;k++)<br>	&#123;<br>		a[k] = a[k + <span class="hljs-number">1</span>];<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>今天下午看到我们小伙伴有对调用时数组的形式不太理解的，<br>这里说一下。<br>我们调用函数的时候参数填入的是数组的名称<br>比如我们调用del函数时，我们是这样写的。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C">del(<span class="hljs-built_in">array</span>, n, k);<br><span class="hljs-comment">//array为数组名，n为长度，k是要删除的下标。</span><br></code></pre></td></tr></table></figure>
-
-<p>不需要加中括号，那样的话指向的就是数组中的元素了。<br>比如array[10]，甚至我们数组中没有这个元素，那样就会导致<strong>运行错误</strong><br>余下就执行函数就好，注意PrintArr在覆盖之后输出n - 1的值。<br>因为数组在覆盖之后最后一个值与倒数第二个值是相等的。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br> <br><span class="hljs-type">void</span> <span class="hljs-title function_">del</span><span class="hljs-params">(<span class="hljs-type">int</span> a[], <span class="hljs-type">int</span> n, <span class="hljs-type">int</span> i)</span>;<br><span class="hljs-type">void</span> <span class="hljs-title function_">PrintArr</span><span class="hljs-params">(<span class="hljs-type">int</span> a[],<span class="hljs-type">int</span> n)</span>;<br> <br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>    <span class="hljs-type">int</span> n, k;<br>    <span class="hljs-type">int</span> <span class="hljs-built_in">array</span>[<span class="hljs-number">10</span>];<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br> <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>    &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;<span class="hljs-built_in">array</span>[i]);<br>    &#125;<br> <br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;k);<br>    del(<span class="hljs-built_in">array</span>, n, k);<br>    PrintArr(<span class="hljs-built_in">array</span>, n - <span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br> <br><span class="hljs-type">void</span> <span class="hljs-title function_">del</span><span class="hljs-params">(<span class="hljs-type">int</span> a[], <span class="hljs-type">int</span> n, <span class="hljs-type">int</span> i)</span><br>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k = i;k &lt; n - <span class="hljs-number">1</span>;k++)<br>    &#123;<br>        a[k] = a[k + <span class="hljs-number">1</span>]; <br>    &#125;<br>&#125;<br> <br><span class="hljs-type">void</span> <span class="hljs-title function_">PrintArr</span><span class="hljs-params">(<span class="hljs-type">int</span> a[], <span class="hljs-type">int</span> n)</span><br>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, a[i]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>数组元素</p>
-<p>下一题，加入一个find函数，在主函数中加入一个if判断找不找的到就好<br>找的到，返回i，找不到，返回-1.</p>
-<p>[find函数]</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">int</span> <span class="hljs-title function_">find</span><span class="hljs-params">(<span class="hljs-type">int</span> a[], <span class="hljs-type">int</span> n, <span class="hljs-type">int</span> x)</span><br>&#123;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>	&#123;<br>		<span class="hljs-keyword">if</span>(x == a[i]) <span class="hljs-keyword">return</span> i; <br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>后面判断一下find的值是不是大于0即可。</p>
-<h2 id="路旁的树"><a href="#路旁的树" class="headerlink" title="路旁的树"></a>路旁的树</h2><p>一条数轴，相当于一个一维数组。<br>维度这个概念其实是与数轴相关的。<br>如果平面直角坐标系的话一般就会用二维数组，<br>像天梯赛模拟题的炎爆那道题</p>
-<p>思路是，首先把每个元素初始化成2<br>注意今天上午老师讲的那个错误，<br>如</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">int</span> <span class="hljs-built_in">array</span>[<span class="hljs-number">1001</span>] = &#123;<span class="hljs-number">2</span>&#125;<br></code></pre></td></tr></table></figure>
-<p>不要犯这种错误。<br>正确的是用for循环把n个元素的值赋为2</p>
-<p>这题应该挺简单的。<br>也就是多次下把这个区间上的元素全部<strong>降为0</strong>。<br>（注意不是-2，这样区间重叠就成负的了。）</p>
-<p>然后再定义一个sum变量，再一个一个地加。<br>最后输出值即可。<br>代码如下。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br> <br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>    <span class="hljs-type">int</span> n, N, sum = <span class="hljs-number">0</span>, x, y;<br>    <span class="hljs-type">int</span> <span class="hljs-built_in">array</span>[<span class="hljs-number">1001</span>];<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;N);<br> <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>    &#123;<br>        <span class="hljs-built_in">array</span>[i] = <span class="hljs-number">2</span>;<br>    &#125;<br> <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; N;i++)<br>    &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>,&amp;x,&amp;y);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = x - <span class="hljs-number">1</span>;i &lt;= y - <span class="hljs-number">1</span>;i++)<br>        &#123;<br>            <span class="hljs-built_in">array</span>[i] = <span class="hljs-number">0</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>    &#123;<br>        sum += <span class="hljs-built_in">array</span>[i];<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,sum);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="按分数段统计学生人数"><a href="#按分数段统计学生人数" class="headerlink" title="按分数段统计学生人数"></a>按分数段统计学生人数</h2><p>简单的循环题，但是被强行地转成了数组题。<br>如果输入的t在输入成绩之前这就是循环了，我们都比较擅长。<br>直接输入数据，然后用for循环一个一个比对，<br>造一个初始值为0的变量，然后如果大于等于那个值就加一。<br>最后输出就好。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br> <br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>    <span class="hljs-type">int</span> n, gradelimit, num = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-built_in">array</span>[<span class="hljs-number">101</span>];<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br> <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>    &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;<span class="hljs-built_in">array</span>[i]);<br>    &#125;<br> <br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;gradelimit);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>    &#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">array</span>[i] &gt;= gradelimit) num += <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,num);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="两道比较难的题目"><a href="#两道比较难的题目" class="headerlink" title="两道比较难的题目"></a>两道比较难的题目</h1><h2 id="1-区间元素和"><a href="#1-区间元素和" class="headerlink" title="1.区间元素和"></a>1.区间元素和</h2><p>这道题难在判断的条件多，<br>我在做的时候没有想到left与right小于0的情况，<br>所以没有做对，但是后来结合志鹏的解答也给出了简单点的答案。<br>但是不太好理解，你们要是觉得不好懂看志鹏的就好。<br>虽然用的是C++，你们看条件就好。</p>
-<p><img src="/img/22cf517c3686de1119cf1f156160bd4.jpg" alt="志鹏同学的答案"><br>（std::cin就相当于我们的scanf，std::cout就相当于我们的printf）</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br> <br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>    <span class="hljs-type">int</span> n, left, right;<br>    <span class="hljs-type">long</span> <span class="hljs-type">long</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-built_in">array</span>[<span class="hljs-number">101</span>];<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br> <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>    &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;<span class="hljs-built_in">array</span>[i]);<br>    &#125;<br> <br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>,&amp;left, &amp;right);<br>    <span class="hljs-keyword">if</span>(left &lt; n)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = left;i &lt;= right;i++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(i &lt; n &amp;&amp; i &gt;= <span class="hljs-number">0</span>)<br>                sum += <span class="hljs-built_in">array</span>[i];<br>        &#125;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,sum);<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld&quot;</span>,<span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>确保left是小于n的，那么两个集合就一定有交集。<br>然后保证加的是在0到n - 1上的元素（数组内的）。</p>
-<h2 id="找出旷课的人"><a href="#找出旷课的人" class="headerlink" title="找出旷课的人"></a>找出旷课的人</h2><p>先放代码，直播讲</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br> <br><span class="hljs-type">void</span> <span class="hljs-title function_">Sort</span><span class="hljs-params">(<span class="hljs-type">int</span> a[], <span class="hljs-type">int</span> n)</span><br>&#123;<br>    <span class="hljs-type">int</span> t;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n - <span class="hljs-number">1</span>;i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = i;j &lt; n;j++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(a[i] &gt; a[j])<br>            &#123;<br>                t = a[i];<br>                a[i] = a[j];<br>                a[j] = t;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br> <br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>    <span class="hljs-type">int</span> m, n, flag, count = <span class="hljs-number">0</span>, l = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> array1[<span class="hljs-number">10001</span>];<br>    <span class="hljs-type">int</span> array2[<span class="hljs-number">10001</span>];<br>    <span class="hljs-type">int</span> array3[<span class="hljs-number">10001</span>];<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>,&amp;m, &amp;n);<br> <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; m;i++)<br>    &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;array1[i]);<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>    &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;array2[i]);<br>    &#125;<br> <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; m;i++)<br>    &#123;<br>        flag = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;j &lt; n;j++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(array1[i] == array2[j])<br>            &#123;<br>                flag = <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(flag == <span class="hljs-number">0</span>)<br>        &#123;<br>            array3[l] = array1[i];<br>            count += <span class="hljs-number">1</span>;<br>            l++;<br>        &#125;<br>    &#125;<br>     <br>    <span class="hljs-keyword">if</span>(count == <span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;good\n&quot;</span>); <br>    <span class="hljs-keyword">else</span><br>    &#123;<br>        Sort(array3, l);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; l;i ++)<br>        &#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, array3[i]);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>一次模块化的实践，但我当时很怕时间超限。。<br>由几个部分组成<br>判断相等-加入数组-排序（冒泡）-输出。</p>
-<h2 id="宿舍的选择"><a href="#宿舍的选择" class="headerlink" title="宿舍的选择"></a>宿舍的选择</h2><p>很简单的一道题，关于long long，只是为了防止越界吧。<br>判断宿舍可住人数与目前的人数的差，然后与学长的人数相比就好。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br> <br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>    <span class="hljs-type">int</span> m,n,p,q;<br>    <span class="hljs-type">long</span> <span class="hljs-type">long</span> count = <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;m);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; m;i++)<br>    &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>,&amp;p,&amp;q);<br>        <span class="hljs-keyword">if</span>((q - p) &gt; n)<br>            count += <span class="hljs-number">1</span>;<br>    &#125;<br> <br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,count);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>最后说说，这几道题还是很好地帮助我们锻炼了循环那边的知识<br>也帮我们抓起来了现在刚学的数组，<br>通过写题也得到了一些数学模型上的思考，挺好的。</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" rel="tag">C语言学习</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-网站集合"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/11/20/%E7%BD%91%E7%AB%99%E9%9B%86%E5%90%88/"
-    >网站集合</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/11/20/%E7%BD%91%E7%AB%99%E9%9B%86%E5%90%88/" class="article-date">
-  <time datetime="2023-11-20T01:50:34.000Z" itemprop="datePublished">2023-11-20</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="总体网站集合"><a href="#总体网站集合" class="headerlink" title="总体网站集合"></a>总体网站集合</h1><blockquote>
-<p>1.菜鸟教程 <a target="_blank" rel="noopener" href="http://www.runoob.com/">www.runoob.com</a><br>2.空梦博客 <a target="_blank" rel="noopener" href="http://www.kmar.top/">www.kmar.top</a><br>3.昨日学长的B站号 [@zyoobn]<br>学长的CSDN [@郑轻大不知名]<br>4.编程爱好者协会 <a target="_blank" rel="noopener" href="http://www.godyu.com/">www.godyu.com</a><br>B站直播号 [@郑轻编程爱好者协会]</p>
-</blockquote>
-<p>看来我作为一个新人菜狗是不配加入郑轻编程爱好者协会了<br>那网站上没法发帖子，所以我还是自己想办法建个博客吧。</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" rel="tag">学习资源</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-直播内容复盘-排序与交换"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/11/20/%E7%9B%B4%E6%92%AD%E5%86%85%E5%AE%B9%E5%A4%8D%E7%9B%98-%E6%8E%92%E5%BA%8F%E4%B8%8E%E4%BA%A4%E6%8D%A2/"
-    >直播内容复盘-排序与交换</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/11/20/%E7%9B%B4%E6%92%AD%E5%86%85%E5%AE%B9%E5%A4%8D%E7%9B%98-%E6%8E%92%E5%BA%8F%E4%B8%8E%E4%BA%A4%E6%8D%A2/" class="article-date">
-  <time datetime="2023-11-20T01:47:02.000Z" itemprop="datePublished">2023-11-20</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>昨天晚上的重点是归并排序的算法，虽然我们还没有学到函数递归<br>我还需要再联系联系，不太能独立写出来。<br>那就整理一下昨天晚上听到的一些点.</p> 
-      <a class="article-more-link" href="/2023/11/20/%E7%9B%B4%E6%92%AD%E5%86%85%E5%AE%B9%E5%A4%8D%E7%9B%98-%E6%8E%92%E5%BA%8F%E4%B8%8E%E4%BA%A4%E6%8D%A2/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" rel="tag">C语言学习</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-输入与输出"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/11/20/%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/"
-    >输入与输出</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/11/20/%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" class="article-date">
-  <time datetime="2023-11-20T01:46:35.000Z" itemprop="datePublished">2023-11-20</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>从字符串那里，包括之前听C语言群里大佬说<br>也获取到了一些关于printf与scanf的更多形式与更多玩法的知识。<br>今天也一并分享给大家。 
-      <a class="article-more-link" href="/2023/11/20/%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" rel="tag">C语言学习</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-千奇百怪的字符串处理函数"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/11/20/%E5%8D%83%E5%A5%87%E7%99%BE%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/"
-    >千奇百怪的字符串处理函数</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/11/20/%E5%8D%83%E5%A5%87%E7%99%BE%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/" class="article-date">
-  <time datetime="2023-11-20T01:46:11.000Z" itemprop="datePublished">2023-11-20</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>最近的周赛与直播都涉及了很多我们大多没有学习过的C语言细节问题<br>今天学习了一些关于字符串、输入输出函数的知识，<br>以及整理了一下昨天晚上直播的重点内容 @21级学长zyb<br>希望能够帮到大家</p> 
-      <a class="article-more-link" href="/2023/11/20/%E5%8D%83%E5%A5%87%E7%99%BE%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" rel="tag">C语言学习</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-OJ中的那些小丑行为"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/11/20/OJ%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%B8%91%E8%A1%8C%E4%B8%BA/"
-    >OJ中的那些小丑行为</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/11/20/OJ%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%B8%91%E8%A1%8C%E4%B8%BA/" class="article-date">
-  <time datetime="2023-11-20T00:55:43.000Z" itemprop="datePublished">2023-11-20</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>在平时做OJ的时候，我们会经常遇到很多不经意间犯的错误，<br>有些时候错得自己像小丑一样。</p>
-<p><img src="/img/OJclown.png" alt="My feelings"></p>
-<p>我想的是把寻找错误的思路与错误会导致的结果总结一下，给自己以指导。 
-      <a class="article-more-link" href="/2023/11/20/OJ%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%B8%91%E8%A1%8C%E4%B8%BA/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" rel="tag">C语言学习</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-hello-world"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/11/07/hello-world/"
-    >Hello World</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/11/07/hello-world/" class="article-date">
-  <time datetime="2023-11-07T03:53:23.878Z" itemprop="datePublished">2023-11-07</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-数组-1"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/11/07/%E6%95%B0%E7%BB%84-1/"
-    >数组</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/11/07/%E6%95%B0%E7%BB%84-1/" class="article-date">
-  <time datetime="2023-11-06T17:32:04.000Z" itemprop="datePublished">2023-11-07</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="数组概论（Ver-2）"><a href="#数组概论（Ver-2）" class="headerlink" title="数组概论（Ver 2）"></a>数组概论（Ver 2）</h1><p>战友们晚上好！今晚因为电脑的原因本来写好的稿子不能提前交上了，抱歉。<br>今天大体讲一下关于数组的内容，看完就可以使用来做题了。</p>
-<p>目录请见群里发送的图片</p> 
-      <a class="article-more-link" href="/2023/11/07/%E6%95%B0%E7%BB%84-1/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" rel="tag">C语言学习</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-流程控制方法"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/08/30/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E6%96%B9%E6%B3%95/"
-    >流程控制方法</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/08/30/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E6%96%B9%E6%B3%95/" class="article-date">
-  <time datetime="2023-08-30T07:54:46.000Z" itemprop="datePublished">2023-08-30</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python%E5%AD%A6%E4%B9%A0/">python学习</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>今天，在大多数编程语言中，都提供两种循环结构，一种是<strong>以数据容器为基础的</strong>，一种是<strong>以条件为基础的</strong>。</p> 
-      <a class="article-more-link" href="/2023/08/30/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E6%96%B9%E6%B3%95/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-  </article>
-  
-
-  
-</section>
-</div>
-
-      <footer class="footer">
-  <div class="outer">
-    <ul>
-      <li>
-        Copyrights &copy;
-        2023
-        <i class="ri-heart-fill heart_icon"></i> 大学生暮暖
-      </li>
-    </ul>
-    <ul>
-      <li>
-        
-      </li>
-    </ul>
-    <ul>
-      <li>
-        
-        
-        <span>
-  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
-  <span class="division">|</span>
-  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
-</span>
-        
-      </li>
-    </ul>
-    <ul>
-      
-    </ul>
-    <ul>
-      
-    </ul>
-    <ul>
-      <li>
-        <!-- cnzz统计 -->
-        
-        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
-        
-      </li>
-    </ul>
-  </div>
-</footer>    
-    </main>
-    <div class="float_btns">
-      <div class="totop" id="totop">
-  <i class="ri-arrow-up-line"></i>
-</div>
-
-<div class="todark" id="todark">
-  <i class="ri-moon-line"></i>
-</div>
-
-    </div>
-    <aside class="sidebar on">
-      <button class="navbar-toggle"></button>
-<nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="夜暮微暖"></a>
-  </div>
-  
-  <ul class="nav nav-main">
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/">主页</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/archives">归档</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/categories">分类</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags">标签</a>
-    </li>
-    
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-      <a class="nav-item-link nav-item-search"  title="搜索">
-        <i class="ri-search-line"></i>
-      </a>
-      
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="ri-rss-line"></i>
-      </a>
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-    </aside>
-    <div id="mask"></div>
-
-<!-- #reward -->
-<div id="reward">
-  <span class="close"><i class="ri-close-line"></i></span>
-  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯奶茶吧~</p>
-  <div class="reward-box">
-    
-    <div class="reward-item">
-      <img class="reward-img" src="/images/alipay.jpg">
-      <span class="reward-type">支付宝</span>
-    </div>
-    
-    
-    <div class="reward-item">
-      <img class="reward-img" src="/images/wechat.jpg">
-      <span class="reward-type">微信</span>
-    </div>
-    
-  </div>
-</div>
-    
-<script src="/js/jquery-3.6.0.min.js"></script>
- 
-<script src="/js/lazyload.min.js"></script>
-
-<!-- Tocbot -->
-
-<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
-<link
-  rel="stylesheet"
-  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
-/>
-<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
-
-<script src="/dist/main.js"></script>
-
-<!-- ImageViewer -->
- <!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
-<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
-<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
-
-<script>
-    function viewer_init() {
-        let pswpElement = document.querySelectorAll('.pswp')[0];
-        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
-
-        $imgArr.forEach(($em, i) => {
-            $em.onclick = () => {
-                // slider展开状态
-                // todo: 这样不好，后面改成状态
-                if (document.querySelector('.left-col.show')) return
-                let items = []
-                $imgArr.forEach(($em2, i2) => {
-                    let img = $em2.getAttribute('data-idx', i2)
-                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
-                    let title = $em2.getAttribute('alt')
-                    // 获得原图尺寸
-                    const image = new Image()
-                    image.src = src
-                    items.push({
-                        src: src,
-                        w: image.width || $em2.width,
-                        h: image.height || $em2.height,
-                        title: title
-                    })
-                })
-                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
-                    index: parseInt(i)
-                });
-                gallery.init()
-            }
-        })
-    }
-    viewer_init()
-</script> 
-<!-- MathJax -->
-
-<!-- Katex -->
-
-<!-- busuanzi  -->
- 
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
- 
-<!-- ClickLove -->
-
-<!-- ClickBoom1 -->
-
-<!-- ClickBoom2 -->
- 
-<script src="/js/clickBoom2.js"></script>
- 
-<!-- CodeCopy -->
- 
-<link rel="stylesheet" href="/css/clipboard.css">
- <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
-<script>
-  function wait(callback, seconds) {
-    var timelag = null;
-    timelag = window.setTimeout(callback, seconds);
-  }
-  !function (e, t, a) {
-    var initCopyCode = function(){
-      var copyHtml = '';
-      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
-      copyHtml += '</button>';
-      $(".highlight .code pre").before(copyHtml);
-      $(".article pre code").before(copyHtml);
-      var clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-          return trigger.nextElementSibling;
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
         }
-      });
-      clipboard.on('success', function(e) {
-        let $btn = $(e.trigger);
-        $btn.addClass('copied');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-checkbox-circle-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPIED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-checkbox-circle-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-      clipboard.on('error', function(e) {
-        e.clearSelection();
-        let $btn = $(e.trigger);
-        $btn.addClass('copy-failed');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-time-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPY FAILED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-time-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-    }
-    initCopyCode();
-  }(window, document);
-</script>
- 
-<!-- CanvasBackground -->
 
-<script>
-  if (window.mermaid) {
-    mermaid.initialize({ theme: "forest" });
-  }
-</script>
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="夜暮微暖" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="夜暮微暖"><span class="site-name">夜暮微暖</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">夜暮微暖</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/22/Javascript%E5%AD%A6%E4%B9%A0%EF%BC%9A%E4%B8%80%E4%B8%AA%E6%96%B0%E8%B5%B7%E7%82%B9/" title="Javascript学习：一个新起点">Javascript学习：一个新起点</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-22T15:31:11.000Z" title="发表于 2024-01-22 23:31:11">2024-01-22</time></span></div><div class="content">今天过的是真的开心啊，不仅与之前的好朋友聊了聊，还学习了我一直都想要学习的东西，那就是前端制作网站。想起之前玩趣站 (www.youquhome.com) 的时候，那个时候真的是见了不少新奇的网站设计有在夜空中放烟花的，有像云朵的时钟，还有各种H5小游戏。那时候其实就已经有点心思想学H5、CSS以及JS了，嘿嘿，还是之前上外网经历给我的加成，甚至那时候我已经接触过几个JS命令了。
 
 
-    
-    <div id="music">
-    
-    
-    
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
-        src="//music.163.com/outchain/player?type=2&id=1973754489&auto=1&height=66"></iframe>
-</div>
 
-<style>
-    #music {
-        position: fixed;
-        right: 15px;
-        bottom: 0;
-        z-index: 998;
-    }
-</style>
-    
-    
+你要是一路看到这里肯定说：“于，你咋变心这么快，前几天不还好好学着算法的吗?”。要怪也怪我的博客，要怪也怪我，今天的轨迹也是十分离谱（哈哈哈）。
+今天看着自己这几天写过的博客，还有总体的博客页面突发奇想。“我是不是也能像kmjj那样自己对于主题进行二次加工？”于是上网上找hexo主题的开发教程，需要node.js基础，找到了教程。然后跳到了自己之前几天在搞的Windows中的LinuxWSL系统想在里面安个浏览器，之后就能一直在Terminal环境下js编程了，而且界面也挺干净的安了半天实在是没搞定，能安上，但是打不开。最后听人家官方说：“我们还不支持软件安装，只能运行命令行下的软件”果断放弃，害，浪费 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2024/01/21/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%88%86%E6%B2%BB%E6%B3%95%E4%B8%AD%E7%9A%84%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="算法学习：分治法中的二分查找">算法学习：分治法中的二分查找</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-21T15:20:20.000Z" title="发表于 2024-01-21 23:20:20">2024-01-21</time></span></div><div class="content">今天本应学习的是分治法，但今天的轨迹就是有点奇怪（哈）我看着老师讲着讲着讲到了我可能接触过的算法了，并且Leetcode上还能够练题。于是看完老师演示分治法的例子：归并排序、二分查找、求平方。然后就开始不由自主地想要实现它，想了半天没有搞出来，查找网上才学会的。
 
-  </div>
-</body>
 
-</html>
+今天也在Leetcode上练了几道有关于二分查找的题目，开始的时候感觉 - 害，不就一个查找吗，直接当成函数，还能给我出什么题？！尝试了一个困难难度的题根本做不出来（悲）于是从简单题做起了，感觉知道了二分查找的很多不同的用法。
+现在卡在了一道统计二叉树节点的题目上。问题的关键是我现在不知道我这个想法对不对，如果都是从1开始的话，那么其实不需要结构体与指针其实就是在统计元素个数。感觉想得过分简单了。
+
+分治法还是一个挺笼统的概念，它不是一个算法，而是一个设计算法的方法。主要可以分为三步：分、治以及组合。
+老师使用了一个奇怪的比喻：先将一块地分开成几个小部分，分别统治它们，就相当于统治了这个总体。不过还挺形象的。我想起了函数的使用目的，也是为了拆分问题。
+分也就是将一个问题划分成若干个小问题的过程。治就是对于每一个问题进行解决 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2024/01/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E4%BB%A5%E5%8F%8A%E6%B8%90%E8%BF%9B%E7%AC%A6%E5%8F%B7/" title="算法学习：解递归式以及渐进符号">算法学习：解递归式以及渐进符号</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-20T15:27:36.000Z" title="发表于 2024-01-20 23:27:36">2024-01-20</time></span></div><div class="content">事情变得有趣起来了，今天讲的是关于离散数学的内容，没有涉及纯粹的算法。今天的课程内容属实是有点挑战性了，不管是能不能听下去还是理解成本。
+
+今天的生活状态总体来说不太好，听完课就不太知道干啥了，尤其是这样不涉及编程，不能支撑做题的，课上的内容消化已经耗能较高，我就懒得做更多的探究。在家里就容易活在固定模式里。出去也找不到玩的，复读的同学好像也还没放假，找其他人有点胆怯，总感觉离开家成本太大，在家里还得看妹妹。玩游戏吧，开放世界或者沙盒的那种总感觉玩了特容易上瘾，而且后劲很大。对于时间还是挺吝啬的，玩不开心，总是活在欲望与爆发希望之中。感觉玩个游戏都有些功利化了，要是没有啥固定的结果就是个while(1)循环了一样。家里的东西并不一定比那里好吃，特别是姥姥姥爷在家的时候（笑）。
+要是想破局的话，学做饭、尽兴做事与玩游戏，并且敢于走出去，我不确定自己能不能行动起来，不过写这篇也就是对我的一个提醒了。
+今天是彻底地对于之前还挺模糊的渐进符号下了精确的数学定义，所以这一篇也要像人家老师说的，纯粹是数学的讨论（但也是思维的挑战）。
+昨天见过了几种常用的渐进符号，也就是O, Ω, Θ, 实际上除此 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2024/01/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E4%BB%A5%E5%8F%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" title="算法学习：归并排序以及插入排序">算法学习：归并排序以及插入排序</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-20T01:28:55.000Z" title="发表于 2024-01-20 09:28:55">2024-01-20</time></span></div><div class="content">今天是大学第一个寒假的第一天，昨天玩了半天。
+
+到了晚上临时起志：既然上个暑假啥都没学精，那么这个寒假还是集中一个目标尽力往前进吧。于是在B站上翻视频，一直到了23点。
+今天找到了点生活的奔头，看了MIT学院的算法课程，又学习了两种排序方法，虽然不像之前那么多事情了，如果有啥别的重要的话再说嘛，现在才第一天。心里也想着，既然生活又有希望起来了，期待下学期的精彩旅途。因为我一直都在说着：放假了就快开学了，这样只看起点终点就很给人压迫，所以我还是喜欢去把每一天过得尽量好。
+今天学习了归并排序（Merge Sort）与插入排序（Insertion Sort）经过1-2小时的代码编辑，两种算法都已经以C语言实现完毕了，这里就再复盘一下自己今天学习过的内容。看到应该已经是第二天了，不过都一样。
+1. 算法分析对于一个算法，注重的是它的性能，性能并不是最重要的，但在软件设计过程中，它充当着一种货币，可以通过损失性能来换取其他的特性。
+一般来说，分析算法有三种方式：    1.最坏情况分析    2.平均值分析    3.最好情况分析
+这里的情况指的是对于不同数据的运行时间，我们认为时间T(n)与输 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2024/01/04/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E7%BB%93%E6%9E%84%E4%BD%93/" title="如何使用结构体">如何使用结构体</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-04T02:34:40.000Z" title="发表于 2024-01-04 10:34:40">2024-01-04</time></span></div><div class="content"> 结构体，是构造类型的一种，也就是由基本类型构造的类型。 构造类型：结构体struct、联合体union、枚举类型enum。
+1. 定性：新的“数据类型”。
+2. 意义：有些信息的组成数据并不止一种，囊括我们想要描述的大多数数据。(复合类型信息)。数据形成一体。
+3. 定义方式：1. 类型定义（注意最后的分号）12345678910111213struct 结构体类型名&#123;	类型名 成员名;&#125;;//别忘了分号//最近学到的typedef struct 结构体类型名&#123;	类型名 成员名;&#125; 你想要的简化名;typedef 类型名 简化名;//typedef就是为了给类型起别名用的
+
+内部的单个变量类型叫做成员。主要创建在主函数外部。
+2. 变量定义123456//变量定义方式struct 结构体类型名 变量名;//定义并赋初值（初始化）struct 结构体类型名 变量名 = &#123;常量1, 常量2...&#125;;//常量的顺序对应定义类型的顺序。
+
+4. 数据存储与读取使用索引对应成员的运算符： -&gt;(指针，左边是地址，右边是成员名)  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2024/01/04/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/" title="字符串函数">字符串函数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-04T02:34:07.000Z" title="发表于 2024-01-04 10:34:07">2024-01-04</time></span></div><div class="content">下为老师上课时讲过的字符串函数。
+&gt;&gt;字符串函数
+#include &lt;string.h&gt; 这是一个前提
+
+
+strlen(),求字符串长度。与sizeof有区别，它不算&#39;\0&#39;这个字符。
+
+strcpy(s1, s2)，将s2拷贝到s1 (%% s1 &#x3D; s2 %%) 。用赋值运算符=不行，编译错误，数组名为地址常量，不能被赋值。挨个覆盖直到结束符，然后后面的依然保存，但因为结束符的存在而，提早输出。
+
+strcmp(s1, s2) 字符串比较
+ 逐字符比较， s1 &lt; s2就返回-1。 s1 &gt; s2返回1 相等返回0.
+
+
+
+一般用来判断字符串是否相等。
+
+
+strrev(s1) 字符串反置 会修改原字符串。 我们的OJ不支持，PTA支持（有待商榷）。 自己写。
+
+strcat(s1, s2) 字符串连接，把s2连到s1后。
+
+
+
+两个参数总是第一个被修改。
+
+
+strchr(s1, ch) 查找第一次出现的位置。位置是指针。通过寻址符。没有的话，返回地址为空NULL。减去首元素地址（数组名）就可以得到下标。strchr ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/22/C-premier-plus-Chapter-3/" title="C-premier-plus-Chapter-3">C-premier-plus-Chapter-3</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-22T04:11:38.000Z" title="发表于 2023-12-22 12:11:38">2023-12-22</time></span></div><div class="content">第三章 数据处理
+你会在这一章学到下面的东西：
+
+关键字&#96;int,short,long,unsigned,char,float,double,_Bool,_Complex
+运算符sizeof
+函数scanf()
+整型与浮点型的区别
+书写常量与声明这些类型的变量
+如何使用printf()与scanf()函数来读写不同类型的值
+
+
+程序依靠数据来工作。你会向电脑输入数字、字母或者单词，然后期望它能够利用这些数据做些事情。例如，你可能想要电脑去计算支付利润或者展示一个排过序的酒商列表。在这一章，你将会不只阅读数据，而且练习着去操纵数据，那是挺有趣的一件事。
+这一章还会让你了解到两大类数据类型：整数与浮点数。C语言提供了这些类型的几种变体。这一章会告诉你类型是什么，如何声明它们并且如何利用它们。而且，你会发现变量与常量之间的区别，作为额外奖励，你的第一个交互式的小程序就要诞生了！
+
+
+3.1 一个例子再一次，我们还是从一个样例程序来开始，像以往一样，你会发现一些不熟悉的东西，我们待会就会为你解释。程序的总体目的应该清晰，那么就尝试把图3.1中的源码编译运行下吧。为了节省时间，你可以省略 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/11/28/C-premier-plus-Chapter-2/" title="C premier plus Chapter 2">C premier plus Chapter 2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-28T04:36:23.000Z" title="发表于 2023-11-28 12:36:23">2023-11-28</time></span></div><div class="content">第二章 C语言介绍
+你将会在这一章学到    1.赋值运算符    2.函数main()与printf()    3.一个简单C语言程序的构成    4.创造整型变量，赋值并在屏幕上显示它们的值    5.换行符&#39;\n&#39;    6.如何在程序中添加注释，让你的程序中同时拥有多个函数        并能找出程序中的错误。    7.关键字是什么
+
+C语言的程序是什么样子的？如果你大体浏览过这本书，你会看到很多的例子的。几乎一致的是，你会觉得C语言程序看起来很怪异，有些需要用到类似&#123;，cp-&gt;tort,*ptr这样的符号。随着你通读完这本书，你就会慢慢觉得这些符号不是那么陌生了，会变得更加熟悉，甚至有可能会很高兴遇见它们。在这一章中，我们从给出并解释一个简单的实例起步。同时，我们也会强调一些C语言的基本特征。
+2.1 一个简单的例子让我们先研究一个简单的C语言程序。在图2.1展示的这个程序，专门为了突出一些C语言编程的特征。在你将要读接下来对于程序的逐行解释之前，先看看图2.1，试试你是不是能够靠自己搞明白它会做什么事情。
+
+1.#include &lt;s ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/11/27/C-premier-plus-Chapter-1/" title="C premier plus Chapter 1">C premier plus Chapter 1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-27T15:18:43.000Z" title="发表于 2023-11-27 23:18:43">2023-11-27</time></span></div><div class="content">第一章 学习准备
+你将会在这一章学到：    1. C的历史以及特点    2. 写程序的步骤    3. 关于代码连接器与编译器的一些知识    4. C标准
+
+欢迎来到C语言的世界！C语言是一种充满活力的高级编程语言，它受到业余与商用编程者的喜爱。这一章会为你学习与利用这种强大而又受欢迎的语言，而且会向你介绍几种你最有可能搭建C语言基础的环境。
+首先，我们看向C语言的来源和它的一些特点（优点以及缺点）。接着，我们会了解编程的起源，查看编程的总体规则。最终，我们会讨论如何在常见的系统中运行C程序。
+
+
+1.1 C语言的由来贝尔实验室的Dennis Richie在1972年创造了C语言，也就在那时，他和Ken Thompson正在致力于设计Unix系统。C语言的想法并不完全是在Richie的脑袋里冒出来的，而是来自Thompson的B语言，B语言来自哪里又是另一个故事了。重点是，C语言是作为工作中的编程人员的工具被创造出来的，所以它的首要目标就是成为一种有用易用的语言。
+很多编程语言都有着类似的目标，但是它们又经常会有其他的顾虑，举几个例子，Pascal语言的主要目标，就是为了教授编程 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/11/27/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%B0%8F%E6%95%B4%E7%90%86/" title="高等数学小整理">高等数学小整理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-27T13:07:09.000Z" title="发表于 2023-11-27 21:07:09">2023-11-27</time></span></div><div class="content">
+</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">大学生暮暖</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/22/Javascript%E5%AD%A6%E4%B9%A0%EF%BC%9A%E4%B8%80%E4%B8%AA%E6%96%B0%E8%B5%B7%E7%82%B9/" title="Javascript学习：一个新起点">Javascript学习：一个新起点</a><time datetime="2024-01-22T15:31:11.000Z" title="发表于 2024-01-22 23:31:11">2024-01-22</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2024/01/21/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%88%86%E6%B2%BB%E6%B3%95%E4%B8%AD%E7%9A%84%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="算法学习：分治法中的二分查找">算法学习：分治法中的二分查找</a><time datetime="2024-01-21T15:20:20.000Z" title="发表于 2024-01-21 23:20:20">2024-01-21</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2024/01/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E4%BB%A5%E5%8F%8A%E6%B8%90%E8%BF%9B%E7%AC%A6%E5%8F%B7/" title="算法学习：解递归式以及渐进符号">算法学习：解递归式以及渐进符号</a><time datetime="2024-01-20T15:27:36.000Z" title="发表于 2024-01-20 23:27:36">2024-01-20</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2024/01/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E4%BB%A5%E5%8F%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" title="算法学习：归并排序以及插入排序">算法学习：归并排序以及插入排序</a><time datetime="2024-01-20T01:28:55.000Z" title="发表于 2024-01-20 09:28:55">2024-01-20</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2024/01/04/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E7%BB%93%E6%9E%84%E4%BD%93/" title="如何使用结构体">如何使用结构体</a><time datetime="2024-01-04T02:34:40.000Z" title="发表于 2024-01-04 10:34:40">2024-01-04</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/python%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">python学习</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/JS%E5%AD%A6%E4%B9%A0/" style="font-size: 1.1em; color: #999">JS学习</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" style="font-size: 1.1em; color: #999">学习资源</a> <a href="/tags/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 1.1em; color: #999">大学学习</a> <a href="/tags/C-premier-plus/" style="font-size: 1.3em; color: #99a1ac">C_premier_plus</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.3em; color: #99a1ac">算法</a> <a href="/tags/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" style="font-size: 1.5em; color: #99a9bf">C语言学习</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><span class="card-archive-list-count">11</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">八月 2023</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">19</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-01-23T00:08:21.463Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 大学生暮暖</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
