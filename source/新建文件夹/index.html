@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY First HTML Page</title>
+</head>
+<body>
+
+<script>
+document.write("<h1>Moniwarmth</h1>");
+document.write("<p>And his little cute icon!:)</p>");
+function clickfunction()
+{
+    x = document.getElementById("Greetings");
+    if(x == null)
+      document.write("Oops! We don't find the expected text!");
+    else 
+    {
+      alert("Hahaha, any problems?");
+      x.innerHTML = "Hello Js World!!";
+    }
+}
+function changeImage()
+{
+    element=document.getElementById('myimage')
+    if (element.src.match("sit"))
+    {
+        element.src="girl.jpg";
+    }
+    else
+    {
+        element.src="girlsit.gif";
+    }
+}
+</script>
+
+<p id = "Greetings">
+  Hello, this is the first step of my webplaying.
+  Hope that I can stick to it!!
+</p>
+
+<img id="myimage" onclick="changeImage()" src="girl.jpg" width="180" height="180">
+
+<button_type = "button" onclick = "clickfunction()">点我!(本来在HTML中可以点图片出现一张动态图, 这里被覆盖了 ToT)</button_type>
+
+<img id="gifgirl" src = "girlsit.gif" width = "180" height = "180">
+
+<p>嘿嘿, 这是我的第一个HTML文件,Javascript学习的第一步!! </p>
+</body>
+</html>
