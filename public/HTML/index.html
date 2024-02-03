@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body 
+        {
+            background-color: #c6070c;
+            background-image: url(Dream.png);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: contain;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            color: #ffe392;
+            flex-direction: column;
+
+        }
+        @font-face {
+            font-style: normal;
+            font-family: 'Harmony_Regular';
+            src: url('./fonts/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');
+        }
+        #phrase {
+            margin-bottom: 20px;
+        }
+
+        #btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 100px;
+            background-color: #ffe392;
+            font-size: 20px;
+            color:#c6070c;
+            float: left;
+        }
+
+        #rtn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 100px;
+            background-color: #ffe392;
+            font-size: 20px;
+            color:#c6070c;
+            float: right;
+        }
+
+        #line1 {
+            height: 20px;
+            font-size: 1.1em;
+            letter-spacing: 30px;
+        }
+        #line2 {
+            font: 700 8em 'Harmony_Regular';
+            text-align: center;
+            padding: 0px;
+        }
+        #line3 {
+            font-size: 2em;
+            font-family: "Harmony_Regular";
+        }
+    </style>
+
+</head>
+<body>
+    <div id = "phrase">
+        <span id = "line1">xīn chūn kuaì lè</span><br>
+        <span id = "line2" font-family = >新 春 快 乐</span><br>
+        <span id = "line3" font-family = "Harmony_Regular">THE SPRING FESTIVAL IS COMING!</span><br>
+    </div>
+    <button id = "btn">再来一句？</button>
+    <button id = "rtn">返回博客</button>
+</body>
+
+<script>
+    
+
+    var greetings = [
+    ["xīn chūn kuaì lè", "新 春 快 了", "THE SPRING FESTIVAL IS COMING!"],
+    ["píng ān xǐ lè", "平 安 喜 乐", "HAPPY AS WELL AS GOOD HEALTH!"]       
+];
+    var a = 0; 
+    var l1 = document.getElementById('line1');
+    var l2 = document.getElementById('line2');
+    var l3 = document.getElementById('line3');
+    var button = document.getElementById('btn');
+    function changephrase()
+    {
+        a = (a + 1) % greetings.length;
+        l1.textContent = greetings[a][0];
+        l2.textContent = greetings[a][1];
+        l3.textContent = greetings[a][2];
+    }
+    button.addEventListener('click', changephrase);
+    
+</script>
+
+</html>
+

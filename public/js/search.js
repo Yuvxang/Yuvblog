@@ -1,38 +1,31 @@
 // A local search script with the help of [hexo-generator-search](https://github.com/PaicHyperionDev/hexo-generator-search)
-// Copyright (C) 2017
-// Liam Huang <http://github.com/Liam0205>
+// Copyright (C) 2015 
+// Joseph Pan <http://github.com/wzpan>
+// Shuhao Mao <http://github.com/maoshuhao>
 // This library is free software; you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as
 // published by the Free Software Foundation; either version 2.1 of the
 // License, or (at your option) any later version.
-//
+// 
 // This library is distributed in the hope that it will be useful, but
 // WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-//
+// 
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301 USA
-//
+// 
 
 var searchFunc = function (path, search_id, content_id) {
-  // 0x00. environment initialization
   'use strict';
-  var BTN = "<i id='local-search-close'></i>";
-  var SEARCH_START = "<span>" + $('#local-search-result').data('start') + "</span>",
-      SEARCH_INITIALISE = "<span class='local-search-empty'>" + $('#local-search-result').data('initialise') + "<span>",
-      SEARCH_EMPTY = "<span class='local-search-empty'>" + $('#local-search-result').data('empty') + "<span>";
-  var $input = document.getElementById(search_id);
-  var $resultContent = document.getElementById(content_id);
-  $resultContent.innerHTML = BTN + "<ul>" + SEARCH_INITIALISE + "</ul>";
+  var BTN = "<button type='button' class='local-search-close' id='local-search-close'></button>";
   $.ajax({
-    // 0x01. load xml file
     url: path,
     dataType: "xml",
     success: function (xmlResponse) {
-      // 0x02. parse xml file
+      // get the contents from search data
       var datas = $("entry", xmlResponse).map(function () {
         return {
           title: $("title", this).text(),
@@ -40,29 +33,27 @@ var searchFunc = function (path, search_id, content_id) {
           url: $("url", this).text()
         };
       }).get();
-      $resultContent.innerHTML = "";
+
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
 
       $input.addEventListener('input', function () {
-        // 0x03. parse query to keywords list
-        var str = '<ul class=\"search-result-list\">';
-        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+        var str = '<ul class="search-result-list">';
+        var keywords = this.value.trim().toLowerCase().split(/[\s]+/);
         $resultContent.innerHTML = "";
         if (this.value.trim().length <= 0) {
-          $('#local-search-result').html(SEARCH_START);
           return;
         }
-        // 0x04. perform local searching
+        // perform local searching
         datas.forEach(function (data) {
           var isMatch = true;
-          var content_index = [];
+          // var content_index = [];
           if (!data.title || data.title.trim() === '') {
             data.title = "Untitled";
           }
-          var orig_data_title = data.title.trim();
-          var data_title = orig_data_title.toLowerCase();
-          var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
-          var data_content = orig_data_content.toLowerCase();
-          var data_url = /^\//.test(data.url) ? '' : '/' + data.url;
+          var data_title = data.title.trim().toLowerCase();
+          var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+          var data_url = data.url;
           var index_title = -1;
           var index_content = -1;
           var first_occur = -1;
@@ -87,10 +78,10 @@ var searchFunc = function (path, search_id, content_id) {
           } else {
             isMatch = false;
           }
-          // 0x05. show search results
+          // show search results
           if (isMatch) {
-            str += "<li><a href='" + data_url + "' class='search-result-title posttitle' target='_blank'>" + orig_data_title + "</a>";
-            var content = orig_data_content;
+            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+            var content = data.content.trim().replace(/<[^>]+>/g, "");
             if (first_occur >= 0) {
               // cut out 100 characters
               var start = first_occur - 20;
@@ -116,27 +107,21 @@ var searchFunc = function (path, search_id, content_id) {
                 match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
               });
 
-              str += "<p class=\"search-result\">" + match_content + "...</p>";
+              str += "<p class=\"search-result\">" + match_content + "...</p>"
             }
             str += "</li>";
           }
         });
         str += "</ul>";
         if (str.indexOf('<li>') === -1) {
-          $resultContent.innerHTML = BTN + "<ul>" + SEARCH_EMPTY + "</ul>";
-          return;
+          return $resultContent.innerHTML = BTN + "<div class=\"search-result-empty\"><p><i class=\"fe fe-tired\"></i> 没有找到内容，更换下搜索词试试吧~<p></div>";
         }
         $resultContent.innerHTML = BTN + str;
       });
     }
   });
-  $(document).on('click', '#local-search-close', function() {
+  $(document).on('click', '#local-search-close', function () {
     $('#local-search-input').val('');
-    $('#local-search-result').html(SEARCH_START);
+    $('#local-search-result').html('');
   });
-};
-
-var getSearchFile = function(){
-    var path = "/search.xml";
-    searchFunc(path, 'local-search-input', 'local-search-result');
 };

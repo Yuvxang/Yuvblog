@@ -40,6 +40,20 @@
             background-color: #ffe392;
             font-size: 20px;
             color:#c6070c;
+            float: left;
+            margin-right: 15px;
+        }
+
+        #rtn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 100px;
+            background-color: #ffe392;
+            font-size: 20px;
+            color:#c6070c;
+            float: right;
         }
 
         #line1 {
@@ -65,7 +79,11 @@
         <span id = "line2" font-family = >新 春 快 乐</span><br>
         <span id = "line3" font-family = "Harmony_Regular">THE SPRING FESTIVAL IS COMING!</span><br>
     </div>
-    <button id = "btn">再来一句？</button>
+    
+    <div>
+        <button id = "btn">再来一句？</button>
+        <button id = "rtn" type = "submit" onclick = "window.open('http://moniwarmth.top')"">返回博客</button>
+    </div>
 </body>
 
 <script>
@@ -88,6 +106,7 @@
         l3.textContent = greetings[a][2];
     }
     button.addEventListener('click', changephrase);
+
     
 </script>
 
