@@ -8,11 +8,7 @@
         body 
         {
             background-color: #c6070c;
-            background-image: url(Dream.png);
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            background-size: contain;
+
             display: flex;
             align-items: center;
             justify-content: center;
@@ -75,9 +71,9 @@
 </head>
 <body>
     <div id = "phrase">
-        <span id = "line1">xīn chūn kuaì lè</span><br>
-        <span id = "line2" font-family = >新 春 快 乐</span><br>
-        <span id = "line3" font-family = "Harmony_Regular">THE SPRING FESTIVAL IS COMING!</span><br>
+        <span id = "line1">lóng téng xīn nián</span><br>
+        <span id = "line2" font-family = >龙 腾 新 年</span><br>
+        <span id = "line3" font-family = "Harmony_Regular">HAPPY CHINA'S SPRING FESTIVAL OF DRAGON!</span><br>
     </div>
     
     <div>
@@ -87,20 +83,47 @@
 </body>
 
 <script>
-    
+    /*      
+            background-image: url(Dream.png);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: contain;
+    */
 
     var greetings = [
     ["xīn chūn kuaì lè", "新 春 快 了", "THE SPRING FESTIVAL IS COMING!"],
-    ["píng ān xǐ lè", "平 安 喜 乐", "HAPPY AS WELL AS GOOD HEALTH!"]       
+    ["píng ān xǐ lè", "平 安 喜 乐", "HAPPY AS WELL AS GOOD HEALTH!"],     
+    ["wàn shì shùn yì", "万 事 顺 意", "EVERYTHING WORKS OUT!"],
+    ["cái yuán gǔn gǔn", "财 源 滚 滚", "BE WEALTHY!"],
+    ["jì shòu yǒng chāng", "既 寿 永 昌", "LIVE A LONG AND PROSPERIOUS LIFE!"],
+    ["shí xìan lǐ xiǎng", "实 现 理 想", "DREAMS COME TRUE!"],
+    ["xué yè yǒu chéng", "学 业 有 成", "HAVE A GREAT PROGRESS IN STUDY!"],
+    ["jǐn lǐ fú qì", "锦 鲤 福 气", "GOOD LUCK!"],
+    ["hé jiā tuán yuán", "阖 家 团 圆", "TOGETHER WE CELEBRATE THE FESTIVAL!"]
 ];
     var a = 0; 
     var l1 = document.getElementById('line1');
     var l2 = document.getElementById('line2');
     var l3 = document.getElementById('line3');
     var button = document.getElementById('btn');
+    function randomNum(minNum,maxNum){ 
+    switch(arguments.length){ 
+        case 1: 
+            return parseInt(Math.random()*minNum+1,10); 
+        break; 
+        case 2: 
+            return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
+        break; 
+            default: 
+                return 0; 
+            break; 
+    } 
+    
+}
     function changephrase()
     {
-        a = (a + 1) % greetings.length;
+        a = randomNum(0, greetings.length) % greetings.length;
         l1.textContent = greetings[a][0];
         l2.textContent = greetings[a][1];
         l3.textContent = greetings[a][2];
