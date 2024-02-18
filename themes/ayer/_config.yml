@@ -4,15 +4,14 @@ menu:
   归档: /archives
   分类: /categories
   标签: /tags
-  新年!: /html
 
 # 站点次标题和打字动效
 # https://github.com/mattboldt/typed.js
 subtitle:
   enable: true # 是否开启动效
-  text1: 春暖花开，龙腾春来 # 显示的文字
-  text2: 愿你一生努力，一生被爱 # 滚动播放，如果不需要可以留空
-  text3: Improving for the better! # 最多支持三段文字
+  text1: 想要的都得到，得不到的都释怀。 # 显示的文字
+  text2: 愿你一生努力，一生被爱。 # 滚动播放，如果不需要可以留空
+  text3: 我们都有美好的未来。 # 最多支持三段文字
   startDelay: 0 # 延迟时间
   typeSpeed: 200 # 打字速度
   loop: true # 是否循环
@@ -21,7 +20,7 @@ subtitle:
 
 # 网站图标和侧边栏logo
 favicon: /favicon.ico
-logo: /images/ayer-side.svg
+logo: http://tool.liumingye.cn/bingimg/img.php
 
 # 封面配置
 # enable-是否启用封面；path-封面背景图；logo-封面logo
