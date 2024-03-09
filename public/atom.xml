@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>新年快乐！Dear you！</title>
+  <title>夜暮微暖</title>
   
   
   <link href="http://moniwarmth.top/atom.xml" rel="self"/>
   
   <link href="http://moniwarmth.top/"/>
-  <updated>2024-01-26T05:15:11.203Z</updated>
+  <updated>2024-03-09T00:57:27.240Z</updated>
   <id>http://moniwarmth.top/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于我的抉择：C++与算法或者数据结构</title>
+    <link href="http://moniwarmth.top/2024/03/09/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84%E6%8A%89%E6%8B%A9%EF%BC%9AC-%E4%B8%8E%E7%AE%97%E6%B3%95%E6%88%96%E8%80%85%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <id>http://moniwarmth.top/2024/03/09/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84%E6%8A%89%E6%8B%A9%EF%BC%9AC-%E4%B8%8E%E7%AE%97%E6%B3%95%E6%88%96%E8%80%85%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</id>
+    <published>2024-03-09T00:54:10.000Z</published>
+    <updated>2024-03-09T00:57:27.240Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;看过之前这个寒假的博客的应该知道了，&lt;br&gt;我在这个寒假里学了点算法，到现在已经快忘完了（只有插入排序还能想起来一点）。&lt;br&gt;我十分不建议先进行算法的学习，当然对于不同的人有不同的看法，这是我的视角，通过实践的视角。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="C++学习" scheme="http://moniwarmth.top/tags/C-%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的心态调整指南</title>
+    <link href="http://moniwarmth.top/2024/03/04/%E6%88%91%E7%9A%84%E5%BF%83%E6%80%81%E8%B0%83%E6%95%B4%E6%8C%87%E5%8D%97/"/>
+    <id>http://moniwarmth.top/2024/03/04/%E6%88%91%E7%9A%84%E5%BF%83%E6%80%81%E8%B0%83%E6%95%B4%E6%8C%87%E5%8D%97/</id>
+    <published>2024-03-04T01:16:28.000Z</published>
+    <updated>2024-03-04T01:25:48.047Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;这篇文章收录在了我的obsidian仓库中的“我的未来”板块，如有同学观看，愿共勉且尊重。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;从这历经磨难的大一上走过来，经过了一个寒假，只不过是学会了一条道理，完完全全地颠覆了之前的大部分焦虑。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="心态调整" scheme="http://moniwarmth.top/tags/%E5%BF%83%E6%80%81%E8%B0%83%E6%95%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>算法学习：快速幂 以及 这几天搞机心得</title>
@@ -202,16 +239,13 @@
     <link href="http://moniwarmth.top/2023/11/28/C-premier-plus-Chapter-2/"/>
     <id>http://moniwarmth.top/2023/11/28/C-premier-plus-Chapter-2/</id>
     <published>2023-11-28T04:36:23.000Z</published>
-    <updated>2023-11-28T05:28:59.085Z</updated>
+    <updated>2024-03-04T01:25:38.145Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;第二章-C语言介绍&quot;&gt;&lt;a href=&quot;#第二章-C语言介绍&quot; class=&quot;headerlink&quot; title=&quot;第二章 C语言介绍&quot;&gt;&lt;/a&gt;第二章</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;第二章-C语言介绍&quot;&gt;&lt;a href=&quot;#第二章-C语言介绍&quot; class=&quot;headerlink&quot; title=&quot;第二章 C语言介绍&quot;&gt;&lt;/a&gt;第二章 C语言介绍&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;你将会在这一章学到&lt;/strong&gt;&lt;br&gt;    1.赋值运算符&lt;br&gt;    2.函数main()与printf()&lt;br&gt;    3.一个简单C语言程序的构成&lt;br&gt;    4.创造整型变量，赋值并在屏幕上显示它们的值&lt;br&gt;    5.换行符&lt;code&gt;&amp;#39;&#92;n&amp;#39;&lt;/code&gt;&lt;br&gt;    6.如何在程序中添加注释，让你的程序中同时拥有多个函数&lt;br&gt;        并能找出程序中的错误。&lt;br&gt;    7.关键字是什么&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;C语言的程序是什么样子的？如果你大体浏览过这本书，你会看到很多的例子的。几乎一致的是，你会觉得C语言程序看起来很怪异，有些需要用到类似&lt;code&gt;&amp;#123;，cp-&amp;gt;tort,*ptr&lt;/code&gt;这样的符号。随着你通读完这本书，你就会慢慢觉得这些符号不是那么陌生了，会变得更加熟悉，甚至有可能会很高兴遇见它们。在这一章中，我们从给出并解释一个简单的实例起步。同时，我们也会强调一些C语言的基本特征。&lt;/p&gt;</summary>
     
     
     
@@ -282,21 +316,17 @@
   </entry>
   
   <entry>
-    <title>网站集合</title>
-    <link href="http://moniwarmth.top/2023/11/20/%E7%BD%91%E7%AB%99%E9%9B%86%E5%90%88/"/>
-    <id>http://moniwarmth.top/2023/11/20/%E7%BD%91%E7%AB%99%E9%9B%86%E5%90%88/</id>
+    <title>Kiss记录(From 2024.2.19)</title>
+    <link href="http://moniwarmth.top/2023/11/20/Kis/"/>
+    <id>http://moniwarmth.top/2023/11/20/Kis/</id>
     <published>2023-11-20T01:50:34.000Z</published>
-    <updated>2023-11-20T01:51:41.025Z</updated>
+    <updated>2024-03-08T15:35:01.246Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;h1 id=&quot;总体网站集合&quot;&gt;&lt;a href=&quot;#总体网站集合&quot; class=&quot;headerlink&quot; title=&quot;总体网站集合&quot;&gt;&lt;/a&gt;总体网站集合&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;1.菜鸟教程 &lt;a</summary>
-        
-      
+&lt;p&gt;1.菜鸟教程 &lt;a href=&quot;http://www.runoob.com/&quot;&gt;www.runoob.com&lt;/a&gt;&lt;br&gt;2.空梦博客 &lt;a href=&quot;http://www.kmar.top/&quot;&gt;www.kmar.top&lt;/a&gt;&lt;br&gt;3.昨日学长的B站号 [@zyoobn]&lt;br&gt;学长的CSDN [@郑轻大不知名]&lt;br&gt;4.编程爱好者协会 &lt;a href=&quot;http://www.godyu.com/&quot;&gt;www.godyu.com&lt;/a&gt;&lt;br&gt;B站直播号 [@郑轻编程爱好者协会]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;看来我作为一个新人菜狗是不配加入郑轻编程爱好者协会了&lt;br&gt;那网站上没法发帖子，所以我还是自己想办法建个博客吧。&lt;/p&gt;</summary>
     
     
     
@@ -367,45 +397,6 @@
     <summary type="html">&lt;p&gt;在平时做OJ的时候，我们会经常遇到很多不经意间犯的错误，&lt;br&gt;有些时候错得自己像小丑一样。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/img/OJclown.png&quot; alt=&quot;My feelings&quot;&gt;&lt;/p&gt;
 &lt;p&gt;我想的是把寻找错误的思路与错误会导致的结果总结一下，给自己以指导。</summary>
-    
-    
-    
-    
-    <category term="C语言学习" scheme="http://moniwarmth.top/tags/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://moniwarmth.top/2023/11/07/hello-world/"/>
-    <id>http://moniwarmth.top/2023/11/07/hello-world/</id>
-    <published>2023-11-07T03:53:23.878Z</published>
-    <updated>2023-08-30T07:41:06.846Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>数组</title>
-    <link href="http://moniwarmth.top/2023/11/07/%E6%95%B0%E7%BB%84-1/"/>
-    <id>http://moniwarmth.top/2023/11/07/%E6%95%B0%E7%BB%84-1/</id>
-    <published>2023-11-06T17:32:04.000Z</published>
-    <updated>2023-11-21T00:47:42.884Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;数组概论（Ver-2）&quot;&gt;&lt;a href=&quot;#数组概论（Ver-2）&quot; class=&quot;headerlink&quot; title=&quot;数组概论（Ver 2）&quot;&gt;&lt;/a&gt;数组概论（Ver 2）&lt;/h1&gt;&lt;p&gt;战友们晚上好！今晚因为电脑的原因本来写好的稿子不能提前交上了，抱歉。&lt;br&gt;今天大体讲一下关于数组的内容，看完就可以使用来做题了。&lt;/p&gt;
-&lt;p&gt;目录请见群里发送的图片&lt;/p&gt;</summary>
     
     
     
