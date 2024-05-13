@@ -1,6 +1,0 @@
-.github/
-node_modules/
-public/
-db
-package-lock
-yarn.lock
