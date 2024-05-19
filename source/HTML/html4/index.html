@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迷宫</title>
+</head>
+<body>
+    <button onclick = "change_Image_Words()"><blockquote><img src="girl.jpg" width = 200 id = "pic"></blockquote></button>
+    <hr/>
+    <blockquote id = "talking">"哟,看看这是谁来了"。</blockquote>
+    <p><strong>暮暖今天想让你去他的迷宫转转</strong><br/>你可以通过<b>点击这个网页的一些地方</b>来得到密码<br/>最后通过点击<ins>文件的顺序</ins>来导向到正确的html文件上<br/>Good luck! :p</p>
+
+    <script>
+        var a = 0, maxa = 6, pica = 2, end = 7, nofind = 8, state = 0;
+        var speakings = ["点我干嘛，我脸上又没有密码 😕", "别点啦，脸上有点痒", "好好好，我站起来和你好好说话好吧", "你想要密码是吧", "我保证密码一定在这个页面的某处", "emmmmm, 让我想想🤔", "我觉得它肯定离我很近很近，我能感受到它的气息！", "喏，这不就是密码啦！你真棒！", "你再点我也没用啦，再跟你说就不好玩啦!"]
+        function change_Image_Words(){
+            now_image = document.getElementById("pic");
+            now_word = document.getElementById("talking");
+            if(a <= maxa - 1)
+            {
+                a += 1;
+                if(a >= 2)
+                    now_image.src = "girlsit.gif"
+                now_word.textContent = speakings[a];
+            } 
+            else if(state == 0)
+                now_word.textContent = speakings[nofind];
+            else now_word.textContent = speakings[end];
+        } 
+        function change_state(){
+            state = 1;
+        }
+
+    </script>
+
+    
+    <br/>
+</body>
+</html>
