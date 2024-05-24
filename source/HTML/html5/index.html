@@ -4,66 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        body {
-            text-align: center;
-        }
-        @keyframes move {
-        from {
-            top: 100px;
-            left: calc(100% + 500px);
-        }
-  
-        100% {
-            top: 100px;
-            left: calc(0% - 500px);
-        }
-        }
-
-        pre {
-            background-color: plum;
-            height: 500px;
-            text-align: center;
-        }
-
-        #herta {
-            width: 500px;
-            position: absolute;
-            top: 0;
-            left: calc(100%);
-            animation: 1s linear 1 move;
-        }
-        #gulu {
-            background-color: purple;
-            border: none; /*这是按钮边界*/
-            border-radius: 30px; /*按钮边界的圆滑度*/
-            border-radius: 16px;
-            padding: 16px 32px;
-            color: aliceblue;
-            font-family: 'Roboto', sans-serif;
-            font-weight: bold;
-            font-size: 1em;
-            min-width: 120px;
-
-            position: relative;
-            overflow: hidden;
-            box-shadow: 6px 7px 40px -4px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.1s ease-in-out, scale 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
-        }
-
-        #gulu:hover {
-            background-color: #2d2463;
-        }
-
-        #greetpic {
-            width: 100px
-        }
-        
-        #greeting {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/html5/css/style.css"
 </head>
 <body>
     <audio id = "one"><source src="gululu.mp3" type="audio/mpeg"></audio>
@@ -74,58 +15,14 @@
         <h1 style="color:#2d2463;font-size: 2em;">黑塔の转圈圈时间</h1>
         <img id = "greetpic" src="favicon.png">
     </div>
-    <pre>
-        <img src="hertaa_github.gif" style="opacity: 0.1;position: relative;top: 100px;">
-    </pre>
-    <button onclick="gululu()" id = "gulu">咕噜噜</button>
- 
-    <br/>
     
-    <script>
-        
-        function gululu(){
-            const elem = document.createElement("img");
-            const x1 = document.getElementById("one");
-            const x2 = document.getElementById("two");
-            const x3 = document.getElementById("three");
-            const x4 = document.getElementById("four");
-
-            var a = Math.floor((Math.random() * 10) + 1);
-            var b = Math.floor((Math.random() * 10) + 1);
-            if(a >= 5)
-                elem.src = "hertaa1.gif";
-            else
-                elem.src = "hertaa2.gif";
-            
-            if(b >= 7)
-                x1.play();
-            else if(b >= 5)
-                x4.play();
-            else if(b >= 2)
-                x3.play();
-            else x2.play();
-            elem.position = "absolute";
-            elem.style.right = "-300px";
-            elem.id = "herta";
-            document.body.appendChild(elem);
-            setTimeout(function () {
-                document.body.removeChild(elem);
-            }, 1000);
-
-
-        }
-    </script>
+    <div id="bk_herta">
+        <img src="hertaa_github.gif" style="opacity: 0.1;position: relative;top: 100px;">
+    </div>
+    <button onclick="gululu()" id = "gulu">咕噜噜</button>
+    <br/>
+    <script async src="/html5/js/script.js"></script>
 </body>
 </html>
-<!--     function animateHerta() {
-        let id = null;
-        const random = Math.floor(Math.random() * 2) + 1;
-        const elem = document.createElement("img");
-        let RunSpeed = Math.floor(current_speed);
-        elem.src = cacheStaticObj(`img/hertaa${random}.gif`);
-        elem.style.position = "absolute";
-        elem.style.right = "-500px";
-        elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 430 + "px"
-        elem.style.zIndex = "-10";
-        document.body.appendChild(elem);
-     -->
+
+     <!-- 首先，明显CSS文件写的很乱，需要整理，其次是标签思路也可以优化下 -->

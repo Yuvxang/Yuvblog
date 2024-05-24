@@ -1,0 +1,63 @@
+body {
+    text-align: center;
+}
+@keyframes move {
+from {
+    top: 100px;
+    left: calc(100% + 500px);
+}
+
+100% {
+    top: 100px;
+    left: calc(0% - 500px);
+}
+}
+
+pre {
+    background-color: plum;
+    height: 500px;
+    text-align: center;
+}
+
+#herta {
+    width: 500px;
+    position: absolute;
+    top: 0;
+    left: calc(100%);
+    animation: 1s linear 1 move;
+}
+#gulu {
+    background-color: purple;
+    border: none; /*这是按钮边界*/
+    border-radius: 30px; /*按钮边界的圆滑度*/
+    border-radius: 16px;
+    padding: 16px 32px;
+    color: aliceblue;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    min-width: 120px;
+
+    position: relative;
+    overflow: hidden;
+    box-shadow: 6px 7px 40px -4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.1s ease-in-out, scale 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#gulu:hover {
+    background-color: #2d2463;
+}
+
+#greetpic {
+    width: 100px
+}
+
+#greeting {
+    display: flex;
+    justify-content: center;
+}
+#bk_herta {
+    background-color: plum;
+    height: 500px;
+    text-align: center;
+}
