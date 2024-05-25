@@ -216,6 +216,15 @@
    
   <nav class="article-nav">
     
+      <a href="/2024/05/14/%E6%88%91%E7%9A%84%E6%96%B0%E5%B0%9D%E8%AF%95-HTML%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            我的新尝试-HTML学习日记
+          
+        </div>
+      </a>
+    
     
       <a href="/2024/03/04/%E6%88%91%E7%9A%84%E5%BF%83%E6%80%81%E8%B0%83%E6%95%B4%E6%8C%87%E5%8D%97/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
@@ -224,7 +233,55 @@
     
   </nav>
 
-  
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "M2GOtZtdSlc9uqf0Eb7yn905-gzGzoHsz",
+    app_key: "jIFo5i8xLcPxI7Ki45LAnl8v",
+    path: window.location.pathname,
+    avatar: "wavatar",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
    
   
    
@@ -316,6 +373,14 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/HTML">HTML学习</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/HTML/html5">黑塔转圈圈~</a>
     </li>
     
   </ul>

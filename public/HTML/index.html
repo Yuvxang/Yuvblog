@@ -1,137 +1,54 @@
-<!DOCTYPE html>
+<!Doctype html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body 
-        {
-            background-color: #c6070c;
+    <head>
+        <meta charset = "utf-8">
+        <title>HTML展示页</title>
+        <style>
+            @font-face {
+                font-family: 'qianxia';
+                src: url('qianxia.ttf');
+            }
+            h1 {
+                color: coral;
+                font-family:'qianxia';
+            }
+            p {
+                font-family: 'qianxia';
+                font-size: larger;
+            }
+            #mn{
+                color: orange;
+            }
+            body{
+                background-color:beige;
+            }
+            a{
+                text-decoration: none;
+                font-family: qianxia';
+            }
+            #w1{
+                color: orange;
+                font-family:Verdana, Geneva, Tahoma, sans-serif ;
+            }
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-            color: #ffe392;
-            flex-direction: column;
-
-        }
-        @font-face {
-            font-style: normal;
-            font-family: 'Harmony_Regular';
-            src: url('./fonts/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');
-        }
-        #phrase {
-            margin-bottom: 20px;
-        }
-
-        #btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 100px;
-            background-color: #ffe392;
-            font-size: 20px;
-            color:#c6070c;
-            float: left;
-            margin-right: 15px;
-        }
-
-        #rtn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 100px;
-            background-color: #ffe392;
-            font-size: 20px;
-            color:#c6070c;
-            float: right;
-        }
-
-        #line1 {
-            height: 20px;
-            font-size: 1.1em;
-            letter-spacing: 30px;
-        }
-        #line2 {
-            font: 700 8em 'Harmony_Regular';
-            text-align: center;
-            padding: 0px;
-        }
-        #line3 {
-            font-size: 2em;
-            font-family: "Harmony_Regular";
-        }
-    </style>
-
-</head>
-<body>
-    <div id = "phrase">
-        <span id = "line1">lóng téng xīn nián</span><br>
-        <span id = "line2" font-family = >龙 腾 新 年</span><br>
-        <span id = "line3" font-family = "Harmony_Regular">HAPPY CHINA'S SPRING FESTIVAL OF DRAGON!</span><br>
-    </div>
+        </style>
+    </head>
+    <body>
+        <h1>Html! ☀</h1>
+        <img src="girl.jpg"width = "100"/></blockquote>
+        <p><strong><big id="mn">Moniwarmth</big></strong>敬上</p>
+        <hr/>
+        <b>介是本人的博客地址<b style="color:coral"> * v * </b></b>
+        <a href="https://Moniwarmth.top" style="color:orange;font-family: qianxia;">点我进入博客！！！</a>
+        <hr/>
     
-    <div>
-        <button id = "btn">再来一句？</button>
-        <button id = "rtn" type = "submit" onclick = "window.open('http://moniwarmth.top')"">返回博客</button>
-    </div>
-</body>
-
-<script>
-    /*      
-            background-image: url(Dream.png);
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            background-size: contain;
-    */
-
-    var greetings = [
-    ["xīn chūn kuaì lè", "新 春 快 了", "THE SPRING FESTIVAL IS COMING!"],
-    ["píng ān xǐ lè", "平 安 喜 乐", "HAPPY AS WELL AS GOOD HEALTH!"],     
-    ["wàn shì shùn yì", "万 事 顺 意", "EVERYTHING WORKS OUT!"],
-    ["cái yuán gǔn gǔn", "财 源 滚 滚", "BE WEALTHY!"],
-    ["jì shòu yǒng chāng", "既 寿 永 昌", "LIVE A LONG AND PROSPERIOUS LIFE!"],
-    ["shí xìan lǐ xiǎng", "实 现 理 想", "DREAMS COME TRUE!"],
-    ["xué yè yǒu chéng", "学 业 有 成", "HAVE A GREAT PROGRESS IN STUDY!"],
-    ["jǐn lǐ fú qì", "锦 鲤 福 气", "GOOD LUCK!"],
-    ["hé jiā tuán yuán", "阖 家 团 圆", "TOGETHER WE CELEBRATE THE FESTIVAL!"]
-];
-    var a = 0; 
-    var l1 = document.getElementById('line1');
-    var l2 = document.getElementById('line2');
-    var l3 = document.getElementById('line3');
-    var button = document.getElementById('btn');
-    function randomNum(minNum,maxNum){ 
-    switch(arguments.length){ 
-        case 1: 
-            return parseInt(Math.random()*minNum+1,10); 
-        break; 
-        case 2: 
-            return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
-        break; 
-            default: 
-                return 0; 
-            break; 
-    } 
-    
-}
-    function changephrase()
-    {
-        a = randomNum(0, greetings.length) % greetings.length;
-        l1.textContent = greetings[a][0];
-        l2.textContent = greetings[a][1];
-        l3.textContent = greetings[a][2];
-    }
-    button.addEventListener('click', changephrase);
-
-    
-</script>
-
+        <b>下方是最近<i>HTML</i>学习的进程</b>
+        <br/>
+        <a href="https://Moniwarmth.top/html/html1" id = "w1">May 14<sub>th</sub> 小复习</em></a> <a href="./html1/index.html" download>下载</a><br/>
+        <a href="https://Moniwarmth.top/html/html2" id = "w1">May 17</em><sub><em>th</em><big><strong> 千</strong>奇<em>百怪</em>的<sup>文字</sup></big><b>！</b></sub></big></a> <a href="./html1/index.html" download>下载</a><br/>
+        <a href="https://Moniwarmth.top/html/html4" id = "w1">May 19<sub>th</sub><b> 迷宫</b>游戏</em></a> <a href="./html4/index.html" download>下载</a><br/>
+        <a href="https://Moniwarmth.top/html/html5" id = "w1">May 22<sub>nd</sub>/23<sub>rd</sub></</a> <a href = "https://Moniwarmth.top/html/html5" style="color: orange;text-decoration: line-through;">又给你玩出花来了...</a><a href="./html5/index.html" download> 下载</a></a> 
+        <hr/>
+        <strong style="font-family: 'qianxia';">实际上，这一页就是为CSS学习做的页面，但太简单，明天会重新写一个。</strong>
+    </body>
 </html>
-

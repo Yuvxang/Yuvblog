@@ -528,6 +528,155 @@
     
     
     <article
+  id="post-如何使用结构体"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2024/01/04/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E7%BB%93%E6%9E%84%E4%BD%93/"
+    >如何使用结构体</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/01/04/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E7%BB%93%E6%9E%84%E4%BD%93/" class="article-date">
+  <time datetime="2024-01-04T02:34:40.000Z" itemprop="datePublished">2024-01-04</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p> 结构体，是构造类型的一种，也就是由基本类型构造的类型。<br> 构造类型：结构体struct、联合体union、枚举类型enum。</p>
+<h2 id="1-定性："><a href="#1-定性：" class="headerlink" title="1. 定性："></a>1. 定性：</h2><p>新的“数据类型”。</p>
+<h2 id="2-意义："><a href="#2-意义：" class="headerlink" title="2. 意义："></a>2. 意义：</h2><p>有些信息的组成数据并不止一种，<br>囊括我们想要描述的大多数数据。(复合类型信息)。<br>数据形成一体。</p>
+<h2 id="3-定义方式："><a href="#3-定义方式：" class="headerlink" title="3. 定义方式："></a>3. 定义方式：</h2><h3 id="1-类型定义（注意最后的分号）"><a href="#1-类型定义（注意最后的分号）" class="headerlink" title="1. 类型定义（注意最后的分号）"></a>1. 类型定义（注意最后的分号）</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> 结构体类型名</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	类型名 成员名;</span><br><span class="line">&#125;;<span class="comment">//别忘了分号</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//最近学到的</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> 结构体类型名</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	类型名 成员名;</span><br><span class="line">&#125; 你想要的简化名;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> 类型名 简化名;</span><br><span class="line"><span class="comment">//typedef就是为了给类型起别名用的</span></span><br></pre></td></tr></table></figure>
+
+<p>内部的单个变量类型叫做<strong>成员</strong>。<br><strong>主要创建在主函数外部</strong>。</p>
+<h3 id="2-变量定义"><a href="#2-变量定义" class="headerlink" title="2. 变量定义"></a>2. 变量定义</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//变量定义方式</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> 结构体类型名 变量名;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//定义并赋初值（初始化）</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> 结构体类型名 变量名 =</span> &#123;常量<span class="number">1</span>, 常量<span class="number">2.</span>..&#125;;</span><br><span class="line"><span class="comment">//常量的顺序对应定义类型的顺序。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-数据存储与读取"><a href="#4-数据存储与读取" class="headerlink" title="4. 数据存储与读取"></a>4. 数据存储与读取</h2><p>使用索引对应成员的运算符： -&gt;(指针，左边是地址，右边是成员名) &#x2F; .（左边，索引成员名）<br>其他一样</p>
+<blockquote>
+<p>额外提醒: 数组不能用&#x3D;，结构体可以。–数组是类型不是地址。</p>
+</blockquote>
+<h2 id="参考-典型例子"><a href="#参考-典型例子" class="headerlink" title="参考-典型例子"></a>参考-典型例子</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="comment">// 结构体。</span></span><br><span class="line"><span class="comment">//构造类型：结构体struct、联合体union、枚举类型enum。</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="type">char</span> name[<span class="number">50</span>];</span><br><span class="line">	<span class="type">int</span> age;</span><br><span class="line">&#125;;<span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">student</span> <span class="title">stud</span>;</span></span><br><span class="line"><span class="comment">//typedef 给类型起别名。</span></span><br><span class="line"><span class="comment">//typedef 已经存在的名 新类型名;</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> n, minage;</span><br><span class="line">	stud stu1;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">	getchar();</span><br><span class="line">	<span class="type">char</span> minname[<span class="number">55</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%s %d&quot;</span>,stu1.name, &amp;stu1.age);</span><br><span class="line">		<span class="keyword">if</span>(i == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">strcpy</span>(minname, stu1.name);</span><br><span class="line">			minage = stu1.age;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(stu1.age &lt; minage)</span><br><span class="line">		&#123;</span><br><span class="line">			minage = stu1.age;</span><br><span class="line">			<span class="built_in">strcpy</span>(minname, stu1.name);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, minname);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一般在一个东西的多个方面给予数据，用这些数据来排序比大小等等。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" rel="tag">C语言学习</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+  
+</article>
+
+    
+    <article
+  id="post-字符串函数"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2024/01/04/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/"
+    >字符串函数</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/01/04/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/" class="article-date">
+  <time datetime="2024-01-04T02:34:07.000Z" itemprop="datePublished">2024-01-04</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>下为老师上课时讲过的字符串函数。</p>
+<h1 id="字符串函数"><a href="#字符串函数" class="headerlink" title="&gt;&gt;字符串函数"></a>&gt;&gt;字符串函数</h1><blockquote>
+<p>#include &lt;string.h&gt; 这是一个前提</p>
+</blockquote>
+<ol>
+<li><p><code>strlen()</code>,求字符串长度。<br>与<code>sizeof</code>有区别，它不算<code>&#39;\0&#39;</code>这个字符。</p>
+</li>
+<li><p><code>strcpy(s1, s2)</code>，将s2拷贝到s1 (%% s1 &#x3D; s2 %%) 。<br>用赋值运算符<code>=</code>不行，编译错误，数组名为地址常量，不能被赋值。<br>挨个覆盖直到结束符，然后后面的依然保存，<br>但因为结束符的存在而，提早输出。</p>
+</li>
+<li><p><code>strcmp(s1, s2)</code> 字符串比较</p>
+<p> 逐字符比较，<br> <code>s1 &lt; s2</code>就返回<code>-1</code>。<br> <code>s1 &gt; s2</code>返回<code>1</code><br> 相等返回<code>0</code>.</p>
+</li>
+</ol>
+<blockquote>
+<p>一般用来判断字符串是否相等。</p>
+</blockquote>
+<ol start="4">
+<li><p><code>strrev(s1)</code> 字符串反置<br> 会修改原字符串。<br> 我们的OJ不支持，PTA支持（有待商榷）。<br> 自己写。</p>
+</li>
+<li><p><code>strcat(s1, s2)</code> 字符串连接，把s2连到s1后。</p>
+</li>
+</ol>
+<blockquote>
+<p>两个参数总是第一个被修改。</p>
+</blockquote>
+<ol start="6">
+<li><p><code>strchr(s1, ch)</code> 查找第一次出现的位置。<br>位置是指针。通过寻址符。<br>没有的话，返回地址为空NULL。<br>减去首元素地址（数组名）就可以得到下标。<br><code>strchr(s1, ch) - s1</code></p>
+</li>
+<li><p><code>strstr(s1, s2)</code> 在一个字符串中找另一个字符串。</p>
+</li>
+</ol>
+<blockquote>
+<p>在s1中找s2（s2为字符串）<br>    找到返回地址，找不到返回NULL。<br>    则显示字符串第一次出现的第一个字符地址，<br>    减去d，则是它的下标。</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" rel="tag">C语言学习</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+  
+</article>
+
+    
+    <article
   id="post-C-premier-plus-Chapter-3"
   class="article article-type-post"
   itemscope
@@ -586,7 +735,8 @@
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -642,7 +792,8 @@
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -699,7 +850,8 @@
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -749,7 +901,8 @@
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -802,7 +955,8 @@
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -858,7 +1012,8 @@
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -911,7 +1066,8 @@
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -964,115 +1120,8 @@
     </footer>
   </div>
 
-   
-   
-  
-</article>
-
     
-    <article
-  id="post-千奇百怪的字符串处理函数"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/11/20/%E5%8D%83%E5%A5%87%E7%99%BE%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/"
-    >千奇百怪的字符串处理函数</a> 
-</h2>
  
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/11/20/%E5%8D%83%E5%A5%87%E7%99%BE%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/" class="article-date">
-  <time datetime="2023-11-20T01:46:11.000Z" itemprop="datePublished">2023-11-20</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>最近的周赛与直播都涉及了很多我们大多没有学习过的C语言细节问题<br>今天学习了一些关于字符串、输入输出函数的知识，<br>以及整理了一下昨天晚上直播的重点内容 @21级学长zyb<br>希望能够帮到大家</p> 
-      <a class="article-more-link" href="/2023/11/20/%E5%8D%83%E5%A5%87%E7%99%BE%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" rel="tag">C语言学习</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-OJ中的那些小丑行为"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/11/20/OJ%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%B8%91%E8%A1%8C%E4%B8%BA/"
-    >OJ中的那些小丑行为</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/11/20/OJ%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%B8%91%E8%A1%8C%E4%B8%BA/" class="article-date">
-  <time datetime="2023-11-20T00:55:43.000Z" itemprop="datePublished">2023-11-20</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>在平时做OJ的时候，我们会经常遇到很多不经意间犯的错误，<br>有些时候错得自己像小丑一样。</p>
-<p><img src="/img/OJclown.png" alt="My feelings"></p>
-<p>我想的是把寻找错误的思路与错误会导致的结果总结一下，给自己以指导。 
-      <a class="article-more-link" href="/2023/11/20/OJ%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%B8%91%E8%A1%8C%E4%B8%BA/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" rel="tag">C语言学习</a></li></ul>
-
-    </footer>
-  </div>
-
-   
    
   
 </article>
@@ -1167,6 +1216,14 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/HTML">HTML学习</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/HTML/html5">黑塔转圈圈~</a>
     </li>
     
   </ul>
