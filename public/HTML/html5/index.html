@@ -3,8 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="/html5/css/style.css">
+    <link rel="shortcut icon" src="favicon.png">
+    <title>黑塔转圈圈</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        @keyframes move {
+        from {
+            top: 100px;
+            left: calc(100% + 500px);
+        }
+
+        100% {
+            top: 100px;
+            left: calc(0% - 500px);
+        }
+        }
+
+        pre {
+            background-color: plum;
+            height: 500px;
+            text-align: center;
+        }
+
+        #herta {
+            width: 500px;
+            position: absolute;
+            top: 0;
+            left: calc(100%);
+            animation: 1.5s linear 1 move;
+        }
+        #gulu {
+            background-color: purple;
+            border: none; /*这是按钮边界*/
+            border-radius: 30px; /*按钮边界的圆滑度*/
+            border-radius: 16px;
+            padding: 16px 32px;
+            color: aliceblue;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            font-size: 1em;
+            min-width: 120px;
+
+            position: relative;
+            overflow: hidden;
+            box-shadow: 6px 7px 40px -4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.1s ease-in-out, scale 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        #gulu:hover {
+            background-color: #2d2463;
+        }
+
+        #greetpic {
+        width: 100px
+        }
+
+        #greeting {
+            display: flex;
+            justify-content: center;
+        }
+        #bk_herta {
+            background-color: plum;
+            height: 500px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <audio id = "one"><source src="gululu.mp3" type="audio/mpeg"></audio>
@@ -19,9 +84,45 @@
     <div id="bk_herta">
         <img src="hertaa_github.gif" style="opacity: 0.1;position: relative;top: 100px;">
     </div>
-    <button onclick="gululu()" id = "gulu">咕噜噜</button>
+    <div id="buttons">
+        <button onclick="gululu()" id = "gulu">咕噜噜</button>
+        <a href="https://moniwarmth.top/"><button id = "gulu">返回博客</button></a>
+    </div>
     <br/>
-    <script async src="/html5/js/script.js"></script>
+    <script>
+    var x1 = document.getElementById("one");
+    var x2 = document.getElementById("two");
+    var x3 = document.getElementById("three");
+    var x4 = document.getElementById("four");
+
+    function gululu(){
+        const elem = document.createElement("img");
+        var a = Math.floor((Math.random() * 10) + 1);
+        var b = Math.floor((Math.random() * 10) + 1);
+
+        if(a >= 5)
+            elem.src = "hertaa1.gif";
+        else
+            elem.src = "hertaa2.gif";
+            
+        if(b >= 8)
+            x1.play();
+        else if(b >= 5)
+            x4.play();
+        else if(b >= 2)
+            x3.play();
+        else if(b >= 0)
+            x2.play();
+            
+        elem.position = "absolute";
+        elem.style.right = "-300px";
+        elem.id = "herta";
+        document.body.appendChild(elem);
+        setTimeout(function () {
+            document.body.removeChild(elem);
+        }, 1400);
+    }
+    </script>
 </body>
 </html>
 
