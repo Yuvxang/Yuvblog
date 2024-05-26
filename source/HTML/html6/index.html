@@ -21,11 +21,14 @@
         <area shape="rect" coords="0, 225, 50, 300" onclick="bottles()" href="#">
         <area shape="rect" coords="52, 225, 97, 300" onclick="teapot()" href="#">
         <area shape="rect" coords="0, 150, 125, 210" onclick="twopigs()" href="#">
+        <area shape="rect" coords="126, 150, 200, 230" onclick="drawing()" href="#">
+        <area shape="rect" coords="160, 230, 200, 271" onclick="clock()" href="#">
+        <area shape="rect" coords="240, 210, 275, 276" onclick="penholder()" href="#">
     </map>
     <p id="description" style="text-align: center;">这是我的房间</p>
     <hr/>
     <strong><small>可以点击图中的某一部分来具体看</small></strong><br/>
-    <strong style="color:red"><small>此页面仍在更新中⚠，图片中仅左边杯子与小猪部分可点</small></strong>
+    <strong style="color:red"><small>此页面仍在更新中⚠，图片中仅部分可点，等待探索😜</small></strong>
     <script>
         var elem = document.getElementById("description");
         function bottles(){
@@ -36,6 +39,15 @@
         }
         function twopigs(){
             elem.textContent = "两只可爱的小猪，是舅妈的礼物，妹妹常说这是我们俩🤭"
+        }
+        function drawing() {
+            elem.textContent = "很早之前去上海回来在火车上买的一幅画，没啥特点。"
+        }
+        function clock() {
+            elem.textContent = "高中时买的一个表，现在还在提醒着我时间"
+        }
+        function penholder() {
+            elem.textContent = "原本是妈妈放在电脑旁的装饰，被我拿来当笔筒咯🤭"
         }
 
     </script>
