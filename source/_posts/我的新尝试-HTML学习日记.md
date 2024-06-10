@@ -273,3 +273,5 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-shadow
 
 不废话啦，先push到网页上了。- :)
 
+![](/img/first_trial.png)
+
