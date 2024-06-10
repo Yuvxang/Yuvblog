@@ -1,57 +1,104 @@
-<!Doctype html>
-<html>
-    <head>
-        <meta charset = "utf-8">
-        <title>HTML展示页</title>
-        <style>
-            @font-face {
-                font-family: 'qianxia';
-                src: url('qianxia.ttf');
-            }
-            h1 {
-                color: coral;
-                font-family:'qianxia';
-            }
-            p {
-                font-family: 'qianxia';
-                font-size: larger;
-            }
-            #mn{
-                color: orange;
-            }
-            body{
-                background-color:beige;
-            }
-            a{
-                text-decoration: none;
-                font-family: qianxia';
-            }
-            #w1{
-                color: orange;
-                font-family:Verdana, Geneva, Tahoma, sans-serif ;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: #000;
+        }
+        video {
+            position: absolute;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            opacity: 30%;
+        }
+        @font-face {
+            font-family: qianxia;
+            src: url(/qianxia.ttf);
+        }
+        #context {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 684px;
+            color: white;
+        }
 
-        </style>
-    </head>
-    <body>
-        <h1>Html! ☀</h1>
-        <img src="girl.jpg"width = "100"/></blockquote>
-        <p><strong><big id="mn">Moniwarmth</big></strong>敬上</p>
-        <hr/>
-        <b>介是本人的博客地址<b style="color:coral"> * v * </b></b>
-        <a href="https://Moniwarmth.top" style="color:orange;font-family: qianxia;">点我进入博客！！！</a>
-        <hr/>
-    
-        <b>下方是最近<i>HTML</i>学习的进程</b>
-        <br/>
-        <a href="https://Moniwarmth.top/html/html1" id = "w1">May 14<sub>th</sub> 小复习</em></a> <a href="./html1/index.html" download>下载</a><br/>
-        <a href="https://Moniwarmth.top/html/html2" id = "w1">May 17</em><sub><em>th</em><big><strong> 千</strong>奇<em>百怪</em>的<sup>文字</sup></big><b>！</b></sub></big></a> <a href="./html1/index.html" download>下载</a><br/>
-        <a href="https://Moniwarmth.top/html/html4" id = "w1">May 19<sub><em>th</em></sub><b> 迷宫</b>游戏</em></a> <a href="./html4/index.html" download>下载</a><br/>
-        <a href="https://Moniwarmth.top/html/html5" id = "w1">May 22<sub><em>nd</em></sub>/23<sub><em>rd</em></sub></</a> <a href = "https://Moniwarmth.top/html/html5" style="color: orange;text-decoration: line-through;">又给你玩出花来了...</a><a href="./html5/index.html" download> 下载</a></a><br/> 
-        <a href="https://Moniwarmth.top/html/html6" id = "w1">May 26<sub><em>th</em></sub><strong> 邦加人</strong>の奇妙生活</a> <a href="./html6/index.html" download>下载</a><br/>
-        <a href="https://Moniwarmth.top/html/html7" id = "w1">June 1<sub><em>st</em></sub> 我们学校的食物价格</a> <a href="/html7/index.html" download> 下载</a><br/>
-        <a href="https://Moniwarmth.top/html/html8" id = "w1">June 4<sub><em></em></sub> 写给同学的<b>作业汇总</b></a> <a href="/html8/index.html" download> 下载</a>
-        <hr/>
-        <strong style="font-family: 'qianxia';">22号的网页已经做好啦！是复刻的黑塔转圈圈😀</strong>
-    </body>
+        .item {
+            list-style: none;
+            text-shadow: 1px 1px 2px aqua;
+            font-size: x-large;
+        }
+        
+        .item::before {
+            content:"→ ";
+            color: red;
+            text-shadow: 1px 1px 2px;
+            
+        }
+        
+        
+        a {
+            text-decoration: none;
+            color:aqua;
+            font-size: larger;
+            font-family: qianxia;
+        }
+
+        a:hover {
+            background-color: aqua;
+            border-radius: 10%;
+            color: black;
+            font-weight: bold;
+        }
+
+        #error_texts:hover {
+            text-decoration:line-through;
+            
+        }
+
+        button {
+            background-color: aqua;
+            border: none; /*这是按钮边界*/
+            border-radius: 30px; /*按钮边界的圆滑度*/
+            border-radius: 16px;
+            padding: 16px 32px;
+            color: aliceblue;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            font-size: 1em;
+            min-width: 120px;
+
+            position: relative;
+            overflow: hidden;
+            box-shadow: 6px 7px 40px -4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.1s ease-in-out, scale 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <video src="/bgvideo.mp4" preload="auto" loop playsinline autoplay muted="muted"></video>
+        <div id="context" style="position: absolute; text-align: left;">
+            <div style="font-family: qianxia; font-size: xxx-large; text-decoration: underline; color: red; text-shadow: 1px 1px 2px;">学习进程</div>
+            <div class="item"><a href="https://Moniwarmth.top/html/html1">Step 1 啥都没干的复习</a></div>
+            <div class="item"><a href="https://Moniwarmth.top/html/html2" id="error_texts">Step 2 千奇百怪的文字</a></div>
+            <div class="item"><a href="https://Moniwarmth.top/html/html4">Step 3 小游戏：找密码</a></div>
+            <div class="item"><a href="https://Moniwarmth.top/html/html5">Step 4 黑塔转圈圈 <img src="/html5/hertaa1.gif" width="30px" height="30px"></a></div>
+            <div class="item"><a href="https://Moniwarmth.top/html/html6">Step 5 邦加人の奇怪语言</a></div>
+            <div class="item"><a href="https://Moniwarmth.top/html/html7">Step 6 我们学校的食物价格</a></div>
+            <div class="item"><a href="https://Moniwarmth.top/html/html8">Step 8 作业To-Do LIST</a></div><br/>
+            <a href="https://moniwarmth.top/"><button id = "gulu" style="color: black">返回博客</button></a>
+        </div>
+       
+    </div>
+</body>
 </html>
