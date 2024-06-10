@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: #000;
+        }
+        video {
+            position: absolute;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            opacity: 30%;
+        }
+        @font-face {
+            font-family: qianxia;
+            src: url(/qianxia.ttf);
+        }
+        #context {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 684px;
+            color: white;
+        }
+
+        .item {
+            list-style: none;
+            text-shadow: 1px 1px 2px aqua;
+            font-size: x-large;
+        }
+        
+        .item::before {
+            content:"→ ";
+            color: red;
+            text-shadow: 1px 1px 2px;
+            
+        }
+        
+        
+        a {
+            text-decoration: none;
+            color:aqua;
+            font-size: larger;
+            font-family: qianxia;
+        }
+
+        a:hover {
+            background-color: aqua;
+            border-radius: 10%;
+            color: black;
+            font-weight: bold;
+        }
+
+        #error_texts:hover {
+            text-decoration:line-through;
+            
+        }
+
+        button {
+            background-color: aqua;
+            border: none; /*这是按钮边界*/
+            border-radius: 30px; /*按钮边界的圆滑度*/
+            border-radius: 16px;
+            padding: 16px 32px;
+            color: aliceblue;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            font-size: 1em;
+            min-width: 120px;
+
+            position: relative;
+            overflow: hidden;
+            box-shadow: 6px 7px 40px -4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.1s ease-in-out, scale 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <video src="/bgvideo.mp4" preload="auto" loop playsinline autoplay muted="muted"></video>
+        <div id="context" style="position: absolute; text-align: left;">
+            <div style="font-family: qianxia; font-size: xxx-large; text-decoration: underline; color: red; text-shadow: 1px 1px 2px;">学习进程</div>
+            <div class="item"><a href="https://Moniwarmth.top/html/html1">Step 1 啥都没干的复习</a></div>
+            <div class="item"><a href="https://Moniwarmth.top/html/html2" id="error_texts">Step 2 千奇百怪的文字</a></div>
+            <div class="item"><a href="https://Moniwarmth.top/html/html4">Step 3 小游戏：找密码</a></div>
+            <div class="item"><a href="https://Moniwarmth.top/html/html5">Step 4 黑塔转圈圈 <img src="/html5/hertaa1.gif" width="30px" height="30px"></a></div>
+            <div class="item"><a href="https://Moniwarmth.top/html/html6">Step 5 邦加人の奇怪语言</a></div>
+            <div class="item"><a href="https://Moniwarmth.top/html/html7">Step 6 我们学校的食物价格</a></div>
+            <div class="item"><a href="https://Moniwarmth.top/html/html8">Step 8 作业To-Do LIST</a></div><br/>
+            <a href="https://moniwarmth.top/"><button id = "gulu" style="color: black">返回博客</button></a>
+        </div>
+       
+    </div>
+</body>
+</html>

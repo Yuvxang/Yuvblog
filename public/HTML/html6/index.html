@@ -72,10 +72,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>邦加人の奇妙生活</title>
 </head>
 <body>
-    
+    <h1>邦加人の奇妙生活</h1>
+    <hr/>
+    <div>
+        <p>推荐一本书，它叫<em>《带着三文鱼去旅行》</em>，这本书很有意思<br/>今天在想这个网页怎么做的时候，是这本书中的例子给予了我灵感，具体请看:</p>
+        <blockquote>邦加人日常所做的事情和我们都差不多，但他们有个奇怪的习惯，那就是他们说话时会提供<strong>完整</strong>的信息。</blockquote>
+        <p>具体的内容不详细讲，主要是一个方面</p>
+        <blockquote>比如说，我们现在开始说话，当然是要用语言说话了，毋须申明这一点。但一个邦加人对另一个邦加人说话，总是这样开始的：“注意，现在我要用语言讲话了。”</blockquote>
+        <p>于是，我要说“注意，现在我要介绍我的桌子了。”</p>
+    </div>
+    <hr/>
+    <img border="1" alt="my desk" src="Feb22nd.jpg" width = 500px usemap="#deskmap">
+    <map name="deskmap" id="deskmap">
+        <area shape="rect" coords="0, 225, 50, 300" onclick="bottles()" href="#">
+        <area shape="rect" coords="52, 225, 97, 300" onclick="teapot()" href="#">
+        <area shape="rect" coords="0, 150, 125, 210" onclick="twopigs()" href="#">
+        <area shape="rect" coords="126, 150, 200, 230" onclick="drawing()" href="#">
+        <area shape="rect" coords="160, 230, 200, 271" onclick="clock()" href="#">
+        <area shape="rect" coords="240, 210, 275, 276" onclick="penholder()" href="#">
+        <area shape="rect" coords="276, 190, 290, 279" onclick="litelight()" href="#">
+        <area shape="rect" coords="291, 215, 341, 300" onclick="rickcup()" href="#"> 
+    </map>
+    <p id="description" style="text-align: center;">这是我的房间</p>
+    <hr/>
+    <strong><small>可以点击图中的某一部分来具体看</small></strong><br/>
+    <strong style="color:green"><small>已结束更新。图片中仅部分可点，等待探索😜</small></strong>
+    <script>
+        var elem = document.getElementById("description");
+        function bottles(){
+            elem.textContent = "这是我的一个玻璃杯，过年的时候我常用它喝奶茶和饮料"
+        }
+        function teapot(){
+            elem.textContent = "一个茶罐，两次回家都没有尝过这茶的味道。"
+        }
+        function twopigs(){
+            elem.textContent = "两只可爱的小猪，是舅妈的礼物，妹妹常说这是我们俩🤭"
+        }
+        function drawing() {
+            elem.textContent = "很早之前去上海回来在火车上买的一幅画，没啥特点。"
+        }
+        function clock() {
+            elem.textContent = "高中时买的一个表，现在还在提醒着我时间"
+        }
+        function penholder() {
+            elem.textContent = "原本是妈妈放在电脑旁的装饰，被我拿来当笔筒咯🤭"
+        }
+        function litelight() {
+            elem.textContent = "上学期常常用的灯，并不是很亮，但是能够用很长时间。"
+        }
+        function rickcup() {
+            elem.textContent = "有瑞克姥爷的茶杯，我曾经很崇拜瑞克，希望能够有能力做任何自己想做的事情"
+        }
+
+    </script>
 </body>
 </html> 
       <!-- reward -->

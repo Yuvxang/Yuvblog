@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .video-box {
+            position: relative;
+            height: 100vh;
+            background-color: #C1CFF7;
+            /*进行视频裁剪*/
+            overflow: hidden;
+        }
+
+        .video-box .videobg {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            /*保证视频内容始终居中*/
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 800px;
+        }
+        .lightup {
+            z-index: 1;
+            position: relative;
+        }
+
+        @font-face {
+            font-family: qianxia;
+            src: url(/qianxia.ttf);
+        }
+
+        #upper_banner {
+            text-align: left;
+            background-color:aquamarine;
+        }
+
+        #context {
+            width: 200px;
+            height: 400px;
+
+        }
+
+        ul {
+            width: 350px;
+            height: 300px;
+            text-align: left;
+        }
+        li {
+            list-style: none;
+            text-shadow: 1px 1px 2px aqua;
+            font-size: x-large;
+        }
+        
+        li::before {
+            content:"→ ";
+            color: red;
+            text-shadow: 1px 1px 2px;
+            
+        }
+        
+        
+        a {
+            text-decoration: none;
+            color:aqua;
+            font-size: larger;
+            font-family: qianxia;
+        }
+
+        a:hover {
+            background-color: aqua;
+            color: black;
+            font-weight: bold;
+        }
+
+        #error_texts:hover {
+            text-decoration:line-through;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="mask" id="video-box">
+        <video class="video-background" preload="auto" loop playsinline autoplay
+        src="/bgvideo.mp4" tabindex="-1"
+        muted="muted"></video>
+
+    </div>
+    <div id="upper_banner" class="lightup">
+
+        <strong style="font-size: xx-large;"><big style="color:red;text-shadow: 1px 1px 1px red;">HTML</big> 学习页</strong>
+    </div>
+
+    <div id="context" class="lightup">
+        <ul id = "context_table">
+            <li style="font-family: qianxia; font-size: xxx-large; text-decoration: underline; color: red">学习进程</li>
+
+            <li><a href="https://Moniwarmth.top/html/html1">Step 1 啥都没干的复习</a></li>
+            <li><a href="https://Moniwarmth.top/html/html2" id="error_texts">Step 2 千奇百怪的文字</a></li>
+            <li><a href="https://Moniwarmth.top/html/html4">Step 3 小游戏：找密码</a></li>
+            <li><a href="https://Moniwarmth.top/html/html5">Step 4 黑塔转圈圈 <img src="/html5/hertaa1.gif" width="30px" height="30px"></a></li>
+            <li><a href="https://Moniwarmth.top/html/html6">Step 5 邦加人の奇怪语言</a></li>
+            <li><a href="https://Moniwarmth.top/html/html7">Step 6 邦加人の奇怪语言</a></li>
+            <li><a href="https://Moniwarmth.top/html/html">Step 7 邦加人の奇怪语言</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>
