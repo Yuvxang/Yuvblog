@@ -75,6 +75,43 @@
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">@keyframes</span> move &#123;</span><br><span class="line">    <span class="selector-tag">from</span> &#123;</span><br><span class="line">        <span class="attribute">top</span>: <span class="number">100px</span>;</span><br><span class="line">        <span class="attribute">left</span>: <span class="built_in">calc</span>(<span class="number">100%</span> + <span class="number">500px</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="number">100%</span> &#123;</span><br><span class="line">        <span class="attribute">top</span>: <span class="number">100px</span>;</span><br><span class="line">        <span class="attribute">left</span>: <span class="built_in">calc</span>(<span class="number">0%</span> - <span class="number">500px</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>总之就是这几个问题，<br>还是觉得独立地解决综合问题收获最多。<br>开发过程很开心.</p>
+<h2 id="6-10-新HTML学习页心得"><a href="#6-10-新HTML学习页心得" class="headerlink" title="6.10 新HTML学习页心得"></a>6.10 新HTML学习页心得</h2><p>很多天没有碰HTML了，这些天学习任务紧了起来，加上平时作息需要少有时间能够进行课外学习了。趁着这个端午节假期赶紧给补了起来。</p>
+<p>很久以来觉得HTML的intro页布局散乱，不好看，借着之前的知识，给安排成了赛博朋克的风格, 还给加上了背景音乐, 感觉离个性化编辑这个主题又进了一步</p>
+<h3 id="改intro页的动机"><a href="#改intro页的动机" class="headerlink" title="改intro页的动机"></a>改intro页的动机</h3><p>昨天学了div标签,但是div是一个集合,并没有什么代表性的效果,也就是说,它有用,什么都可以由它做出来,但是它太底层了,于是没有特点,做不成一个单独的项目,看着之前列表项目里改过的起始页,我就想着再改一改,让它好看一点.</p>
+<p>本来想要实现当鼠标悬停在某一个项目上会自动出现描述的效果的.<br>感觉布局上有点太复杂, 而且可能把背景的视频挡住.<br>就放下了这个想法(实现的话使用a标签+frame)</p>
+<p>起初是看着我一直都喜欢的一张像素画，然后想着把网页的背景图改成那张图片。</p>
+<p><img src="/HTML/dream.png" alt="原画师@PHHHZ，在B站和站酷都可以找到"></p>
+<p>后来想到米哈游校招页上的背景视频，瞬间就想到可以把主页上夜幕微暖的那个背景改成视频。<br>奈何主题的ejs文件都是一个复杂的系统，css文件都是存在服务器上的，要是改的话得自己重写一份CSS文件。<br>于是嫌太麻烦了就没搞，又回到主目标上。</p>
+<p>起初参考了必应搜索的第一个，字节跳动的起始页，结果文字和视频老是分开的，而且遮罩也不管用了。</p>
+<p><img src="/img/error1.png" alt="错误情况，大小调不好，文字不在视频上面"></p>
+<p>然后参考第二个，终于现在做出来像样的了。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>首先是加一个<code>&lt;video&gt;</code>元素</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">&quot;/bgvideo.mp4&quot;</span> <span class="attr">preload</span>=<span class="string">&quot;auto&quot;</span> <span class="attr">loop</span> <span class="attr">playsinline</span> <span class="attr">autoplay</span> <span class="attr">muted</span>=<span class="string">&quot;muted&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>惯例的，定义视频的地址，自动循环播放。</p>
+<p>然后重点就来了，CSS的部分。<br>首先设置video，宽高都占满网页，<br>然后设置object-fit填充方式为cover，<br>它可以保证你视频是尽可能正常显示的，尽管可能会截掉一部分</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">video</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">object-fit</span>: cover;</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">opacity</span>: <span class="number">30%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的话视频就可以在一个固定位置上了。<br>这里的opacity是和body里的background-color一起用创建遮罩效果的。<br>（body里的这个属性是什么颜色，遮罩就是什么颜色）</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#000</span>; <span class="comment">/*这是一个黑色*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在就是这样的效果了。<br><a href="https://moniwarmth.top/html">https://moniwarmth.top/html</a></p>
+<h3 id="其他的小效果是怎么实现的？"><a href="#其他的小效果是怎么实现的？" class="headerlink" title="其他的小效果是怎么实现的？"></a>其他的小效果是怎么实现的？</h3><blockquote>
+<p>无疑的，三个都是CSS实现的。</p>
+</blockquote>
+<ol>
+<li>字体发光</li>
+</ol>
+<p>使用一个属性，text-shadow，然后设置发光的长宽高是多少，后面是颜色。<br>下面是拿p标签来示例</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;</span><br><span class="line">	<span class="attribute">text-shadow</span>: <span class="number">1px</span> <span class="number">1px</span> <span class="number">2px</span> aqua;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*这样是发数码蓝的那种颜色（aqua），如果没有就是发文字本来颜色的光*/</span></span><br></pre></td></tr></table></figure>
+<p>更多可以去MDN上搜一搜这个属性<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-shadow">https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-shadow</a></p>
+<ol start="2">
+<li>字前面有符号（实际上也可以是图片）</li>
+</ol>
+<p>设置你需要加符号的标签的before子类。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::before</span>&#123;</span><br><span class="line">	<span class="attribute">content</span>: →; <span class="comment">/*或者可以使用url函数引入图片文件*，但图片尺寸需要小一点*/</span></span><br><span class="line">	<span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不废话啦，先push到网页上了。- :)</p>
+<p><img src="/img/first_trial.png"></p>
 ]]></content>
       <tags>
         <tag>HTML学习</tag>

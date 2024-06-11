@@ -74,27 +74,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
-            height: 1000px;
-        }
-        
-        .mask {
-            position: fixed;
-            background: #000;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity:30%
+        .video-box {
+            position: relative;
+            height: 100vh;
+            background-color: #C1CFF7;
+            /*进行视频裁剪*/
+            overflow: hidden;
         }
 
-        #videobox {
+        .video-box .videobg {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            /*保证视频内容始终居中*/
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 800px;
         }
-
-        #videobg {
-
-        }
-
         .lightup {
             z-index: 1;
             position: relative;
@@ -155,8 +153,11 @@
     </style>
 </head>
 <body>
-    <div class="mask" id="videobox">
-        <video src="/bgvideo.mp4" id="videobg></video>
+    <div class="mask" id="video-box">
+        <video class="video-background" preload="auto" loop playsinline autoplay
+        src="/bgvideo.mp4" tabindex="-1"
+        muted="muted"></video>
+
     </div>
     <div id="upper_banner" class="lightup">
 
@@ -172,7 +173,8 @@
             <li><a href="https://Moniwarmth.top/html/html4">Step 3 小游戏：找密码</a></li>
             <li><a href="https://Moniwarmth.top/html/html5">Step 4 黑塔转圈圈 <img src="/html5/hertaa1.gif" width="30px" height="30px"></a></li>
             <li><a href="https://Moniwarmth.top/html/html6">Step 5 邦加人の奇怪语言</a></li>
-
+            <li><a href="https://Moniwarmth.top/html/html7">Step 6 邦加人の奇怪语言</a></li>
+            <li><a href="https://Moniwarmth.top/html/html">Step 7 邦加人の奇怪语言</a></li>
         </ul>
     </div>
 
