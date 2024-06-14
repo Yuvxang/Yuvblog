@@ -32,6 +32,7 @@ i18n_dir: :lang
 skip_render: 
   - 'HTML/index.html'
   - 'HTML/html5/index.html'
+  - 'HTML/html9/index.html'
 
 # Writing
 new_post_name: :title.md # File name of new posts

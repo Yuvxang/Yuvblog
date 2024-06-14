@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>方形的气泡</title>
+    <link href="style.css" rel="stylesheet" type="text/css" id="css"/>
+</head>
+<body>
+
+    <button onclick="hide_All()">点我隐藏方形泡泡</button><br/>
+    <br/>
+    <button onclick="restore()">点我重新显示</button>
+    <script>
+
+
+
+        function getRandomNumber(min, max) {
+        // 计算范围内的随机数
+            let random = Math.random() * (max - min + 1) + min;
+        // 向下取整得到整数
+            let randomNumber = Math.floor(random);
+        // 返回随机数
+            return randomNumber;
+        }
+
+
+        function create_Square(){
+            var Randwidth = getRandomNumber(20, 180);
+            var Randleft = getRandomNumber(0, 95);
+            let a = Randwidth.toString();
+            let b = Randleft.toString();
+            let c = "calc(" + b + "%)";
+
+            const elem = document.createElement('div');
+            elem.style.backgroundColor = "white";
+            elem.style.position = "absolute";
+
+            elem.style.left = c;
+            elem.style.width = a + "px";
+            elem.style.height = a + "px";
+            elem.id = "Square";
+            document.body.appendChild(elem);
+            setTimeout(function () {
+            document.body.removeChild(elem);
+            }, 18700);
+        }
+
+        function real_Create(){
+            create_Square();
+            setTimeout("real_Create()", 4000);
+        }
+        real_Create();
+
+        function hide_All(){
+            document.getElementById('css').setAttribute("href", "style2.css");
+        }
+
+        function restore(){
+            document.getElementById('css').setAttribute("href", "style.css");
+        }
+    </script>
+    
+</body>
+</html>

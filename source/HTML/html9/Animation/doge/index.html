@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>方形的气泡</title>
+    <style>
+        audio {
+            display: none;
+        }
+        body {
+            background-color: white;
+            overflow: hidden;
+        }
+        @keyframes Revolve_n_Uplift {
+            0% {
+                transform: rotate(0deg);
+                top: calc(100% + 10px);
+            }
+
+
+            100% {
+                transform: rotate(360deg);
+                top: calc(20% + 10px);
+            }
+        }
+        #Square {
+            position: absolute;
+            animation: Revolve_n_Uplift linear 10s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-out;
+            
+        }
+    </style>
+    <audio src="dogsong.mp3" id="aud" autoplay="autoplay" controls="controls" preload="auto"></audio>
+
+</head>
+<body>
+    
+    <script>
+
+        function getRandomNumber(min, max) {
+        // 计算范围内的随机数
+            let random = Math.random() * (max - min + 1) + min;
+        // 向下取整得到整数
+            let randomNumber = Math.floor(random);
+        // 返回随机数
+            return randomNumber;
+        }
+
+
+        function create_Square(){
+            var Randwidth = getRandomNumber(20, 180);
+            var Randleft = getRandomNumber(0, 95);
+            let a = Randwidth.toString();
+            let b = Randleft.toString();
+            let c = "calc(" + b + "%)";
+
+            const elem = document.createElement('img');
+            elem.src = "doge.png";
+            elem.style.position = "absolute";
+            elem.style.left = c;
+            elem.style.width = a + "px";
+            elem.id = "Square";
+            document.body.appendChild(elem);
+            setTimeout(function () {
+            document.body.removeChild(elem);
+        }, 18700);
+        }
+
+        function real_Create(){
+            create_Square();
+            setTimeout("real_Create()", 1000);
+        }
+        real_Create();
+
+    </script>
+    
+</body>
+</html>

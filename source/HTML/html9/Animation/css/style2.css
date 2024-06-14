@@ -1,0 +1,41 @@
+body {
+    background-color: #336699;
+    overflow: hidden;
+}
+@keyframes Revolve_n_Uplift {
+    0% {
+        transform: rotate(0deg);
+        top: calc(100% + 10px);
+    }
+
+
+    100% {
+        transform: rotate(360deg);
+        top: calc(20% + 10px);
+    }
+}
+#Square {
+    position: absolute;
+    animation: Revolve_n_Uplift linear 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+    opacity: 0%;
+}
+
+button {
+    background-color:cornflowerblue;
+            border: none; /*这是按钮边界*/
+            border-radius: 30px; /*按钮边界的圆滑度*/
+            border-radius: 16px;
+            padding: 16px 32px;
+            color: aliceblue;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            font-size: 1em;
+            min-width: 120px;
+
+            position: relative;
+            overflow: hidden;
+            box-shadow: 6px 7px 40px -4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.1s ease-in-out, scale 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
