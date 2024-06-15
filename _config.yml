@@ -33,7 +33,8 @@ skip_render:
   - 'HTML/index.html'
   - 'HTML/html5/index.html'
   - 'HTML/html9/index.html'
-
+  - 'HTML/html9/Animation/doge/index.html'
+  - 'Html/html9/Animation/hertaagulu/index.html'
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
