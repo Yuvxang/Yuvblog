@@ -35,6 +35,7 @@ skip_render:
   - 'HTML/html9/index.html'
   - 'HTML/html9/Animation/doge/index.html'
   - 'HTML/html9/Animation/hertaagulu/index.html'
+  - 'html/html9/Upload_The_Quiz/index.html'
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post

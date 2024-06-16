@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="05cc69b3-8322-423c-b659-199531ba70f0" name="wamp" url="http://localhost:80">
+        <fileTransfer mountedRoot="D:\Yuxblog\Yuvblog\source\HTML\html9\Upload_The_Quiz" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>

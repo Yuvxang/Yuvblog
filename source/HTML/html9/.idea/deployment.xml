@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="wamp" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="wamp">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/Upload_The_Quiz" local="$PROJECT_DIR$/Upload_The_Quiz" web="/Upload_The_Quiz" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

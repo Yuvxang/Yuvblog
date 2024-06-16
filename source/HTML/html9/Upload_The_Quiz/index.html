@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" type="text/css" id="css"/>
+    <title>Document</title>
+    <style>
+        dd {
+            color: darkblue;
+        }
+    </style>
+</head>
+<body style="background-color: cornflowerblue;">
+    <div id="content" style="text-align: center">
+        <form action="audiotest.php" method="POST" target="myframe">
+            <label for="text" style="color: bisque; font-weight: bold; font-size: xx-large">输入你熟悉的曼巴话</label><br/>
+            <input type="text" name="text" id="text" required>
+            <input type="submit" id="button" name="提交">
+        </form>
+
+        <iframe
+            id="myframe"
+            name="myframe"
+            title="Inline Frame Example"
+            width="320px"
+            height="310px"
+            frameborder="0"
+            scrolling="no"
+            src="audiotest.php">
+        </iframe>
+        <br/>
+        <br/>
+        <b style="color: bisque;"> 目前仅支持:</b>
+        <dl>
+            <dd>Man</dd>
+            <dd>Man! What can I say</dd>
+            <dd>What can I say</dd>
+            <dd>mamba out</dd>
+            <dd>输入其他就是整段对话，不区分大小写</dd>
+        </dl>
+
+    </div>
+
+    <script>
+        function getRandomNumber(min, max) {
+        // 计算范围内的随机数
+            let random = Math.random() * (max - min + 1) + min;
+        // 向下取整得到整数
+            let randomNumber = Math.floor(random);
+        // 返回随机数
+            return randomNumber;
+        }
+
+
+        function create_Square(){
+            var Randwidth = getRandomNumber(20, 180);
+            var Randleft = getRandomNumber(0, 95);
+            let a = Randwidth.toString();
+            let b = Randleft.toString();
+            let c = "calc(" + b + "%)";
+
+            const elem = document.createElement('div');
+            elem.style.backgroundColor = "white";
+            elem.style.position = "absolute";
+
+            elem.style.left = c;
+            elem.style.width = a + "px";
+            elem.style.height = a + "px";
+            elem.id = "Square";
+            document.body.appendChild(elem);
+            setTimeout(function () {
+            document.body.removeChild(elem);
+            }, 18700);
+        }
+
+        function real_Create(){
+            create_Square();
+            setTimeout("real_Create()", 4000);
+        }
+        real_Create();
+    </script>
+</body>
+</html>
