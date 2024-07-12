@@ -2,43 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 content-type: text/html">
     <link href="style.css" rel="stylesheet" type="text/css" id="css"/>
     <title>Document</title>
     <style>
         dd {
-            color: darkblue;
+            color: white;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
     </style>
 </head>
-<body style="background-color: cornflowerblue;">
+<body style="background-color: #FE5F28;">
     <div id="content" style="text-align: center">
-        <form action="audiotest.php" method="POST" target="myframe">
-            <label for="text" style="color: bisque; font-weight: bold; font-size: xx-large">输入你熟悉的曼巴话</label><br/>
+        <form action="#" method="POST" target="myframe">
+            <label for="text" style="color: #FEFE39; -webkit-text-stroke:1.5px #26309F; font-weight: bold; font-size: xx-large">输入你熟悉的曼巴话</label><br/>
             <input type="text" name="text" id="text" required>
-            <input type="submit" id="button" name="提交">
+            <input type="button" value="提交" onclick = "create_Music()">
         </form>
 
-        <iframe
+        <!-- <iframe
             id="myframe"
             name="myframe"
-            title="Inline Frame Example"
             width="320px"
             height="310px"
             frameborder="0"
             scrolling="no"
             src="audiotest.php">
-        </iframe>
+        </iframe> -->
+        <br/>
+        <img src="kobe.jpeg" style="border: solid; border-width:2px; border-color: #FEFE39;">
+
         <br/>
         <br/>
-        <b style="color: bisque;"> 目前仅支持:</b>
-        <dl>
-            <dd>Man</dd>
-            <dd>Man! What can I say</dd>
-            <dd>What can I say</dd>
-            <dd>mamba out</dd>
-            <dd>输入其他就是整段对话，不区分大小写</dd>
-        </dl>
+        <b style="color:#FEFE39"> 目前仅支持:</b>
+        <div>
+            <div id = "words">Man</div>
+            <div id = "words">Man! What can I say</div>
+            <div id = "words">What can I say</div>
+            <div id = "words">mamba out</div>
+            <div id = "words">输入其他就是整段对话，不区分大小写</div>
+        </div>
 
     </div>
 
@@ -60,8 +63,8 @@
             let b = Randleft.toString();
             let c = "calc(" + b + "%)";
 
-            const elem = document.createElement('div');
-            elem.style.backgroundColor = "white";
+            const elem = document.createElement('img');
+            elem.src = "icetea.png";
             elem.style.position = "absolute";
 
             elem.style.left = c;
@@ -79,6 +82,26 @@
             setTimeout("real_Create()", 4000);
         }
         real_Create();
+        function create_Music(){
+            var firstName = document.getElementById("text").value;
+            const elem2 = document.createElement('audio');
+            elem2.id="dd";
+            elem2.autoplay = 'autoplay';
+            elem2.control = 'control';
+            if(firstName.toLowerCase() == "man"){
+                elem2.src = "man.mp3";
+            }
+            else if(firstName.toLowerCase() == "what can i say"){
+                elem2.src = "wcis.mp3";
+            }
+            else if(firstName.toLowerCase() == "mamba out"){
+                elem2.src = "mambaout.mp3";
+            }
+            else if(firstName.toLowerCase() == "man! what can i say"){
+                elem2.src = "mwcis.mp3"; 
+            }
+            else elem2.src = "whole.mp3";
+        }
     </script>
 </body>
 </html>

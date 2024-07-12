@@ -1,4 +1,5 @@
 <?php
+    header("content-type:text/html; charset=gb2312");
     echo "<img src=\"kobe.jpeg\" style=\"width:300px;\"><br/>";
 ?>
 
@@ -6,6 +7,7 @@
 <br/>
 
 <?php
+header("content-type:text/html; charset=gb2312");
 $words = $_POST["text"];
 if(strtolower($words) == "man") {
     echo "<audio src=\"man.mp3\" id=\"dd\" autoplay=\"autoplay\" controls=\"controls\"></audio>";
