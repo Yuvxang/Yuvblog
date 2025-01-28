@@ -7,12 +7,20 @@
         body {
             margin: 0;
             height: 100vh;
-            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            background: linear-gradient(
+                180deg,
+                #0f0c29 0%,    /* 深蓝色起始 */
+                #302b63 35%,   /* 调整中间过渡位置从50%到35% */
+                #24243e 100%   /* 结束颜色 */
+            );
             font-family: "HarmonyOS Sans SC", "Microsoft YaHei", sans-serif;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-attachment: fixed; /* 固定背景,防止滚动时产生割裂 */
+            background-repeat: no-repeat; /* 防止背景重复 */
+            background-size: 100% 100%; /* 确保背景覆盖整个视口 */
         }
 
         .container {
@@ -122,9 +130,9 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-size: 40px;
+            font-size: 72px;
             margin: 20px;
-            min-height: 150px;
+            min-height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -133,7 +141,7 @@
             line-height: 1.5;
             text-align: center;
             position: relative;
-            padding: 20px;
+            padding: 30px;
             transition: all 0.5s ease;
             white-space: pre-line;
         }
@@ -507,9 +515,8 @@
         .rocket {
             position: absolute;
             width: 4px;
-            height: 15px;
-            background: linear-gradient(to bottom, #ff6b6b, #ff4d4d);
-            border-radius: 2px;
+            height: 4px;
+            border-radius: 50%;
             pointer-events: none;
             z-index: 1;
         }
@@ -729,6 +736,173 @@
             animation: 
                 floatUp 15s linear infinite,
                 neonColor 10s infinite linear;
+        }
+
+        /* 修改移动端适配的媒体查询 */
+        @media screen and (max-width: 768px) {
+            .blessing-box {
+                width: 90%;
+                height: auto;
+                min-height: 500px; /* 增加最小高度 */
+                padding: 30px; /* 增加内边距 */
+                margin: 15px auto;
+                transform: scale(1);
+            }
+            
+            .blessing-title {
+                font-size: 42px; /* 增加标题字体大小 */
+                margin-bottom: 30px !important;
+            }
+            
+            .blessing-text {
+                font-size: 64px; /* 增加移动端字体大小 */
+                min-height: 250px;
+                padding: 25px;
+                line-height: 1.4;
+            }
+            
+            .draw-button {
+                padding: 20px 40px; /* 增加按钮大小 */
+                font-size: 24px; /* 增加按钮文字大小 */
+                margin-top: 30px;
+            }
+
+            /* 调整灯笼大小 */
+            .sky-lantern {
+                width: 40px;
+                height: 60px;
+            }
+
+            /* 调整月亮位置和大小 */
+            .moon {
+                width: 60px;
+                height: 60px;
+                top: 30px;
+                right: 30px;
+            }
+
+            /* 调整文字云大小 */
+            .floating-word {
+                font-size: 16px !important;
+            }
+
+            /* 调整古楼大小 */
+            .ancient-tower-left,
+            .ancient-tower-right {
+                width: 120px;
+                height: 40vh;
+            }
+
+            /* 修改城市剪影样式 */
+            .city-silhouette {
+                height: 30vh; /* 增加高度 */
+                background-image: 
+                    /* 减少灯光数量，增加大小 */
+                    radial-gradient(3px 3px at 15% 80%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                    radial-gradient(3px 3px at 35% 85%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                    radial-gradient(3px 3px at 55% 75%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                    radial-gradient(3px 3px at 75% 82%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                    radial-gradient(3px 3px at 90% 78%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                    /* 简化的渐变背景 */
+                    linear-gradient(to top, rgba(0, 32, 91, 0.8) 0%, transparent 100%),
+                    repeating-linear-gradient(90deg, 
+                        transparent 0%, transparent 8%,
+                        #001a4d 8%, #001a4d 15%,
+                        transparent 15%, transparent 25%
+                    );
+                background-size: 
+                    100% 100%, 100% 100%, 100% 100%, 100% 100%,
+                    100% 100%, 800px 100%; /* 调整建筑物间距 */
+            }
+
+            /* 调整建筑物样式 */
+            .buildings {
+                height: 35vh;
+                background-size: 
+                    100% 100%, 100% 100%, 100% 100%, 100% 100%,
+                    100% 100%, 100% 100%, 100% 100%, 100% 100%,
+                    100% 100%, 1000px 100%;
+            }
+
+            /* 调整古楼大小和位置 */
+            .ancient-tower-left,
+            .ancient-tower-right {
+                width: 25vw; /* 使用视口宽度的百分比 */
+                height: 40vh;
+            }
+        }
+
+        /* 修改桌面端的尺寸 */
+        @media screen and (min-width: 769px) {
+            .blessing-box {
+                width: 500px; /* 增加桌面端宽度 */
+                height: 600px; /* 增加桌面端高度 */
+                padding: 30px;
+            }
+            
+            .blessing-title {
+                font-size: 42px;
+                margin-bottom: 40px !important;
+            }
+            
+            .blessing-text {
+                font-size: 72px; /* 增加桌面端字体大小 */
+                min-height: 300px;
+                padding: 30px;
+                line-height: 1.5;
+            }
+            
+            .draw-button {
+                padding: 20px 40px;
+                font-size: 24px;
+                margin-top: 30px;
+            }
+        }
+
+        /* 添加触摸设备的优化 */
+        @media (hover: none) {
+            .sky-lantern:hover,
+            .draw-button:hover {
+                transform: none;
+            }
+            
+            /* 优化触摸体验 */
+            .draw-button:active {
+                transform: scale(0.95);
+                background: #ff6b6b;
+            }
+        }
+
+        /* 添加横屏模式的优化 */
+        @media screen and (max-height: 500px) and (orientation: landscape) {
+            .blessing-box {
+                transform: scale(0.8);
+                margin: 10px auto;
+            }
+            
+            .ancient-tower-left,
+            .ancient-tower-right {
+                height: 80vh;
+            }
+            
+            .moon {
+                top: 20px;
+                right: 20px;
+            }
+
+            .city-silhouette {
+                height: 40vh;
+            }
+            
+            .buildings {
+                height: 45vh;
+            }
+            
+            .ancient-tower-left,
+            .ancient-tower-right {
+                height: 60vh;
+                width: 20vw;
+            }
         }
     </style>
 </head>
