@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>新年祝福抽签</title>
+    <link rel="stylesheet" href="https://developer.harmonyos.com/resource/HarmonyOSSans/HarmonyOsSans.css">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            font-family: "HarmonyOS Sans SC", "Microsoft YaHei", sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            width: auto;
+            height: auto;
+        }
+        .sky-lantern::after {
+            content: '福';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffd700;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+        }
+
+        .sky-lantern .decoration {
+            position: absolute;
+            width: 40px;
+            height: 10px;
+            background: linear-gradient(90deg, #ffd700, #ffeb3b);
+            border-radius: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .sky-lantern .decoration:nth-child(1) {
+            top: 15px;
+        }
+
+        .sky-lantern .decoration:nth-child(2) {
+            top: 35px;
+        }
+
+        .sky-lantern .decoration:nth-child(3) {
+            top: 55px;
+        }
+
+        .sky-lantern {
+            position: absolute;
+            width: 60px;
+            height: 90px;
+            background: linear-gradient(to bottom, #ff4d4d, #ff6b6b);
+            border-radius: 30px 30px 5px 5px;
+            box-shadow: 0 0 30px rgba(255, 77, 77, 0.6);
+            animation: float 8s infinite ease-in-out;
+            z-index: 0;
+            left: var(--x, 50%);
+            top: var(--y, 50%);
+            animation-delay: var(--delay, 0s);
+            transition: transform 0.3s ease;
+        }
+
+        .sky-lantern::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 165, 0, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 165, 0, 0.6);
+            animation: flicker 2s infinite;
+        }
+
+        .sky-lantern:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(3deg); }
+            50% { transform: translateY(-30px) rotate(-3deg); }
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .blessing-box {
+            width: 300px;
+            height: 400px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(5px);
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .blessing-text {
+            font-family: "HarmonyOS Sans SC", "Microsoft YaHei", "Segoe UI Emoji", sans-serif;
+            background: linear-gradient(45deg, #ff3333, #ffffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 40px;
+            margin: 20px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 2px 2px 4px rgba(255, 51, 51, 0.3);
+            font-weight: bold;
+            line-height: 1.5;
+            text-align: center;
+            position: relative;
+            padding: 20px;
+            transition: all 0.5s ease;
+            white-space: pre-line;
+        }
+
+        .blessing-title {
+            font-family: "HarmonyOS Sans SC", "Microsoft YaHei", sans-serif;
+            font-size: 36px;
+            background: linear-gradient(45deg, #ffd700, #ff3333);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 6px rgba(255, 215, 0, 0.5);
+            margin-bottom: 30px !important;
+        }
+
+        .draw-button {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .draw-button:hover {
+            transform: scale(1.1);
+            background: #ff6b6b;
+        }
+
+        .lantern {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: linear-gradient(to bottom, #ff4d4d, #ff6b6b);
+            border-radius: 25px 25px 8px 8px;
+            box-shadow: 0 0 20px rgba(255, 77, 77, 0.5);
+            animation: swing 3s infinite ease-in-out;
+            z-index: 0;
+            position: relative;
+        }
+
+        /* 添加灯笼装饰 */
+        .lantern::before {
+            content: '福';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffd700;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+        }
+
+        /* 添加灯笼顶部 */
+        .lantern::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 10px;
+            background: #ffd700;
+            border-radius: 5px 5px 0 0;
+        }
+
+        /* 添加灯笼底部火焰效果 */
+        .lantern .flame {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle at center, #ffeb3b, #ffd700, transparent 70%);
+            border-radius: 50%;
+            animation: flicker 2s infinite ease-in-out;
+        }
+
+        /* 添加装饰线条 */
+        .lantern .decoration {
+            position: absolute;
+            width: 80%;
+            height: 2px;
+            background: rgba(255, 215, 0, 0.5);
+            left: 10%;
+        }
+
+        .lantern .decoration:nth-child(1) { top: 20%; }
+        .lantern .decoration:nth-child(2) { top: 40%; }
+        .lantern .decoration:nth-child(3) { top: 60%; }
+
+        @keyframes flicker {
+            0%, 100% { 
+                opacity: 1;
+                transform: translateX(-50%) scale(1);
+            }
+            50% { 
+                opacity: 0.8;
+                transform: translateX(-50%) scale(0.9);
+            }
+        }
+
+        .firecracker {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(20); opacity: 0; }
+        }
+
+        /* 添加新的动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .blessing-text.animate {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* 添加媒体查询以确保在小屏幕上也能正确显示 */
+        @media screen and (max-height: 600px) {
+            .blessing-box {
+                height: 300px;
+                transform: scale(0.9);
+            }
+            
+            .blessing-title {
+                font-size: 28px;
+                margin-bottom: 15px !important;
+            }
+            
+            .blessing-text {
+                font-size: 36px;
+                min-height: 100px;
+            }
+        }
+
+        /* 添加星星样式 */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* 添加 emoji 降落动画样式 */
+        .falling-emoji {
+            position: absolute;
+            font-size: 24px;
+            pointer-events: none;
+            animation: fallDown 3s linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes fallDown {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* 添加蛇形动画效果 */
+        .emoji-firework-particle {
+            position: absolute;
+            pointer-events: none;
+            animation: snakeFirework 2s ease-out forwards;
+            font-size: 12px;
+            z-index: 1;
+        }
+
+        @keyframes snakeFirework {
+            0% {
+                transform: translate(0, 0) scale(0.1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(var(--tx), var(--ty)) scale(1) rotate(var(--rotation));
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1) rotate(var(--rotation));
+                opacity: 0;
+            }
+        }
+
+        /* 修改城市剪影样式，添加窗户灯光效果 */
+        .city-silhouette {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 25vh;
+            background-image: 
+                /* 添加随机分布的黄色灯光 */
+                radial-gradient(2px 2px at 10% 80%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                radial-gradient(2px 2px at 20% 85%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                radial-gradient(2px 2px at 30% 75%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                radial-gradient(2px 2px at 40% 82%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                radial-gradient(2px 2px at 50% 78%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                radial-gradient(2px 2px at 60% 85%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                radial-gradient(2px 2px at 70% 80%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                radial-gradient(2px 2px at 80% 83%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                radial-gradient(2px 2px at 90% 77%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                /* 原有的渐变背景 */
+                linear-gradient(to top, rgba(0, 32, 91, 0.8) 0%, transparent 100%),
+                repeating-linear-gradient(90deg, 
+                    transparent 0%, transparent 4%,
+                    #001a4d 4%, #001a4d 7%,
+                    transparent 7%, transparent 12%,
+                    #001a4d 12%, #001a4d 14%,
+                    transparent 14%, transparent 18%
+                );
+            background-size: 
+                100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
+                100% 100%, 100% 100%, 100% 100%,
+                100% 100%, 1200px 100%;
+            z-index: 1;
+            pointer-events: none;
+            animation: windowsFlicker 4s infinite alternate;
+        }
+
+        /* 添加灯光闪烁动画 */
+        @keyframes windowsFlicker {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        /* 修改建筑物样式，添加更多窗户灯光 */
+        .buildings {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30vh;
+            background-image: 
+                /* 添加随机分布的黄色灯光 */
+                radial-gradient(3px 3px at 15% 70%, rgba(255, 255, 150, 0.9) 50%, transparent 100%),
+                radial-gradient(2px 2px at 25% 85%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                radial-gradient(2px 2px at 35% 75%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                radial-gradient(3px 3px at 45% 80%, rgba(255, 255, 150, 0.9) 50%, transparent 100%),
+                radial-gradient(2px 2px at 55% 85%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                radial-gradient(2px 2px at 65% 75%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                radial-gradient(3px 3px at 75% 80%, rgba(255, 255, 150, 0.9) 50%, transparent 100%),
+                radial-gradient(2px 2px at 85% 85%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                /* 原有的渐变背景 */
+                linear-gradient(to top, rgba(0, 24, 69, 0.9) 0%, transparent 100%),
+                repeating-linear-gradient(90deg,
+                    #00134d 0%, #00134d 3%,
+                    transparent 3%, transparent 6%,
+                    #00134d 6%, #00134d 8%,
+                    transparent 8%, transparent 12%,
+                    #00134d 12%, #00134d 15%
+                );
+            background-size: 
+                100% 100%, 100% 100%, 100% 100%, 100% 100%,
+                100% 100%, 100% 100%, 100% 100%, 100% 100%,
+                100% 100%, 2000px 100%;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0.9;
+            animation: buildingLights 6s infinite alternate;
+        }
+
+        /* 添加建筑物灯光动画 */
+        @keyframes buildingLights {
+            0% { opacity: 0.85; }
+            50% { opacity: 0.95; }
+            100% { opacity: 0.9; }
+        }
+
+        /* 添加左侧古楼剪影 */
+        .ancient-tower-left {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            height: 60vh;
+            background: linear-gradient(to right, 
+                rgba(180, 0, 0, 0.9),
+                rgba(180, 0, 0, 0.7)
+            );
+            clip-path: polygon(
+                0 100%, 100% 100%,
+                100% 40%, 80% 40%,
+                80% 30%, 100% 30%,
+                100% 25%, 60% 25%,
+                60% 15%, 80% 15%,
+                80% 10%, 40% 10%,
+                40% 20%, 20% 20%,
+                20% 0, 0 0
+            );
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        /* 添加右侧古楼剪影 */
+        .ancient-tower-right {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 200px;
+            height: 65vh;
+            background: linear-gradient(to left, 
+                rgba(180, 0, 0, 0.9),
+                rgba(180, 0, 0, 0.7)
+            );
+            clip-path: polygon(
+                0 100%, 100% 100%,
+                100% 0, 80% 0,
+                80% 15%, 60% 15%,
+                60% 25%, 40% 25%,
+                40% 20%, 20% 20%,
+                20% 30%, 0 30%,
+                0 40%, 20% 40%
+            );
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        /* 为古楼添加窗户灯光效果 */
+        .ancient-tower-left::after,
+        .ancient-tower-right::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 30% 25%, rgba(255, 255, 150, 0.9) 50%, transparent 100%),
+                radial-gradient(2px 2px at 70% 35%, rgba(255, 255, 150, 0.8) 50%, transparent 100%),
+                radial-gradient(2px 2px at 40% 45%, rgba(255, 255, 150, 0.9) 50%, transparent 100%),
+                radial-gradient(2px 2px at 60% 55%, rgba(255, 255, 150, 0.8) 50%, transparent 100%);
+            animation: towerLights 4s infinite alternate;
+        }
+
+        @keyframes towerLights {
+            0% { opacity: 0.6; }
+            50% { opacity: 0.9; }
+            100% { opacity: 0.7; }
+        }
+
+        /* 添加火箭样式 */
+        .rocket {
+            position: absolute;
+            width: 4px;
+            height: 15px;
+            background: linear-gradient(to bottom, #ff6b6b, #ff4d4d);
+            border-radius: 2px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .rocket::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 8px;
+            background: radial-gradient(circle at center, #ffd700, #ff4d4d);
+            border-radius: 50%;
+            animation: flicker 0.2s infinite;
+        }
+
+        /* 添加新春祝福气泡样式 */
+        .blessing-bubble {
+            position: fixed;
+            padding: 15px;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            color: #ffd700;
+            font-size: 16px;
+            backdrop-filter: blur(5px);
+            pointer-events: none;
+            opacity: 0;
+            z-index: 6;
+            animation: bubbleFloat 3s forwards;
+        }
+
+        @keyframes bubbleFloat {
+            0% { transform: translateY(0); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+
+        /* 添加月亮样式 */
+        .moon {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #ffd700, #fff5b6);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 50px #ffd700,
+                0 0 100px rgba(255, 215, 0, 0.3);
+            top: 50px;
+            right: 100px;
+            z-index: 0;
+            animation: moonGlow 4s infinite alternate;
+        }
+
+        /* 添加月亮表面纹理 */
+        .moon::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            box-shadow: 
+                40px 10px 0 -8px rgba(255, 255, 255, 0.1),
+                25px 35px 0 -5px rgba(255, 255, 255, 0.15),
+                50px 45px 0 -7px rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes moonGlow {
+            0% { box-shadow: 0 0 50px #ffd700, 0 0 100px rgba(255, 215, 0, 0.3); }
+            100% { box-shadow: 0 0 60px #ffd700, 0 0 120px rgba(255, 215, 0, 0.4); }
+        }
+
+        .blessing-box {
+            z-index: 2; /* 确保祝福框在烟花之上 */
+        }
+        
+        .firecracker, .rocket {
+            z-index: 1; /* 确保烟花效果在前景 */
+        }
+        
+        .city-silhouette, .buildings, .ancient-tower-left, .ancient-tower-right {
+            z-index: 0; /* 确保背景元素在最后 */
+        }
+
+        /* 添加霓虹灯文字样式 */
+        .neon-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(2.5); /* 放大文字 */
+            font-family: "HarmonyOS Sans SC", sans-serif;
+            font-size: 72px;
+            font-weight: bold;
+            text-transform: uppercase;
+            z-index: 0; /* 确保在背景层 */
+            opacity: 0.5; /* 降低不透明度使其不那么显眼 */
+            pointer-events: none; /* 防止干扰交互 */
+            
+            /* 文字渐变色 */
+            background: linear-gradient(
+                to bottom,
+                #ff0000 0%,    /* 红色开始 */
+                #ff69b4 25%,   /* 粉红色 */
+                #ff00ff 50%,   /* 紫色 */
+                #00ffff 75%,   /* 青色 */
+                #0000ff 100%   /* 蓝色结束 */
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            
+            /* 霓虹灯发光效果 */
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 255, 255, 0.8),
+                0 0 30px rgba(255, 0, 0, 0.5),
+                0 0 40px rgba(255, 0, 0, 0.5),
+                0 0 50px rgba(255, 0, 0, 0.3),
+                0 0 60px rgba(255, 0, 0, 0.3);
+            
+            /* 添加呼吸动画 */
+            animation: neonBreath 3s infinite alternate, 
+                      neonColor 10s infinite linear;
+        }
+
+        /* 呼吸效果动画 */
+        @keyframes neonBreath {
+            from {
+                filter: brightness(0.8);
+                text-shadow: 
+                    0 0 10px rgba(255, 255, 255, 0.8),
+                    0 0 20px rgba(255, 255, 255, 0.8),
+                    0 0 30px rgba(255, 0, 0, 0.5),
+                    0 0 40px rgba(255, 0, 0, 0.5);
+            }
+            to {
+                filter: brightness(1.2);
+                text-shadow: 
+                    0 0 20px rgba(255, 255, 255, 0.8),
+                    0 0 30px rgba(255, 255, 255, 0.8),
+                    0 0 40px rgba(255, 0, 0, 0.5),
+                    0 0 50px rgba(255, 0, 0, 0.5),
+                    0 0 60px rgba(255, 0, 0, 0.3);
+            }
+        }
+
+        /* 颜色变换动画 */
+        @keyframes neonColor {
+            0% {
+                filter: hue-rotate(0deg) brightness(1.2); /* 增加亮度 */
+            }
+            100% {
+                filter: hue-rotate(360deg) brightness(1.2);
+            }
+        }
+
+        /* 修改文字云样式 */
+        .floating-word {
+            position: absolute;
+            font-family: "HarmonyOS Sans SC", "Microsoft YaHei", sans-serif;
+            font-weight: bold;
+            background: linear-gradient(
+                to bottom,
+                #ff0000 0%,    /* 红色开始 */
+                #ff69b4 25%,   /* 粉红色 */
+                #ff00ff 50%,   /* 紫色 */
+                #00ffff 75%,   /* 青色 */
+                #0000ff 100%   /* 蓝色结束 */
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            white-space: nowrap;
+            animation: floatUp 15s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            z-index: 0; /* 确保在最底层 */
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 255, 255, 0.8),
+                0 0 30px rgba(255, 0, 0, 0.5),
+                0 0 40px rgba(255, 0, 0, 0.5),
+                0 0 50px rgba(255, 0, 0, 0.3),
+                0 0 60px rgba(255, 0, 0, 0.3);
+            transform: scale(2.5); /* 放大文字 */
+        }
+
+        .floating-word:hover {
+            opacity: 0.9;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translate(var(--start-x), 120vh) scale(2.5) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6; /* 提高透明度 */
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translate(var(--end-x), -20vh) scale(2.5) rotate(var(--rotation));
+                opacity: 0;
+            }
+        }
+
+        /* 修改文字云动画组合 */
+        .floating-word {
+            animation: 
+                floatUp 15s linear infinite,
+                neonColor 10s infinite linear;
+        }
+    </style>
+</head>
+<body>
+    <!-- 添加在body开始处，在月亮元素之后 -->
+    <div class="moon"></div>
+    <div class="neon-text">New Year</div>
+    
+    <!-- 添加文字云容器 -->
+    <div class="word-cloud" id="wordCloud"></div>
+    
+    <!-- 添加城市剪影层 -->
+    <div class="city-silhouette"></div>
+    <div class="buildings"></div>
+    
+    <div class="container">
+        <div class="blessing-box">
+            <h2 class="blessing-title">| 新年快乐 |</h2>
+            <div class="blessing-text" id="blessingText">点击下方按钮抽取祝福</div>
+            <button class="draw-button" onclick="drawBlessing()">抽取祝福</button>
+        </div>
+    </div>
+
+    <!-- 添加音频元素 -->
+    <audio id="fireworkSound1" preload="auto">
+        <source src="firework1.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="fireworkSound2" preload="auto">
+        <source src="firework2.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="fireworkSound3" preload="auto">
+        <source src="firework3.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const blessings = [
+            "🐍金蛇献瑞\n✨万事如意",
+            "🎭蛇舞灵动\n🚀事业腾飞",
+            "🐍蛇年大吉\n🏮阖家欢乐",
+            "💰财源广进\n🧧福寿安康", 
+            "🎋蛇年纳福\n⭐前程似锦",
+            "🎊吉祥如意\n💫心想事成",
+            "🎭蛇年祥瑞\n💝幸福安康",
+            "🐍蛇舞盛世\n🌟万事顺遂",
+            "🎆新年快乐\n🎈大吉大利",
+            "⭐福星高照\n🎉喜气洋洋",
+            "🎋蛇年纳福\n🧧百事亨通",
+            "🎊五福临门\n💫万事胜意"
+        ];
+
+        const fireworkColors = [
+            '#ff0000', '#ffd700', '#00ff00', '#0000ff', 
+            '#ff00ff', '#00ffff', '#ff8c00', '#ff1493',
+            '#9400d3', '#7fff00', '#ff69b4', '#00fa9a'
+        ];
+
+        // 修改祝福语和对应的 emoji 映射
+        const blessingEmojis = {
+            "🐍金蛇献瑞，✨万事如意": ["🐍", "✨"],
+            "🎭蛇舞灵动，🚀事业腾飞": ["🐍", "🚀"],
+            "🐍蛇年大吉，🏮阖家欢乐": ["🐍", "🏮"],
+            "💰财源广进，🧧福寿安康": ["💰", "🧧"],
+            "🎋蛇年纳福，⭐前程似锦": ["🐍", "⭐"],
+            "🎊吉祥如意，💫心想事成": ["🎊", "💫"],
+            "🎭蛇年祥瑞，💝幸福安康": ["🐍", "🎋"],
+            "🐍蛇舞盛世，🌟万事顺遂": ["🐍", "🌟"],
+            "🎆新年快乐，🎈大吉大利": ["🎆", "🎈"],
+            "⭐福星高照，🎉喜气洋洋": ["⭐", "🎉"],
+            "🎋蛇年纳福，🧧百事亨通": ["🐍", "🧧"],
+            "🎊五福临门，💫万事胜意": ["🎊", "💝"]
+        };
+
+        // 将常量配置集中管理
+        const CONFIG = {
+            FIREWORK: {
+                COLORS: ['#ff0000', '#ffd700', '#00ff00', '#0000ff', '#ff00ff', '#00ffff', '#ff8c00', '#ff1493', '#9400d3', '#7fff00', '#ff69b4', '#00fa9a'],
+                SOUND_VOLUME: 0.3,
+                PARTICLE_COUNT: 24,
+                RADIUS: 150,
+                TYPES: ['circle', 'heart', 'spiral', 'double', 'burst'] // 添加烟花类型
+            },
+            LANTERN: {
+                SECTIONS: 12,          // 增加区段数量，从6增加到12
+                MIN_Y_RATIO: 0.05,
+                MAX_Y_RATIO: 0.35,     // 增加最大高度比例，让灯笼分布更广
+                CENTER_OFFSET: 0.2,    // 减小中心偏移，让灯笼分布更密集
+                LANTERNS_PER_SECTION: 2 // 每个区段的灯笼数量
+            },
+            STARS: {
+                COUNT: 20,
+                MIN_SIZE: 1,
+                MAX_SIZE: 3
+            }
+        };
+
+        // 使用类来管理音效
+        class SoundManager {
+            constructor() {
+                this.sounds = {};
+                for (let i = 1; i <= 3; i++) {
+                    this.sounds[i] = document.getElementById(`fireworkSound${i}`);
+                    if (this.sounds[i]) {
+                        this.sounds[i].volume = CONFIG.FIREWORK.SOUND_VOLUME;
+                    }
+                }
+            }
+
+            playRandom() {
+                const soundNumber = Math.floor(Math.random() * 3) + 1;
+                const audio = this.sounds[soundNumber];
+                if (audio) {
+                    audio.currentTime = 0;
+                    audio.play().catch(e => console.log("音频播放失败:", e));
+                }
+            }
+        }
+
+        // 使用类来管理灯笼
+        class LanternManager {
+            createLanterns() {
+                const sectionWidth = window.innerWidth / CONFIG.LANTERN.SECTIONS;
+                const minY = window.innerHeight * CONFIG.LANTERN.MIN_Y_RATIO;
+                const maxY = window.innerHeight * CONFIG.LANTERN.MAX_Y_RATIO;
+                
+                for (let i = 0; i < CONFIG.LANTERN.SECTIONS; i++) {
+                    // 在每个区段创建多个灯笼
+                    for (let j = 0; j < CONFIG.LANTERN.LANTERNS_PER_SECTION; j++) {
+                        this.createSingleLantern(i, sectionWidth, minY, maxY);
+                    }
+                }
+            }
+
+            createSingleLantern(index, sectionWidth, minY, maxY) {
+                const lantern = document.createElement('div');
+                lantern.className = 'lantern';
+                lantern.dataset.index = index;
+                
+                this.addLanternDecorations(lantern);
+                this.positionLantern(lantern, index, sectionWidth, minY, maxY);
+                
+                document.body.appendChild(lantern);
+            }
+
+            addLanternDecorations(lantern) {
+                // 添加装饰线条
+                for (let j = 0; j < 3; j++) {
+                    const decoration = document.createElement('div');
+                    decoration.className = 'decoration';
+                    lantern.appendChild(decoration);
+                }
+                
+                // 添加火焰效果
+                const flame = document.createElement('div');
+                flame.className = 'flame';
+                lantern.appendChild(flame);
+            }
+
+            positionLantern(lantern, index, sectionWidth, minY, maxY) {
+                const centerOffset = sectionWidth * CONFIG.LANTERN.CENTER_OFFSET;
+                const minX = index * sectionWidth;
+                const maxX = (index + 1) * sectionWidth;
+                
+                // 添加随机偏移，使灯笼分布更自然
+                const randomOffset = (Math.random() - 0.5) * sectionWidth * 0.5;
+                const x = minX + centerOffset + randomOffset + (Math.random() * (maxX - minX - 2 * centerOffset));
+                
+                // 添加随机高度变化
+                const heightVariation = Math.random() * (maxY - minY);
+                const y = minY + heightVariation;
+                
+                lantern.style.left = `${x}px`;
+                lantern.style.top = `${y}px`;
+                
+                // 添加随机初始旋转角度
+                const randomRotation = (Math.random() - 0.5) * 10;
+                lantern.style.transform = `rotate(${randomRotation}deg)`;
+            }
+        }
+
+        // 使用防抖函数优化事件处理
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // 初始化
+        const soundManager = new SoundManager();
+        const lanternManager = new LanternManager();
+
+        window.addEventListener('load', () => {
+            lanternManager.createLanterns();
+            createStars();
+            createWordCloud(); // 直接创建文字云
+            
+            // 使用 requestAnimationFrame 优化性能
+            let lastFireworkTime = 0;
+            const animateFireworks = (timestamp) => {
+                if (timestamp - lastFireworkTime > 500) {
+                    createFirecracker(
+                        Math.random() * window.innerWidth,
+                        Math.random() * window.innerHeight
+                    );
+                    lastFireworkTime = timestamp;
+                }
+                requestAnimationFrame(animateFireworks);
+            };
+            
+            requestAnimationFrame(animateFireworks);
+            
+            // 添加点击事件来启动音频
+            const startAudio = () => {
+                autoPlayFireworkSounds();
+                document.removeEventListener('click', startAudio);
+            };
+            
+            document.addEventListener('click', startAudio, { once: true });
+            
+            // 启动自动烟花生成
+            autoGenerateFireworks();
+            
+            // 添加点击事件，点击任意位置生成烟花
+            document.addEventListener('click', (e) => {
+                // 忽略对按钮和特定元素的点击
+                if (e.target.closest('.draw-button, .blessing-box')) {
+                    return;
+                }
+                
+                // 随机选择烟花类型
+                const types = ['circle', 'heart', 'spiral', 'double', 'burst'];
+                const randomType = types[Math.floor(Math.random() * types.length)];
+                
+                // 在点击位置生成烟花
+                createFirework(e.clientX, e.clientY, randomType);
+            });
+
+            // 创建文字云
+            createWordCloud();
+        });
+
+        // 优化窗口调整时的性能
+        window.addEventListener('resize', debounce(() => {
+            // 清除现有灯笼
+            document.querySelectorAll('.lantern').forEach(lantern => lantern.remove());
+            // 重新创建灯笼
+            lanternManager.createLanterns();
+
+            // 重新创建文字云
+            const container = document.getElementById('wordCloud');
+            container.innerHTML = '';
+            createWordCloud();
+        }, 250));
+
+        // 添加创建星星的函数
+        function createStars() {
+            const numberOfStars = 20; // 控制星星数量
+            
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // 随机位置
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                
+                // 随机大小 (1-3像素)
+                const size = 1 + Math.random() * 2;
+                
+                star.style.left = `${x}px`;
+                star.style.top = `${y}px`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // 随机动画延迟
+                star.style.animationDelay = `${Math.random() * 2}s`;
+                
+                document.body.appendChild(star);
+            }
+        }
+
+        // 添加自动播放烟花音效的函数
+        function autoPlayFireworkSounds() {
+            if (Math.random() < 0.3) { // 30%的概率播放声音
+                soundManager.playRandom();
+            }
+            // 随机间隔时间（3-8秒）
+            const nextInterval = 3000 + Math.random() * 5000;
+            setTimeout(autoPlayFireworkSounds, nextInterval);
+        }
+
+        // 修改抽签函数
+        function drawBlessing() {
+            const blessingText = document.getElementById('blessingText');
+            const randomBlessing = blessings[Math.floor(Math.random() * blessings.length)];
+            
+            // 让随机的灯笼飞走
+            const lanterns = document.querySelectorAll('.lantern:not(.fly-away)');
+            if (lanterns.length > 0) {
+                const randomLantern = lanterns[Math.floor(Math.random() * lanterns.length)];
+                
+                // 设置更自然的飞行路径
+                const flyX = (Math.random() - 0.5) * window.innerWidth * 1.5; // 增加水平范围
+                const flyY = -window.innerHeight * (1 + Math.random() * 0.5); // 向上飞行
+                const rotation = (Math.random() - 0.5) * 360; // 减少旋转角度
+                
+                randomLantern.style.setProperty('--fly-x', `${flyX}px`);
+                randomLantern.style.setProperty('--fly-y', `${flyY}px`);
+                randomLantern.style.setProperty('--fly-rotation', `${rotation}deg`);
+                randomLantern.classList.add('fly-away');
+                
+                // 灯笼飞走后移除元素
+                randomLantern.addEventListener('animationend', () => {
+                    randomLantern.remove();
+                    // 创建新的灯笼
+                    const sectionIndex = parseInt(randomLantern.dataset.index);
+                    const sectionWidth = window.innerWidth / 12;
+                    const lanternWidth = 50;
+                    const minX = sectionIndex * sectionWidth + lanternWidth;
+                    const maxX = (sectionIndex + 1) * sectionWidth - lanternWidth;
+                    const x = minX + Math.random() * (maxX - minX);
+                    const y = Math.random() * (window.innerHeight / 2);
+                    
+                    const newLantern = document.createElement('div');
+                    newLantern.className = 'lantern';
+                    newLantern.dataset.index = sectionIndex;
+                    
+                    // 添加装饰线条
+                    for (let j = 0; j < 3; j++) {
+                        const decoration = document.createElement('div');
+                        decoration.className = 'decoration';
+                        newLantern.appendChild(decoration);
+                    }
+                    
+                    // 添加火焰效果
+                    const flame = document.createElement('div');
+                    flame.className = 'flame';
+                    newLantern.appendChild(flame);
+                    
+                    newLantern.style.left = `${x}px`;
+                    newLantern.style.top = `${y}px`;
+                    document.body.appendChild(newLantern);
+                });
+            }
+            
+            blessingText.classList.remove('animate');
+            void blessingText.offsetWidth;
+            blessingText.classList.add('animate');
+            blessingText.textContent = randomBlessing;
+
+            // 创建对应的 emoji 降落效果
+            const emojis = blessingEmojis[randomBlessing];
+            if (emojis) {
+                // 创建多个 emoji 实例
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(() => {
+                        const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+                        createEmojiFirework(
+                            Math.random() * window.innerWidth,
+                            Math.random() * window.innerHeight,
+                            randomEmoji
+                        );
+                    }, i * 300); // 每300ms创建一个新的emoji
+                }
+            }
+
+            // 随机选择烟花类型并创建多个烟花
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const randomType = CONFIG.FIREWORK.TYPES[Math.floor(Math.random() * CONFIG.FIREWORK.TYPES.length)];
+                    createFirework(
+                        window.innerWidth / 2 + (Math.random() - 0.5) * 200,
+                        window.innerHeight / 2 + (Math.random() - 0.5) * 200,
+                        randomType
+                    );
+                }, i * 200);
+            }
+        }
+
+        // 修改烟花函数，添加蛇形路径
+        function createEmojiFirework(x, y, emoji) {
+            const particleCount = 24; // 减少粒子数量
+            const radius = 150; // 增加爆炸半径
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'emoji-firework-particle';
+                particle.textContent = emoji;
+                
+                // 创建蛇形路径
+                const angle = (i / particleCount) * Math.PI * 2;
+                const spiralFactor = 1 + (i / particleCount) * 0.5; // 添加螺旋效果
+                const tx = Math.cos(angle) * radius * spiralFactor;
+                const ty = Math.sin(angle) * radius * spiralFactor;
+                const rotation = Math.random() * 360; // 随机旋转
+                
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                particle.style.setProperty('--tx', `${tx}px`);
+                particle.style.setProperty('--ty', `${ty}px`);
+                particle.style.setProperty('--rotation', `${rotation}deg`);
+                
+                document.body.appendChild(particle);
+                
+                particle.addEventListener('animationend', () => {
+                    document.body.removeChild(particle);
+                });
+            }
+        }
+
+        // 修改烟花函数，添加火箭
+        function createFirework(x, y, type = 'circle') {
+            // 创建火箭
+            const rocket = document.createElement('div');
+            rocket.className = 'rocket';
+            rocket.style.zIndex = '1'; // 确保火箭在前景
+            
+            // 设置火箭起始位置（从屏幕底部随机位置发射）
+            const startX = x + (Math.random() - 0.5) * 40; // 添加一些随机偏移
+            const startY = window.innerHeight;
+            
+            rocket.style.left = `${startX}px`;
+            rocket.style.top = `${startY}px`;
+            document.body.appendChild(rocket);
+
+            // 火箭上升动画
+            const rocketAnimation = rocket.animate([
+                { transform: 'translate(0, 0) rotate(-2deg)' },
+                { transform: 'translate(0, 0) rotate(2deg)', offset: 0.2 },
+                { transform: 'translate(0, 0) rotate(-2deg)', offset: 0.4 },
+                { transform: 'translate(0, 0) rotate(2deg)', offset: 0.6 },
+                { transform: 'translate(0, 0) rotate(-2deg)', offset: 0.8 },
+                { transform: `translate(${x - startX}px, ${y - startY}px) rotate(0)` }
+            ], {
+                duration: 1000,
+                easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
+            });
+
+            // 火箭上升完成后创建烟花
+            rocketAnimation.onfinish = () => {
+                document.body.removeChild(rocket);
+                soundManager.playRandom();
+                
+                switch(type) {
+                    case 'heart':
+                        createHeartFirework(x, y);
+                        break;
+                    case 'spiral':
+                        createSpiralFirework(x, y);
+                        break;
+                    case 'double':
+                        createDoubleFirework(x, y);
+                        break;
+                    case 'burst':
+                        createBurstFirework(x, y);
+                        break;
+                    default:
+                        createCircleFirework(x, y);
+                }
+            };
+        }
+
+        // 心形烟花
+        function createHeartFirework(x, y) {
+            const particles = 40;
+            for (let i = 0; i < particles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firecracker';
+                particle.style.background = CONFIG.FIREWORK.COLORS[Math.floor(Math.random() * CONFIG.FIREWORK.COLORS.length)];
+                
+                const angle = (i / particles) * Math.PI * 2;
+                const heartX = 16 * Math.pow(Math.sin(angle), 3);
+                const heartY = -(13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle));
+                
+                const scale = 8;
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                
+                const animation = particle.animate([
+                    { transform: 'scale(1) translate(0, 0)', opacity: 1 },
+                    { transform: `scale(1.5) translate(${heartX * scale}px, ${heartY * scale}px)`, opacity: 0 }
+                ], {
+                    duration: 1500,
+                    easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                });
+                
+                document.body.appendChild(particle);
+                animation.onfinish = () => document.body.removeChild(particle);
+            }
+        }
+
+        // 螺旋烟花
+        function createSpiralFirework(x, y) {
+            const particles = 50;
+            for (let i = 0; i < particles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firecracker';
+                particle.style.background = CONFIG.FIREWORK.COLORS[Math.floor(Math.random() * CONFIG.FIREWORK.COLORS.length)];
+                
+                const angle = (i / particles) * Math.PI * 8; // 多圈螺旋
+                const radius = i * 3;
+                const spiralX = Math.cos(angle) * radius;
+                const spiralY = Math.sin(angle) * radius;
+                
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                
+                const animation = particle.animate([
+                    { transform: 'scale(1) translate(0, 0)', opacity: 1 },
+                    { transform: `scale(1.2) translate(${spiralX}px, ${spiralY}px)`, opacity: 0 }
+                ], {
+                    duration: 2000,
+                    easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                });
+                
+                document.body.appendChild(particle);
+                animation.onfinish = () => document.body.removeChild(particle);
+            }
+        }
+
+        // 双层烟花
+        function createDoubleFirework(x, y) {
+            createCircleFirework(x, y, 100); // 内圈
+            setTimeout(() => {
+                createCircleFirework(x, y, 200); // 外圈
+            }, 200);
+        }
+
+        // 爆裂烟花
+        function createBurstFirework(x, y) {
+            const particles = 30;
+            for (let i = 0; i < particles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firecracker';
+                particle.style.background = CONFIG.FIREWORK.COLORS[Math.floor(Math.random() * CONFIG.FIREWORK.COLORS.length)];
+                
+                const angle = (i / particles) * Math.PI * 2;
+                const velocity = 5 + Math.random() * 5;
+                const burstX = Math.cos(angle) * velocity * 30;
+                const burstY = Math.sin(angle) * velocity * 30;
+                
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                
+                const animation = particle.animate([
+                    { transform: 'scale(1) translate(0, 0)', opacity: 1 },
+                    { transform: `scale(0.5) translate(${burstX}px, ${burstY}px)`, opacity: 1, offset: 0.6 },
+                    { transform: `scale(0.2) translate(${burstX * 1.5}px, ${burstY * 1.5}px)`, opacity: 0 }
+                ], {
+                    duration: 1200,
+                    easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                });
+                
+                document.body.appendChild(particle);
+                animation.onfinish = () => document.body.removeChild(particle);
+            }
+        }
+
+        // 修改原有的圆形烟花函数
+        function createCircleFirework(x, y, radius = 150) {
+            const particles = 24;
+            for (let i = 0; i < particles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firecracker';
+                particle.style.background = CONFIG.FIREWORK.COLORS[Math.floor(Math.random() * CONFIG.FIREWORK.COLORS.length)];
+                
+                const angle = (i / particles) * Math.PI * 2;
+                const circleX = Math.cos(angle) * radius;
+                const circleY = Math.sin(angle) * radius;
+                
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                
+                const animation = particle.animate([
+                    { transform: 'scale(1) translate(0, 0)', opacity: 1 },
+                    { transform: `scale(1.5) translate(${circleX}px, ${circleY}px)`, opacity: 0 }
+                ], {
+                    duration: 1000,
+                    easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                });
+                
+                document.body.appendChild(particle);
+                animation.onfinish = () => document.body.removeChild(particle);
+            }
+        }
+
+        // 修改createFirecracker函数，添加音效
+        function createFirecracker(x, y) {
+            const rocket = document.createElement('div');
+            rocket.className = 'rocket';
+            
+            const startX = x + (Math.random() - 0.5) * 40;
+            const startY = window.innerHeight;
+            
+            rocket.style.left = `${startX}px`;
+            rocket.style.top = `${startY}px`;
+            document.body.appendChild(rocket);
+
+            const rocketAnimation = rocket.animate([
+                { transform: 'translate(0, 0) rotate(-2deg)' },
+                { transform: 'translate(0, 0) rotate(2deg)', offset: 0.2 },
+                { transform: 'translate(0, 0) rotate(-2deg)', offset: 0.4 },
+                { transform: 'translate(0, 0) rotate(2deg)', offset: 0.6 },
+                { transform: 'translate(0, 0) rotate(-2deg)', offset: 0.8 },
+                { transform: `translate(${x - startX}px, ${y - startY}px) rotate(0)` }
+            ], {
+                duration: 1000,
+                easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
+            });
+
+            rocketAnimation.onfinish = () => {
+                document.body.removeChild(rocket);
+                soundManager.playRandom();
+                
+                const count = 12;
+                for (let i = 0; i < count; i++) {
+                    const angle = (i / count) * Math.PI * 2;
+                    const firecracker = document.createElement('div');
+                    firecracker.className = 'firecracker';
+                    firecracker.style.left = `${x}px`;
+                    firecracker.style.top = `${y}px`;
+                    firecracker.style.background = fireworkColors[Math.floor(Math.random() * fireworkColors.length)];
+                    
+                    const animation = firecracker.animate([
+                        { transform: 'scale(1) translate(0, 0)', opacity: 1 },
+                        { 
+                            transform: `scale(2) translate(${Math.cos(angle) * 100}px, ${Math.sin(angle) * 100}px)`,
+                            opacity: 0 
+                        }
+                    ], {
+                        duration: 1000,
+                        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                    });
+
+                    document.body.appendChild(firecracker);
+                    animation.onfinish = () => document.body.removeChild(firecracker);
+                }
+            };
+        }
+
+        // 修改自动烟花生成函数
+        function autoGenerateFireworks() {
+            // 随机选择烟花类型
+            const types = ['circle', 'heart', 'spiral', 'double', 'burst'];
+            const randomType = types[Math.floor(Math.random() * types.length)];
+            
+            // 随机生成位置（避开最边缘区域）
+            const margin = 100; // 边缘安全距离
+            const x = margin + Math.random() * (window.innerWidth - 2 * margin);
+            const y = margin + Math.random() * (window.innerHeight - 2 * margin);
+            
+            // 创建烟花
+            createFirework(x, y, randomType);
+            
+            // 随机间隔时间（1-3秒）后生成下一个烟花
+            const nextDelay = 1000 + Math.random() * 2000;
+            setTimeout(autoGenerateFireworks, nextDelay);
+        }
+
+        // 添加文字云数据
+        const positiveWords = [
+            '奋斗', '梦想', '希望', '勇气', '坚持', 
+            '拼搏', '信念', '力量', '成长', '突破',
+            '创新', '进步', '热爱', '激情', '真诚',
+            '善良', '感恩', '责任', '担当', '智慧',
+            '团结', '和谐', '友爱', '包容', '分享',
+            '快乐', '幸福', '成功', '机遇', '未来'
+        ];
+
+        // 修改文字云生成函数
+        function createWordCloud() {
+            const container = document.getElementById('wordCloud');
+            const screenWidth = window.innerWidth;
+            
+            // 减少文字实例的数量，从原来的 positiveWords.length * 2 改为固定的较小数值
+            const totalInstances = 10; // 只显示10个文字
+            
+            for (let i = 0; i < totalInstances; i++) {
+                const wordElement = document.createElement('div');
+                wordElement.className = 'floating-word';
+                
+                // 随机选择一个词
+                const word = positiveWords[Math.floor(Math.random() * positiveWords.length)];
+                wordElement.textContent = word;
+                
+                // 随机起始x位置和结束x位置
+                const startX = Math.random() * screenWidth;
+                const endX = startX + (Math.random() - 0.5) * 200;
+                const rotation = (Math.random() - 0.5) * 360;
+                
+                wordElement.style.setProperty('--start-x', `${startX}px`);
+                wordElement.style.setProperty('--end-x', `${endX}px`);
+                wordElement.style.setProperty('--rotation', `${rotation}deg`);
+                
+                // 增加字体大小使文字更加醒目
+                const fontSize = 18 + Math.random() * 12; // 调整字体大小范围为18-30px
+                wordElement.style.fontSize = `${fontSize}px`;
+                
+                // 增加动画延迟的间隔，使文字出现更加均匀
+                const delay = (i / totalInstances) * 15; // 均匀分布的延迟
+                wordElement.style.animationDelay = `${delay}s`;
+                
+                // 增加动画持续时间
+                const duration = 20 + Math.random() * 10; // 20-30秒的随机持续时间
+                wordElement.style.animationDuration = `${duration}s`;
+                
+                container.appendChild(wordElement);
+                
+                wordElement.addEventListener('animationend', () => {
+                    container.removeChild(wordElement);
+                    createSingleWord(container);
+                });
+            }
+        }
+
+        // 添加创建单个文字的函数
+        function createSingleWord(container) {
+            const wordElement = document.createElement('div');
+            wordElement.className = 'floating-word';
+            
+            const word = positiveWords[Math.floor(Math.random() * positiveWords.length)];
+            wordElement.textContent = word;
+            
+            const screenWidth = window.innerWidth;
+            const startX = Math.random() * screenWidth;
+            const endX = startX + (Math.random() - 0.5) * 200;
+            const rotation = (Math.random() - 0.5) * 360;
+            
+            wordElement.style.setProperty('--start-x', `${startX}px`);
+            wordElement.style.setProperty('--end-x', `${endX}px`);
+            wordElement.style.setProperty('--rotation', `${rotation}deg`);
+            
+            const fontSize = 18 + Math.random() * 12; // 调整字体大小范围为18-30px
+            wordElement.style.fontSize = `${fontSize}px`;
+            
+            // 不需要初始延迟
+            wordElement.style.animationDuration = `${20 + Math.random() * 10}s`;
+            
+            container.appendChild(wordElement);
+            
+            wordElement.addEventListener('animationend', () => {
+                container.removeChild(wordElement);
+                createSingleWord(container);
+            });
+        }
+    </script>
+</body>
+</html>
