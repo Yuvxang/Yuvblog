@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas&html5</title>
+</head>
+<body>
+    <h1>Hello Html5 World!</h1>
+    <canvas id="mycanvas" width="200px" height="200px" style="border-style: solid; border-color: #3370ff"></canvas>
+    <button onclick="write_Canvas()">点我刷新画布</button>
+    <script>
+        function write_Canvas(){
+            var a = document.getElementById("mycanvas");
+            var ctx=a.getContext("2d");
+            ctx.font="20px Arial";
+            ctx.fillText("Hello, 毛毛", 50, 100);
+        }
+    </script>
+</body>
+</html>
