@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>新年烟花</title>
+    <link rel="stylesheet" href="烟花样式.css">
+</head>
+<body>
+    <!-- 顶栏 -->
+    <div class="top-bar">
+        <button class="menu-button" onclick="toggleSidebar()">☰</button>
+        <div class="top-bar-title">新年烟花</div>
+    </div>
+
+    <!-- 侧边栏 -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-title">新年烟花</div>
+            <div class="sidebar-subtitle">让我们一起迎接新年</div>
+        </div>
+        <div class="sidebar-menu">
+            <div class="menu-item" onclick="showWishDialog()">
+                <i>✨</i>
+                <span>发送愿望</span>
+            </div>
+            <div class="menu-item" onclick="toggleMusic()">
+                <i>🎵</i>
+                <span>背景音乐</span>
+            </div>
+            <div class="menu-divider"></div>
+            <div class="menu-item" onclick="showSettings()">
+                <i>⚙️</i>
+                <span>效果设置</span>
+            </div>
+            <div class="menu-item" onclick="showAbout()">
+                <i>ℹ️</i>
+                <span>关于</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 将原有内容包装在main-content中 -->
+    <div class="main-content">
+        <!-- 添加模糊背景遮罩 -->
+        <div class="blur-overlay" id="blurOverlay"></div>
+        <!-- 修改 wish-container 的位置，确保始终居中 -->
+        <div class="centered-content">
+            <div class="wish-container" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+                <input type="text" class="wish-input" id="wish" placeholder="写下你的新年愿望">
+                <button class="launch-btn" onclick="launchFireworks()">点燃烟花</button>
+            </div>
+            <div id="wishDisplay" class="wish-display" style="font-size: 40px; font-family: HarmonyOS Sans SC, sans-serif;"></div>
+        </div>
+
+        <!-- 新增控制按钮容器 -->
+        <div class="controls-container">
+            <button class="fab-button" onclick="showWishDialog()">✨</button>
+            <button class="fab-button" onclick="toggleMusic()">🎵</button>
+            <button class="fab-button" onclick="showSettings()">⚙️</button>
+        </div>
+
+        <!-- 愿望对话框 -->
+        <div class="dialog" id="wishDialog">
+            <h2>写下你的新年愿望</h2>
+            <div class="md-input">
+                <input type="text" id="wishInput" required>
+                <label>你的愿望</label>
+            </div>
+            <button class="md-button" onclick="submitWish()">发送愿望</button>
+        </div>
+
+        <!-- 设置对话框 -->
+        <div class="dialog" id="settingsDialog">
+            <h2>设置</h2>
+            <div class="md-input">
+                <input type="range" id="fireworkSpeed" min="1" max="10" value="5">
+                <label>烟花速度</label>
+            </div>
+            <div class="md-input">
+                <input type="range" id="fireworkDensity" min="1" max="10" value="5">
+                <label>烟花密度</label>
+            </div>
+            <button class="md-button" onclick="saveSettings()">保存设置</button>
+        </div>
+
+        <div class="overlay" id="overlay"></div>
+    </div>
+
+    <script>
+        // 常量配置
+        const CONFIG = {
+            // 颜色配置
+            colors: {
+                firework: ['#ff0', '#f0f', '#0ff', '#ff4444', '#44ff44', '#ff8800', '#00ff88', '#8800ff', '#ffcc00', '#cc00ff'],
+                lantern: {
+                    base: ['#ff4d4d', '#ff6b6b'],
+                    glow: ['255, 77, 77', '255, 166, 0'],
+                    flame: ['255, 235, 59', '255, 215, 0', '255, 165, 0', '255, 140, 0']
+                }
+            },
+            
+            // 烟花配置
+            firework: {
+                types: ['circle', 'heart', 'spiral', 'double', 'burst'],
+                particleCounts: {
+                    heart: 40,
+                    spiral: 50,
+                    burst: 30,
+                    circle: 30,
+                    double: 60
+                },
+                size: {
+                    min: 8,
+                    max: 15
+                },
+                duration: {
+                    rise: 20,
+                    explosion: 1500,
+                    burst: 1200
+                },
+                spread: {
+                    heart: 10,
+                    spiral: 4,
+                    burst: 40,
+                    circle: 150
+                }
+            },
+
+            // 文字配置
+            text: {
+                wishes: [
+                    '新年快乐', '恭喜发财', '心想事成', '万事如意',
+                    '吉祥如意', '大吉大利', '财源广进', '年年有余',
+                    '福星高照', '龙马精神', '前程似锦', '步步高升',
+                    '事业有成', '平安喜乐', '幸福安康'
+                ],
+                lantern: ['福', '春', '喜', '安', '康', '旺', '财', '乐', '吉', '祥'],
+                fontSize: {
+                    min: 40,
+                    max: 80
+                },
+                showWishProbability: 0.3
+            },
+
+            // 动画配置
+            animation: {
+                lanternInterval: 2000,
+                fireworkInterval: 800,
+                textDuration: 800
+            },
+
+            // 云朵配置
+            cloud: {
+                count: 3,
+                sizes: {
+                    min: 60,
+                    max: 120
+                },
+                heights: {
+                    min: 20,
+                    max: 60
+                },
+                speeds: {
+                    min: 20,
+                    max: 40
+                },
+                interval: 10000 // 每10秒生成一朵新云
+            }
+        };
+
+        // 工具函数
+        const utils = {
+            random: (min, max) => Math.random() * (max - min) + min,
+            randomInt: (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
+            randomItem: array => array[Math.floor(Math.random() * array.length)],
+            createParticle: (className = 'firework') => {
+                const particle = document.createElement('div');
+                particle.className = className;
+                return particle;
+            },
+            setStyles: (element, styles) => {
+                Object.assign(element.style, styles);
+            }
+        };
+
+        // 烟花类
+        class Firework {
+            constructor(wish) {
+                this.wish = wish;
+                this.init();
+            }
+
+            init() {
+                const firework = utils.createParticle();
+                this.startX = utils.random(0, window.innerWidth);
+                
+                utils.setStyles(firework, {
+                    left: `${this.startX}px`,
+                    bottom: '0',
+                    background: utils.randomItem(CONFIG.colors.firework)
+                });
+                
+                document.body.appendChild(firework);
+                this.rise(firework);
+            }
+
+            rise(firework) {
+                let posY = 0;
+                const rise = setInterval(() => {
+                    posY += 5;
+                    firework.style.bottom = `${posY}px`;
+                    
+                    if (posY > window.innerHeight * 0.5) {
+                        clearInterval(rise);
+                        this.explode(firework, posY);
+                    }
+                }, CONFIG.firework.duration.rise);
+            }
+
+            explode(firework, posY) {
+                const x = this.startX;
+                const y = window.innerHeight - posY;
+                const type = utils.randomItem(CONFIG.firework.types);
+                
+                firework.remove();
+                this.createNeonText(x, y);
+                this.createExplosion(x, y, type);
+            }
+
+            createNeonText(x, y) {
+                const showUserWish = Math.random() < CONFIG.text.showWishProbability; // 30%概率显示用户愿望
+                const text = document.createElement('div');
+                text.className = 'neon-text';
+                
+                if (showUserWish) {
+                    text.textContent = this.wish;
+                } else {
+                    text.textContent = utils.randomItem(CONFIG.text.wishes);
+                }
+
+                const color = utils.randomItem(CONFIG.colors.firework);
+                
+                const fontSize = utils.random(80, 120); // 修改为更大的字体范围：80px 到 120px
+                
+                text.style.cssText = `
+                    left: ${x}px;
+                    top: ${y}px;
+                    color: ${color};
+                    transform: translate(-50%, -50%);
+                    opacity: 1;
+                    font-size: ${fontSize}px;
+                    font-family: HarmonyOS Sans SC, sans-serif; // 添加鸿蒙字体
+                `;
+                
+                document.body.appendChild(text);
+
+                const rotation = utils.random(-15, 15); // -15度到15度之间的随机旋转
+                text.style.transform += ` rotate(${rotation}deg)`;
+
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        text.style.opacity = '0';
+                        text.style.transform += ' scale(1.2)'; // 添加缩放效果
+                        setTimeout(() => text.remove(), CONFIG.animation.textDuration);
+                    }, CONFIG.animation.textDuration - 800);
+                });
+            }
+
+            createExplosion(x, y, type) {
+                const count = CONFIG.firework.particleCounts[type] || CONFIG.firework.particleCounts.circle;
+                const duration = CONFIG.firework.duration.explosion;
+
+                for (let i = 0; i < count; i++) {
+                    const particle = utils.createParticle();
+                    const color = utils.randomItem(CONFIG.colors.firework);
+                    // 随机粒子大小
+                    const size = utils.random(CONFIG.firework.size.min, CONFIG.firework.size.max); // 增加粒子大小范围
+                    
+                    particle.style.cssText = `
+                        width: ${size}px;
+                        height: ${size}px;
+                        background: ${color};
+                        box-shadow: 0 0 ${size * 2}px ${color},
+                                   0 0 ${size * 4}px ${color};
+                        left: ${x}px;
+                        top: ${y}px;
+                    `;
+
+                    const angle = (i / count) * Math.PI * 2;
+                    const velocity = utils.random(2, 8);
+                    let particleX, particleY;
+
+                    switch (type) {
+                        case 'heart':
+                            particleX = 16 * Math.pow(Math.sin(angle), 3) * CONFIG.firework.spread.heart; // 增加扩散范围
+                            particleY = -(13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle)) * CONFIG.firework.spread.heart;
+                            break;
+                        case 'spiral':
+                            particleX = Math.cos(angle * CONFIG.firework.spread.spiral) * (i * CONFIG.firework.spread.spiral); // 增加螺旋大小
+                            particleY = Math.sin(angle * CONFIG.firework.spread.spiral) * (i * CONFIG.firework.spread.spiral);
+                            break;
+                        case 'burst':
+                            particleX = Math.cos(angle) * velocity * CONFIG.firework.spread.burst; // 增加爆裂范围
+                            particleY = Math.sin(angle) * velocity * CONFIG.firework.spread.burst;
+                            break;
+                        default: // circle
+                            particleX = Math.cos(angle) * CONFIG.firework.spread.circle; // 增加圆形半径
+                            particleY = Math.sin(angle) * CONFIG.firework.spread.circle;
+                    }
+
+                    document.body.appendChild(particle);
+                    
+                    particle.animate([
+                        { 
+                            transform: 'translate(0, 0) scale(1)', 
+                            opacity: 1 
+                        },
+                        { 
+                            transform: `translate(${particleX}px, ${particleY}px) scale(0.5)`, 
+                            opacity: 0 
+                        }
+                    ], {
+                        duration: duration,
+                        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                    }).onfinish = () => particle.remove();
+                }
+            }
+        }
+
+        // 初始化函数
+        function init() {
+            createStars();
+            createMoon();
+            initClouds(); // 添加云朵初始化
+            setInterval(createLantern, CONFIG.animation.lanternInterval);
+        }
+
+        // 启动函数
+        function launchFireworks() {
+            const wishInput = document.getElementById('wish');
+            const wish = wishInput.value.trim();
+            
+            if (!wish) {
+                alert('请先写下你的愿望!');
+                return;
+            }
+
+            // 移除模糊效果
+            document.getElementById('blurOverlay').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('blurOverlay').style.display = 'none';
+            }, 1000);
+
+            // 自动播放背景音乐
+            bgMusic.play();
+            isPlaying = true;
+
+            document.getElementById('wishDisplay').textContent = `✨ ${wish} ✨`;
+            document.getElementById('wishDisplay').style.opacity = '1';
+            document.querySelector('.wish-container').style.display = 'none';
+
+            setInterval(() => new Firework(wish), CONFIG.animation.fireworkInterval);
+        }
+
+        // 创建星星
+        function createStars() {
+            const starCount = 50;
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * window.innerWidth + 'px';
+                star.style.top = Math.random() * window.innerHeight + 'px';
+                document.body.appendChild(star);
+            }
+        }
+
+        // 创建月亮
+        function createMoon() {
+            const moon = document.createElement('div');
+            moon.className = 'moon';
+            document.body.appendChild(moon);
+        }
+
+        // 创建灯笼
+        function createLantern() {
+            const lantern = document.createElement('div');
+            lantern.className = 'lantern';
+            
+            // 随机选择文字
+            const text = utils.randomItem(CONFIG.text.lantern);
+            lantern.setAttribute('data-text', text);
+            
+            // 添加装饰线条
+            for (let i = 0; i < 3; i++) {
+                const decoration = document.createElement('div');
+                decoration.className = 'decoration';
+                lantern.appendChild(decoration);
+            }
+            
+            // 添加火焰
+            const flame = document.createElement('div');
+            flame.className = 'flame';
+            lantern.appendChild(flame);
+            
+            // 随机位置
+            lantern.style.left = Math.random() * window.innerWidth + 'px';
+            lantern.style.bottom = '0px';
+            
+            document.body.appendChild(lantern);
+
+            // 飞行动画
+            let posY = 0;
+            const fly = setInterval(() => {
+                posY += 2;
+                lantern.style.bottom = posY + 'px';
+
+                if (posY > window.innerHeight) {
+                    clearInterval(fly);
+                    lantern.remove();
+                }
+            }, 50);
+        }
+
+        // 创建云朵函数
+        function createCloud() {
+            const cloud = document.createElement('div');
+            cloud.className = 'cloud';
+            
+            // 随机大小
+            const size = utils.random(CONFIG.cloud.sizes.min, CONFIG.cloud.sizes.max);
+            
+            // 随机高度
+            const top = utils.random(CONFIG.cloud.heights.min, CONFIG.cloud.heights.max);
+            
+            // 随机速度
+            const duration = utils.random(CONFIG.cloud.speeds.min, CONFIG.cloud.speeds.max);
+            
+            utils.setStyles(cloud, {
+                width: `${size}px`,
+                height: `${size * 0.6}px`,
+                top: `${top}%`,
+                left: '-100px',
+                animationDuration: `${duration}s`
+            });
+            
+            document.body.appendChild(cloud);
+            
+            // 云朵飘过后移除
+            cloud.addEventListener('animationend', () => cloud.remove());
+        }
+
+        // 初始化云朵
+        function initClouds() {
+            // 初始创建几朵云
+            for(let i = 0; i < CONFIG.cloud.count; i++) {
+                setTimeout(() => {
+                    createCloud();
+                }, i * (CONFIG.cloud.interval / CONFIG.cloud.count));
+            }
+            
+            // 定期创建新云
+            setInterval(createCloud, CONFIG.cloud.interval);
+        }
+
+        // 显示愿望对话框
+        function showWishDialog() {
+            document.getElementById('wishDialog').classList.add('show');
+            document.getElementById('overlay').classList.add('show');
+        }
+
+        // 提交愿望
+        function submitWish() {
+            const wish = document.getElementById('wishInput').value;
+            if (wish.trim()) {
+                document.getElementById('wishDialog').classList.remove('show');
+                document.getElementById('overlay').classList.remove('show');
+                
+                // 移除模糊效果
+                document.getElementById('blurOverlay').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('blurOverlay').style.display = 'none';
+                }, 1000);
+
+                // 自动播放背景音乐
+                bgMusic.play();
+                isPlaying = true;
+
+                launchFireworks(wish);
+            }
+        }
+
+        // 音乐控制
+        let isPlaying = false;
+        const bgMusic = new Audio('落下.mp3'); // 需要添加背景音乐文件
+        bgMusic.loop = true;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                isPlaying = false;
+            } else {
+                bgMusic.play();
+                isPlaying = true;
+            }
+        }
+
+        // 显示设置
+        function showSettings() {
+            document.getElementById('settingsDialog').classList.add('show');
+            document.getElementById('overlay').classList.add('show');
+        }
+
+        // 保存设置
+        function saveSettings() {
+            const speed = document.getElementById('fireworkSpeed').value;
+            const density = document.getElementById('fireworkDensity').value;
+            
+            // 更新烟花配置
+            CONFIG.animation.fireworkInterval = 1000 - (speed * 100);
+            CONFIG.firework.particleCounts = {
+                heart: 40 * (density / 5),
+                spiral: 50 * (density / 5),
+                burst: 30 * (density / 5),
+                circle: 30 * (density / 5),
+                double: 60 * (density / 5)
+            };
+
+            document.getElementById('settingsDialog').classList.remove('show');
+            document.getElementById('overlay').classList.remove('show');
+        }
+
+        // 点击遮罩层关闭对话框
+        document.getElementById('overlay').addEventListener('click', () => {
+            document.querySelectorAll('.dialog').forEach(dialog => {
+                dialog.classList.remove('show');
+            });
+            document.getElementById('overlay').classList.remove('show');
+            document.getElementById('overlay').classList.remove('sidebar-overlay');
+            document.getElementById('sidebar').classList.remove('show');
+        });
+
+        // 侧边栏控制
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            
+            sidebar.classList.toggle('show');
+            overlay.classList.toggle('show');
+            overlay.classList.toggle('sidebar-overlay');
+        }
+
+        // 关于对话框
+        function showAbout() {
+            const dialog = document.createElement('div');
+            dialog.className = 'dialog';
+            dialog.style.zIndex = '1000'; // 添加较高的 z-index 值
+            dialog.innerHTML = `
+                <h2>关于新年烟花 🎆</h2>
+                <p>这是一个充满新年气息的互动烟花页面，在这里你可以：</p>
+                <ul>
+                    <li>✨ 发送新年愿望</li>
+                    <li>🎆 观赏绚丽烟花</li>
+                    <li>🎵 聆听新年音乐</li>
+                    <li>⚙️ 自定义烟花效果</li>
+                </ul>
+                <div class="author-info" style="margin-top: 20px;">
+                    <p>🌟 作者：Moniwarmth</p>
+                    <p>🤖 由 Cursor 强力驱动</p>
+                </div>
+                <button class="md-button" onclick="this.parentElement.classList.remove('show')">关闭</button>
+            `;
+            
+            document.body.appendChild(dialog);
+            setTimeout(() => dialog.classList.add('show'), 10);
+        }
+
+        // 页面加载完成后初始化
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
+

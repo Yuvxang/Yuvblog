@@ -1,0 +1,587 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #000033, #000066, #000080);
+    overflow: hidden;
+    min-height: 100vh;
+    position: relative; /* 添加相对定位以便放置星星和月亮 */
+}
+.firework {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 30px currentColor,
+                0 0 50px currentColor,
+                0 0 70px currentColor;
+    pointer-events: none;
+}
+.wish-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 100;
+}
+.wish-input {
+    padding: 15px;
+    font-size: 18px;
+    width: 300px;
+    border-radius: 25px;
+    border: 2px solid #fff;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    margin-bottom: 15px;
+    outline: none;
+}
+.wish-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+.launch-btn {
+    padding: 12px 30px;
+    font-size: 18px;
+    background: linear-gradient(45deg, #ff4444, #ff8844);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.launch-btn:hover {
+    transform: scale(1.05);
+}
+.wish-display {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 24px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transition: opacity 1s;
+}
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #fff,
+                0 0 30px #fff,
+                0 0 40px #fff,
+                0 0 50px #ff0;
+    animation: twinkle 1.5s infinite;
+}
+.moon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 50px #fff,
+                0 0 100px #fff,
+                0 0 150px rgba(255, 255, 200, 0.8);
+    top: 20px;
+    left: 80%;
+}
+.lantern {
+    position: absolute;
+    width: 30px;
+    height: 45px;
+    background: linear-gradient(to bottom, #ff4d4d, #ff6b6b);
+    border-radius: 15px 15px 3px 3px;
+    box-shadow: 0 0 40px rgba(255, 77, 77, 0.6),
+                0 0 80px rgba(255, 77, 77, 0.4);
+    animation: float 8s infinite ease-in-out;
+    z-index: 0;
+    /* 添加径向渐变作为背景光晕 */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 90px;
+        background: radial-gradient(
+            circle at center,
+            rgba(255, 200, 0, 0.2),
+            rgba(255, 150, 0, 0.1),
+            transparent 70%
+        );
+        z-index: -1;
+        border-radius: 50%;
+        animation: glow 2s infinite ease-in-out;
+    }
+}
+.lantern::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffd700;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0 0 3px rgba(255, 215, 0, 0.8);
+}
+.lantern::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 5px;
+    background: #ffd700;
+    border-radius: 3px 3px 0 0;
+}
+.lantern .flame {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 235, 59, 1),
+        rgba(255, 215, 0, 0.8),
+        transparent 70%
+    );
+    border-radius: 50%;
+    animation: flicker 2s infinite ease-in-out;
+    /* 添加火焰光晕 */
+    box-shadow: 0 0 30px rgba(255, 165, 0, 0.8),
+                0 0 50px rgba(255, 140, 0, 0.6);
+}
+.lantern .decoration {
+    position: absolute;
+    width: 80%;
+    height: 1px;
+    background: rgba(255, 215, 0, 0.5);
+    left: 10%;
+}
+.lantern .decoration:nth-child(1) { top: 20%; }
+.lantern .decoration:nth-child(2) { top: 40%; }
+.lantern .decoration:nth-child(3) { top: 60%; }
+@keyframes twinkle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(2deg);
+        box-shadow: 
+            0 0 15px rgba(255, 77, 77, 0.7),
+            0 0 30px rgba(255, 77, 77, 0.5),
+            0 0 45px rgba(255, 77, 77, 0.3),
+            0 0 60px rgba(255, 166, 0, 0.3),
+            0 0 80px rgba(255, 166, 0, 0.2);
+    }
+    50% {
+        transform: translateY(-15px) rotate(-2deg);
+        box-shadow: 
+            0 0 20px rgba(255, 77, 77, 0.8),
+            0 0 40px rgba(255, 77, 77, 0.6),
+            0 0 60px rgba(255, 77, 77, 0.4),
+            0 0 80px rgba(255, 166, 0, 0.4),
+            0 0 100px rgba(255, 166, 0, 0.3);
+    }
+}
+@keyframes flicker {
+    0%, 100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+        box-shadow: 
+            0 0 10px rgba(255, 215, 0, 0.8),
+            0 0 20px rgba(255, 165, 0, 0.6),
+            0 0 30px rgba(255, 140, 0, 0.4);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateX(-50%) scale(0.9);
+        box-shadow: 
+            0 0 8px rgba(255, 215, 0, 0.6),
+            0 0 16px rgba(255, 165, 0, 0.4),
+            0 0 24px rgba(255, 140, 0, 0.2);
+    }
+}
+/* 添加霓虹文字样式 */
+.neon-text {
+    position: absolute;
+    font-family: "HarmonyOS Sans SC", "Microsoft YaHei", sans-serif;
+    font-weight: bold;
+    text-shadow: 0 0 10px currentColor, 
+                 0 0 20px currentColor, 
+                 0 0 30px currentColor,
+                 0 0 40px currentColor;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0;
+    transition: all 1s ease-out;
+    white-space: nowrap;
+}
+/* 添加光晕动画 */
+@keyframes glow {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.6;
+    }
+}
+/* 添加云朵样式 */
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    filter: blur(10px);
+    animation: floatCloud 20s linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+    content: '';
+    position: absolute;
+    background: inherit;
+    border-radius: inherit;
+}
+
+.cloud::before {
+    width: 60%;
+    height: 80%;
+    top: -30%;
+    left: 15%;
+}
+
+.cloud::after {
+    width: 70%;
+    height: 90%;
+    top: -20%;
+    right: 15%;
+}
+
+@keyframes floatCloud {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateX(100vw);
+        opacity: 0;
+    }
+}
+
+/* 添加Material Design风格的按钮容器 */
+.controls-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 1000;
+}
+
+/* Material Design风格的FAB按钮 */
+.fab-button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    font-size: 24px;
+}
+
+.fab-button:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    transform: translateY(-2px);
+}
+
+/* Material Design风格的对话框 */
+.dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    min-width: 300px;
+}
+
+.dialog.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* 遮罩层 */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Material Design风格的输入框 */
+.md-input {
+    position: relative;
+    margin: 20px 0;
+}
+
+.md-input input {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    background: transparent;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.md-input label {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    font-size: 16px;
+    color: #999;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.md-input input:focus + label,
+.md-input input:valid + label {
+    top: -20px;
+    font-size: 12px;
+    color: #2196F3;
+}
+
+.md-input input:focus {
+    border-bottom-color: #2196F3;
+}
+
+/* Material Design风格的按钮 */
+.md-button {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 4px;
+    background: #2196F3;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 
+                0 2px 2px 0 rgba(0,0,0,.14), 
+                0 1px 5px 0 rgba(0,0,0,.12);
+    transition: all 0.3s ease;
+}
+
+.md-button:hover {
+    background: #1976D2;
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 
+                0 8px 10px 1px rgba(0,0,0,.14), 
+                0 3px 14px 2px rgba(0,0,0,.12);
+}
+
+/* Material Design 顶栏 */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    /* 修改背景色为深蓝色系，增加透明度 */
+    background: rgba(0, 10, 50, 0.75);
+    /* 添加深色渐变效果 */
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 15, 60, 0.95),
+        rgba(0, 10, 40, 0.85)
+    );
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    /* 调整阴影使其更柔和 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    /* 增加模糊效果使其更通透 */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 16px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.menu-button:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.top-bar-title {
+    font-size: 20px;
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+/* Material Design 侧边栏 */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    background: white;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+    z-index: 1001;
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+}
+
+.sidebar.show {
+    transform: translateX(280px);
+}
+
+.sidebar-header {
+    height: 170px;
+    /* 修改渐变色以匹配夜空主题 */
+    background: linear-gradient(135deg, 
+        rgba(0, 20, 80, 0.95),
+        rgba(0, 10, 40, 0.9)
+    );
+    padding: 16px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.sidebar-title {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.sidebar-subtitle {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.sidebar-menu {
+    padding: 8px 0;
+}
+
+.menu-item {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    color: rgba(0,0,0,0.87);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.menu-item:hover {
+    background-color: rgba(0,0,0,0.04);
+}
+
+.menu-item i {
+    margin-right: 32px;
+    font-size: 20px;
+    width: 24px;
+    text-align: center;
+}
+
+.menu-divider {
+    height: 1px;
+    background-color: rgba(0,0,0,0.12);
+    margin: 8px 0;
+}
+
+/* 调整主体内容，为顶栏留出空间 */
+.main-content {
+    padding-top: 64px;
+}
+
+/* 当侧边栏打开时的遮罩层样式调整 */
+.overlay.sidebar-overlay {
+    z-index: 1000;
+}
+
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition: opacity 1s ease;
+}
+
+.wish-container {
+    position: relative;
+    z-index: 2;
+}
+
+.centered-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+.wish-container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 600px;
+}
