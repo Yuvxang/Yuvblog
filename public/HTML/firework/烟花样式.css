@@ -293,7 +293,14 @@ body {
     display: flex;
     gap: 15px;
     z-index: 1000;
+    justify-content: center; /* 确保内容居中 */
+    width: auto; /* 宽度自适应内容 */
+    padding: 0 20px; /* 添加内边距，避免按钮贴边 */
+    background: rgba(255, 255, 255, 0.1); /* 可选：添加背景色 */
+    border-radius: 30px; /* 可选：圆角效果 */
+    backdrop-filter: blur(10px); /* 可选：毛玻璃效果 */
 }
+
 
 /* Material Design风格的FAB按钮 */
 .fab-button {
