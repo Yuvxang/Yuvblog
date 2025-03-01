@@ -1,0 +1,406 @@
+body {
+    background-color: #2196F3;
+    margin: 0;
+    min-height: 100vh;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #2c3e50;
+}
+
+#weather-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.weather-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.weather-card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(12px);
+    box-shadow: 
+        0 8px 32px rgba(0,0,0,0.1),
+        0 2px 8px rgba(255,255,255,0.1) inset !important;
+    transition: all 0.3s ease !important;
+    overflow: hidden;
+    margin: 2rem 0;
+}
+
+.weather-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 12px 48px rgba(0,0,0,0.15),
+        0 2px 8px rgba(255,255,255,0.1) inset !important;
+}
+
+.weather-card .card-content {
+    padding: 2.5rem !important;
+}
+
+/* 晴天效果 */
+.sunny .weather-effect {
+    background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+}
+
+/* 多云效果 */
+.cloudy .weather-effect {
+    background: linear-gradient(to bottom, #92a3b0 0%, #b5bdc8 100%);
+}
+
+/* 雨天效果 */
+.rainy .weather-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.rainy-bg {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.rainy-bg.active {
+    display: block;
+}
+
+.rain-drop-bg {
+    position: absolute;
+    width: 3px;
+    height: 100px;
+    background: linear-gradient(transparent, rgba(255,255,255,0.4));
+    animation: rainFall linear infinite;
+}
+
+/* 生成100个背景雨滴 */
+@for $i from 1 through 100 {
+    .rain-drop-bg:nth-child(#{$i}) {
+        left: #{random(100)}vw;
+        animation-delay: #{random(2000)/1000}s;
+        animation-duration: #{0.8 + random(400)/1000}s;
+        opacity: #{0.1 + random(3)/10};
+    }
+}
+
+@keyframes rainFall {
+    0% {
+        transform: translateY(-100%) rotate(5deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(5deg);
+    }
+}
+
+/* 下雪效果 */
+.snowy .weather-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.snowy-bg {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.snowy-bg.active {
+    display: block;
+}
+
+.snowflake-bg {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    filter: blur(1px);
+    animation: snowFall linear infinite;
+}
+
+/* 生成50个背景雪花 */
+@for $i from 1 through 50 {
+    .snowflake-bg:nth-child(#{$i}) {
+        left: #{random(100)}vw;
+        animation-delay: #{random(4000)/1000}s;
+        animation-duration: #{3 + random(2000)/1000}s;
+        opacity: #{0.2 + random(5)/10};
+        width: #{3 + random(4)}px;
+        height: #{3 + random(4)}px;
+    }
+}
+
+@keyframes snowFall {
+    0% {
+        transform: translateY(-100%) rotate(0deg) translateX(0);
+    }
+    25% {
+        transform: translateY(-25vh) rotate(90deg) translateX(10px);
+    }
+    50% {
+        transform: translateY(25vh) rotate(180deg) translateX(-10px);
+    }
+    75% {
+        transform: translateY(75vh) rotate(270deg) translateX(10px);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg) translateX(0);
+    }
+}
+
+.btn {
+    margin: 0 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 太阳光晕效果 */
+.sun-effect {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 100px;
+}
+
+.sun-effect.active {
+    display: block;
+}
+
+.sun-glow {
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(255,236,168,0.8) 0%, rgba(255,236,168,0) 70%);
+    border-radius: 50%;
+    animation: pulse 4s infinite;
+}
+
+.sun-rays {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160px;
+    height: 160px;
+    transform: translate(-50%, -50%);
+    background: conic-gradient(from 0deg, transparent 0deg, rgba(255,236,168,0.3) 20deg, transparent 40deg);
+    animation: rotate 20s linear infinite;
+}
+
+/* 云效果 */
+.cloud-container {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.cloud-container.active {
+    display: block;
+}
+
+.cloud {
+    position: absolute;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    opacity: 0.9;
+}
+
+.cloud-1 {
+    width: 200px;
+    height: 60px;
+    top: 20%;
+    left: 20%;
+    animation: float 8s infinite;
+}
+
+.cloud-2 {
+    width: 160px;
+    height: 50px;
+    top: 35%;
+    right: 25%;
+    animation: float 10s infinite;
+}
+
+.cloud-3 {
+    width: 180px;
+    height: 55px;
+    bottom: 30%;
+    left: 35%;
+    animation: float 12s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(20px); }
+    100% { transform: translateY(0); }
+}
+
+/* 标题样式优化 */
+h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 2rem 0;
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.8) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    letter-spacing: 2px;
+}
+
+/* 天气图标样式优化 */
+#weather-icon {
+    font-size: 4.5rem !important;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #4a90e2, #63b3ed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* 天气描述文本样式 */
+#weather-description {
+    font-size: 1.5rem !important;
+    font-weight: 500;
+    color: #4a5568;
+    margin: 1.5rem 0;
+}
+
+/* 温度显示样式优化 */
+.temperature {
+    font-size: 3rem !important;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 1.5rem 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* 按钮样式优化 */
+.weather-btn {
+    padding: 0 2rem !important;
+    height: 54px !important;
+    line-height: 54px !important;
+    border-radius: 27px !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin: 0.75rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+.weather-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15) !important;
+}
+
+.weather-btn i {
+    margin-right: 8px !important;
+    font-size: 1.25rem !important;
+}
+
+/* 按钮颜色定制 */
+.weather-btn[data-weather="sunny"] {
+    background: linear-gradient(135deg, #ff9f43, #ff7e33) !important;
+}
+
+.weather-btn[data-weather="cloudy"] {
+    background: linear-gradient(135deg, #6c8aa3, #4f6d8d) !important;
+}
+
+.weather-btn[data-weather="rainy"] {
+    background: linear-gradient(135deg, #4a90e2, #357abd) !important;
+}
+
+.weather-btn[data-weather="snowy"] {
+    background: linear-gradient(135deg, #90a4ae, #78919c) !important;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    .weather-card .card-content {
+        padding: 2rem !important;
+    }
+
+    #weather-icon {
+        font-size: 3.5rem !important;
+    }
+
+    #weather-description {
+        font-size: 1.25rem !important;
+    }
+
+    .temperature {
+        font-size: 2.5rem !important;
+    }
+
+    .weather-btn {
+        width: calc(50% - 1.5rem) !important;
+        padding: 0 1rem !important;
+        margin: 0.5rem !important;
+    }
+}
+
+/* 添加动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.weather-card {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* 添加滚动条美化 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.4);
+}

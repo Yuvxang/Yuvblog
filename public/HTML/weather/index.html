@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Weather</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 天气背景层 -->
+    <div id="weather-background">
+        <div class="weather-effect">
+            <div class="light-rays"></div>
+        </div>
+        <!-- 添加太阳光晕效果 -->
+        <div class="sun-effect">
+            <div class="sun-glow"></div>
+            <div class="sun-rays"></div>
+        </div>
+        <!-- 添加云效果 -->
+        <div class="cloud-container">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+        </div>
+        <!-- 雨效果 -->
+        <div class="rain-container">
+            <!-- 动态生成100个雨滴 -->
+        </div>
+        <!-- 雪效果 -->
+        <div class="snow-container">
+            <div class="snowflakes"></div>
+        </div>
+        <!-- 添加风效果容器 -->
+        <div class="wind-container">
+            <!-- 动态生成30个风粒子 -->
+        </div>
+    </div>
+
+    <!-- 页面内容 -->
+    <div class="container">
+        <h1 class="center-align white-text text-shadow">Material Weather</h1>
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+                <div class="card weather-card z-depth-3 hoverable">
+                    <div class="card-content center-align">
+                        <i id="weather-icon" class="material-icons large animated"></i>
+                        <p id="weather-description" class="flow-text">Select a weather type</p>
+                        <div class="temperature">
+                            <span id="temperature-value">25°C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row center-align">
+            <div class="col s12">
+                <button class="btn-large waves-effect waves-light weather-btn" data-weather="sunny">
+                    <i class="material-icons left">wb_sunny</i>Sunny
+                </button>
+                <button class="btn-large waves-effect waves-light weather-btn" data-weather="cloudy">
+                    <i class="material-icons left">cloud</i>Cloudy
+                </button>
+                <button class="btn-large waves-effect waves-light weather-btn" data-weather="rainy">
+                    <i class="material-icons left">grain</i>Rainy
+                </button>
+                <button class="btn-large waves-effect waves-light weather-btn" data-weather="snowy">
+                    <i class="material-icons left">ac_unit</i>Snowy
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

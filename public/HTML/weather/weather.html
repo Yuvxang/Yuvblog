@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天气效果展示</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: 
+                background-color 1s cubic-bezier(0.4, 0, 0.2, 1),
+                filter 0.3s ease;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.15),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+            max-width: 400px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 0.5s ease;
+        }
+
+        h1 {
+            margin: 0 0 32px 0;
+            color: white;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .weather-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        button {
+            aspect-ratio: 1;
+            width: 60px;
+            padding: 0;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            box-shadow: none;
+        }
+
+        button:hover {
+            transform: translateY(-4px) scale(1.12);
+            box-shadow: none;
+        }
+
+        button:active {
+            transform: translateY(1px) scale(0.95);
+            box-shadow: none;
+        }
+
+        /* 各天气按钮的特定样式 */
+        button[onclick*="sunny"] {
+            background-color: #FFB700;
+            color: #fff;
+        }
+
+        button[onclick*="rainy"] {
+            background-color: #4A6B7C;
+            color: #fff;
+        }
+
+        button[onclick*="cloudy"] {
+            background-color: #8FA3AD;
+            color: #fff;
+        }
+
+        button[onclick*="snowy"] {
+            background-color: #E8E8E8;
+            color: #6B7C93;
+        }
+
+        .weather-display {
+            padding: 12px;
+        }
+
+        /* 添加天气效果样式 */
+        .rain, .snow, .clouds {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .raindrop {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(135, 206, 250, 0.9);
+            border-radius: 50%;
+            animation: rain 3s linear infinite;
+            box-shadow: 0 0 12px rgba(135, 206, 250, 0.8);
+        }
+
+        .raindrop::after {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 15px solid rgba(135, 206, 250, 0.6);
+            transform: translateX(-50%);
+            animation: tail 3s linear infinite;
+        }
+
+        .snowflake {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            animation: snow 10s linear infinite;
+            pointer-events: none;
+        }
+
+        .snowflake div {
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+        }
+
+        .cloud {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50px;
+            box-shadow: 
+                0 8px 20px rgba(0, 0, 0, 0.15);
+            animation: float 10s ease-in-out infinite;
+            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
+        }
+
+        @keyframes rain {
+            0% { 
+                transform: translateY(-100vh); 
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% { 
+                transform: translateY(100vh); 
+                opacity: 0;
+            }
+        }
+
+        @keyframes snow {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(720deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.02); }
+        }
+
+        @keyframes tail {
+            0% { opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.4; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .weather-effect {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .fade-enter {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .fade-enter-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.5s ease-out;
+        }
+
+        .fade-exit {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .fade-exit-active {
+            opacity: 0;
+            transform: scale(1.1);
+            transition: all 0.5s ease-in;
+        }
+
+        /* 修改背景动画样式 */
+        .background-animation {
+            position: fixed;
+            top: 20%; /* 与太阳中心位置一致 */
+            left: 50%; /* 与太阳中心位置一致 */
+            width: 0;
+            height: 0;
+            pointer-events: none;
+            z-index: -2;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transform-origin: center center;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .background-animation.active {
+            width: 200vmax; /* 足够大的值确保覆盖整个屏幕 */
+            height: 200vmax;
+        }
+
+        /* 添加太阳光圈动画 */
+        @keyframes glowPulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.2; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+        }
+
+        @keyframes outerGlowPulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.2; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+        }
+
+        /* 修改太阳动画 */
+        @keyframes sunRise {
+            0% { 
+                transform: translate(-50%, 150vh) scale(0.5);
+                animation-timing-function: cubic-bezier(0.5, 0, 0.75, 0);
+            }
+            50% {
+                transform: translate(-50%, 50vh) scale(1.2);
+                animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+            }
+            100% { 
+                transform: translate(-50%, -50%) scale(1);
+                animation-timing-function: ease-out;
+            }
+        }
+
+        @keyframes sunDrop {
+            0% { 
+                transform: translate(-50%, -50%) scale(1);
+                animation-timing-function: ease-in;
+            }
+            50% {
+                transform: translate(-50%, 50vh) scale(1.2);
+                animation-timing-function: cubic-bezier(0.5, 0, 0.75, 0);
+            }
+            100% { 
+                transform: translate(-50%, 150vh) scale(0.5);
+                animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+            }
+        }
+
+        .sun-rise {
+            animation: sunRise 1s ease-out forwards;
+        }
+
+        .sun-drop {
+            animation: sunDrop 1s ease-in forwards;
+        }
+
+        /* 修改景物容器样式 */
+        .scenery {
+            position: fixed;
+            bottom: -20px;  /* 下移20像素 */
+            left: 0;
+            width: 100%;
+            height: 180px;  /* 增加高度 */
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* 修改宫墙样式 */
+        .palace-wall {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(
+                to bottom,
+                #8B0000 0%,
+                #6A0000 20%,
+                #4A0000 100%
+            );
+            box-shadow: 
+                0 -8px 20px rgba(0, 0, 0, 0.4),
+                inset 0 -4px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        /* 修改飞檐样式 */
+        .eave {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            height: 60px; /* 从40px增加到60px */
+            background: #FF8C00; /* 修改为更深的橙色 */
+            border-radius: 10px; /* 添加圆角 */
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.3),
+                inset 0 -2px 4px rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .eave::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                #8B4513,
+                #8B4513 20px,
+                #A0522D 20px,
+                #A0522D 30px
+            );
+            filter: contrast(1.2);
+            opacity: 0.5; /* 设置透明度以增强质感 */
+            border-radius: 10px; /* 添加圆角 */
+        }
+
+        .eave::after {
+            content: '';
+            position: absolute;
+            top: -10px; /* 调整位置以模拟积雪 */
+            left: 0;
+            width: 100%;
+            height: 10px; /* 积雪的高度 */
+            background: white; /* 积雪的颜色 */
+            border-radius: 10px; /* 添加圆角 */
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* 添加阴影以增强立体感 */
+        }
+
+        /* 修改砖块容器样式 */
+        .brick-wall {
+            position: absolute;
+            bottom: -20px;  /* 下移20像素 */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 60px;  /* 增加高度 */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); /* 自适应列数 */
+            gap: 2px;
+            padding: 2px;
+            background: #2A1A12;
+            mask-image: linear-gradient(
+                to bottom,
+                transparent 0%,
+                black 5%,      /* 减少透明区域 */
+                black 95%,     /* 减少透明区域 */
+                transparent 100%
+            );
+            overflow: hidden; /* 防止内容溢出 */
+        }
+
+        /* 优化砖块细节 */
+        .brick {
+            height: 24px;
+            background: 
+                linear-gradient(
+                    45deg,
+                    #1E0E06 20%,  /* 加深颜色 */
+                    #2A1A12 80%   /* 加深颜色 */
+                );
+            border-radius: 3px;
+            box-shadow: 
+                inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
+            transform: skewX(-3deg);
+            position: relative;
+        }
+
+        /* 添加砖缝效果 */
+        .brick::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: 
+                1px 0 0 rgba(0, 0, 0, 0.3),
+                0 1px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* 优化颜色变化 */
+        .brick:nth-child(4n+1) { background-color: #3A2A22; }
+        .brick:nth-child(4n+2) { background-color: #2E1E16; }
+        .brick:nth-child(4n+3) { background-color: #462E26; }  /* 更深的颜色 */
+        .brick:nth-child(4n+4) { background-color: #32221A; }
+
+        .brick:nth-child(odd) {
+            transform: skewX(3deg) translateY(12px);
+            z-index: 1; /* 增加层次感 */
+        }
+
+        @keyframes swayLeft {
+            0%, 100% { transform: rotate(-30deg) translateY(0); }
+            50% { transform: rotate(-28deg) translateY(-3px); }
+        }
+
+        @keyframes swayRight {
+            0%, 100% { transform: rotate(30deg) translateY(0); }
+            50% { transform: rotate(32deg) translateY(-3px); }
+        }
+
+        /* 增强太阳光晕效果 */
+        .sun div {
+            mix-blend-mode: screen;
+            filter: brightness(1.2);
+        }
+
+        /* 雨天景物样式 */
+        .puddle {
+            position: absolute;
+            width: 100px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            box-shadow: 
+                inset 0 0 10px rgba(255, 255, 255, 0.3),
+                0 0 20px rgba(135, 206, 250, 0.5);
+            animation: ripple 3s infinite ease-in-out;
+        }
+
+        .umbrella {
+            position: absolute;
+            bottom: 0;
+            width: 50px;
+            height: 50px;
+            background: #FF6B6B;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transform: rotate(-15deg);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 多云景物样式 */
+        .low-cloud {
+            position: absolute;
+            bottom: 20px;
+            width: 150px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: floatAndScale 8s infinite ease-in-out;
+        }
+
+        .bench {
+            position: absolute;
+            bottom: 0;
+            width: 80px;
+            height: 50px;
+            background: #8B4513;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 涟漪动画 */
+        @keyframes ripple {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .pinwheel {
+            position: absolute;
+            bottom: 0;
+            right: 20%;
+            width: 80px;
+            height: 120px;
+        }
+
+        .pinwheel-base {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 40px;
+            background: #8B4513;
+        }
+
+        .pinwheel-roof {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: #CC4A37;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .pinwheel-blades {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            animation: spin 4s linear infinite;
+            z-index: 2;
+            transform-origin: center center;
+        }
+
+        .vane {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform-origin: bottom center;
+            width: 20px;
+            height: 40px;
+            background: #FF6347;
+            clip-path: polygon(0 100%, 50% 0, 100% 100%);
+        }
+
+        @keyframes spin {
+            100% { transform: translate(-25%, -25%) rotate(360deg); }
+        }
+
+        /* 行人样式 */
+        .pedestrian {
+            position: absolute;
+            bottom: 20px;
+            left: 20%;
+            width: 20px;
+            height: 40px;
+            background: #333;
+            border-radius: 10px;
+            animation: walk 10s linear infinite;
+        }
+
+        .pedestrian-umbrella {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: #36578D; /* 浅蓝色 */
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        /* 长椅样式 */
+        .bench {
+            position: absolute;
+            bottom: 0;
+            right: 10%;
+            width: 100px;
+            height: 30px;
+            background: #8B4513;
+            border-radius: 5px;
+        }
+
+        .bench::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            right: 10px;
+            height: 20px;
+            background: #A0522D;
+            border-radius: 5px 5px 0 0;
+        }
+
+        /* 行走动画 */
+        @keyframes walk {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(200px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>天气效果展示</h1>
+        <div class="weather-buttons">
+            <button onclick="changeWeather('sunny')">☀️</button>
+            <button onclick="changeWeather('rainy')">🌧️</button>
+            <button onclick="changeWeather('cloudy')">☁️</button>
+            <button onclick="changeWeather('snowy')">❄️</button>
+        </div>
+    </div>
+
+    <script>
+        function createRaindrops() {
+            const rain = document.createElement('div');
+            rain.className = 'rain';
+            
+            // 创建乌云（颜色加深）
+            for (let i = 0; i < 10; i++) {
+                const cloud = document.createElement('div');
+                cloud.className = 'cloud';
+                cloud.style.background = '#2D3748';  // 更深的云颜色
+                cloud.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)'; // 更深的阴影
+                cloud.style.left = (Math.random() * 100) + '%';
+                cloud.style.top = (Math.random() * 30) + '%';
+                cloud.style.width = (Math.random() * 200 + 100) + 'px';
+                cloud.style.height = (Math.random() * 60 + 40) + 'px';
+                cloud.style.zIndex = Math.floor(Math.random() * 3);
+                cloud.style.animationDelay = Math.random() * 5 + 's';
+                rain.appendChild(cloud);
+            }
+            
+            const layers = [
+                { count: 15, opacity: 0.6, scale: 1, speed: 3 },    // 前景层
+                { count: 20, opacity: 0.5, scale: 0.8, speed: 3.5 },  // 中间层
+                { count: 25, opacity: 0.4, scale: 0.6, speed: 4 }     // 背景层
+            ];
+            
+            layers.forEach((layer, index) => {
+                for (let i = 0; i < layer.count; i++) {
+                    const raindrop = document.createElement('div');
+                    raindrop.className = 'raindrop';
+                    raindrop.style.background = 'rgba(135, 206, 250, 0.8)'; // 更蓝的雨滴
+                    raindrop.style.left = Math.random() * 100 + 'vw';
+                    raindrop.style.opacity = layer.opacity;
+                    raindrop.style.transform = `scale(${layer.scale})`;
+                    raindrop.style.animationDelay = Math.random() * 3 + 's';
+                    raindrop.style.animationDuration = layer.speed + 's';
+                    rain.appendChild(raindrop);
+                }
+            });
+            
+            return rain;
+        }
+
+        function createSnowflakes() {
+            const snow = document.createElement('div');
+            snow.className = 'snow';
+            for (let i = 0; i < 100; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.animationDelay = Math.random() * 5 + 's';
+                snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                snowflake.style.opacity = Math.random() * 0.8 + 0.2;
+                snowflake.style.transform = `scale(${Math.random() * 0.8 + 0.5})`;
+                snowflake.style.zIndex = Math.floor(Math.random() * 3);
+                
+                const flake = document.createElement('div');
+                flake.style.width = '100%';
+                flake.style.height = '100%';
+                flake.style.background = '#ffffff';
+                flake.style.borderRadius = '50%';
+                flake.style.boxShadow = '0 0 8px rgba(255, 255, 255, 0.8)';
+                snowflake.appendChild(flake);
+                
+                snow.appendChild(snowflake);
+            }
+            return snow;
+        }
+
+        function createClouds() {
+            const clouds = document.createElement('div');
+            clouds.className = 'clouds';
+            for (let i = 0; i < 15; i++) {
+                const cloud = document.createElement('div');
+                cloud.className = 'cloud';
+                cloud.style.left = (Math.random() * 100) + '%';
+                cloud.style.top = (Math.random() * 50 + 10) + '%';
+                cloud.style.width = (Math.random() * 200 + 100) + 'px';
+                cloud.style.height = (Math.random() * 60 + 40) + 'px';
+                cloud.style.zIndex = Math.floor(Math.random() * 3);
+                cloud.style.animationDelay = Math.random() * 5 + 's';
+                cloud.style.background = '#ffffff';
+                clouds.appendChild(cloud);
+            }
+            return clouds;
+        }
+
+        function createSun() {
+            const sun = document.createElement('div');
+            sun.className = 'sun';
+            sun.style.position = 'fixed';
+            sun.style.top = '20%';
+            sun.style.left = '50%';
+            sun.style.transform = 'translate(-50%, -50%)';
+            
+            // 创建外部橙色光环
+            const outerGlow = document.createElement('div');
+            outerGlow.style.position = 'absolute';
+            outerGlow.style.top = '50%';
+            outerGlow.style.left = '50%';
+            outerGlow.style.transform = 'translate(-50%, -50%)';
+            outerGlow.style.width = '160px';
+            outerGlow.style.height = '160px';
+            outerGlow.style.borderRadius = '50%';
+            outerGlow.style.background = 'rgba(248, 20, 50, 0.6)';
+            outerGlow.style.boxShadow = '0 0 20px rgba(253, 100, 22, 0.8)';
+            outerGlow.style.animation = 'outerGlowPulse 4s ease-in-out infinite';
+            
+            // 创建内部光晕
+            const glow = document.createElement('div');
+            glow.style.position = 'absolute';
+            glow.style.top = '50%';
+            glow.style.left = '50%';
+            glow.style.transform = 'translate(-50%, -50%)';
+            glow.style.width = '120px';
+            glow.style.height = '120px';
+            glow.style.borderRadius = '50%';
+            glow.style.background = 'rgba(255, 200, 0, 0.7)';
+            glow.style.boxShadow = '0 0 15px rgba(255, 200, 0, 0.8)';
+            glow.style.animation = 'glowPulse 3s ease-in-out infinite';
+            
+            // 创建内部太阳圆心
+            const innerSun = document.createElement('div');
+            innerSun.style.width = '80px';
+            innerSun.style.height = '80px';
+            innerSun.style.borderRadius = '50%';
+            innerSun.style.background = '#FFD700';
+            innerSun.style.boxShadow = '0 0 50px rgba(255, 150, 0, 1)';
+            
+            sun.appendChild(outerGlow);
+            sun.appendChild(glow);
+            sun.appendChild(innerSun);
+            return sun;
+        }
+
+        function createSnowScenery() {
+            const scenery = document.createElement('div');
+            scenery.className = 'scenery';
+            
+            // 创建宫墙
+            const wall = document.createElement('div');
+            wall.className = 'palace-wall';
+            
+            // 创建飞檐
+            const eave = document.createElement('div');
+            eave.className = 'eave';
+            
+            // 创建砖块
+            const brickWall = document.createElement('div');
+            brickWall.className = 'brick-wall';
+            
+            // 添加砖块
+            for (let i = 0; i < 100; i++) {
+                const brick = document.createElement('div');
+                brick.className = 'brick';
+                brickWall.appendChild(brick);
+            }
+
+            // 添加树枝
+            const rightBranch = createSnowBranch('right');
+            
+            scenery.appendChild(wall);
+            scenery.appendChild(eave);
+            scenery.appendChild(brickWall);
+            scenery.appendChild(rightBranch); // 添加右侧树枝
+            return scenery;
+        }
+
+        // 添加创建树枝的函数
+        function createSnowBranch(side) {
+            const branch = document.createElement('div');
+            branch.className = 'snow-branch';
+            branch.style.position = 'fixed';
+            branch.style.top = '20%';
+            branch.style[side] = '0'; // 左侧或右侧
+            branch.style.width = '100px';
+            branch.style.height = '20px';
+            branch.style.background = '#8B4513'; // 树枝颜色
+            branch.style.borderRadius = '10px';
+            branch.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+            
+            // 主枝干
+            const mainBranch = document.createElement('div');
+            mainBranch.className = 'branch-main';
+            mainBranch.style.cssText = `
+                width: ${side === 'left' ? '60px' : '80px'};
+                height: 15px;
+                transform: rotate(${side === 'left' ? '-30deg' : '30deg'});
+                bottom: 0;
+                ${side}: 0;
+            `;
+
+            // 分叉枝干
+            mainBranch.innerHTML = `
+                <div class="branch-main" style="
+                    width: 40px;
+                    height: 12px;
+                    transform: rotate(25deg);
+                    top: -30px;
+                    left: ${side === 'left' ? '20px' : '-10px'};
+                ">
+                    <div class="snow-cover" style="
+                        width: 100%;
+                        height: 5px;
+                        top: -2px;
+                    "></div>
+                </div>
+                <div class="branch-main" style="
+                    width: 30px;
+                    height: 10px;
+                    transform: rotate(-15deg);
+                    top: -50px;
+                    left: ${side === 'left' ? '40px' : '-20px'};
+                ">
+                    <div class="snow-cover" style="
+                        width: 100%;
+                        height: 4px;
+                        top: -1px;
+                    "></div>
+                </div>
+            `;
+
+            // 主枝干积雪
+            const mainSnow = document.createElement('div');
+            mainSnow.className = 'snow-cover';
+            mainSnow.style.cssText = `
+                width: 100%;
+                height: 6px;
+                top: -3px;
+                border-radius: 3px;
+            `;
+            
+            // 添加动画
+            mainBranch.style.animation = `${side === 'left' ? 'swayLeft' : 'swayRight'} 8s ease-in-out infinite`;
+            mainBranch.appendChild(mainSnow);
+            branch.appendChild(mainBranch);
+
+            return branch;
+        }
+
+        function createRainScenery() {
+            const scenery = document.createElement('div');
+            scenery.className = 'scenery rainy-scenery';
+
+            // 创建行人
+            const pedestrian = document.createElement('div');
+            pedestrian.className = 'pedestrian';
+            const pedestrianUmbrella = document.createElement('div');
+            pedestrianUmbrella.className = 'pedestrian-umbrella';
+            pedestrian.appendChild(pedestrianUmbrella);
+            scenery.appendChild(pedestrian);
+
+            // 创建长椅
+            const bench = document.createElement('div');
+            bench.className = 'bench';
+            scenery.appendChild(bench);
+
+            return scenery;
+        }
+
+        function createCloudyScenery() {
+            const scenery = document.createElement('div');
+            scenery.className = 'scenery cloudy-scenery';
+
+            // 创建低空云
+            const lowCloud = document.createElement('div');
+            lowCloud.className = 'low-cloud';
+            lowCloud.style.left = `${Math.random() * 60 + 10}%`;
+            scenery.appendChild(lowCloud);
+
+            // 创建长椅
+            const bench = document.createElement('div');
+            bench.className = 'bench';
+            bench.style.left = `${Math.random() * 50 + 20}%`;
+            scenery.appendChild(bench);
+
+            // 创建风车
+            const pinwheel = document.createElement('div');
+            pinwheel.className = 'pinwheel';
+            
+            const pinwheelBase = document.createElement('div');
+            pinwheelBase.className = 'pinwheel-base';
+            pinwheel.appendChild(pinwheelBase);
+
+            const pinwheelRoof = document.createElement('div');
+            pinwheelRoof.className = 'pinwheel-roof';
+            pinwheel.appendChild(pinwheelRoof);
+
+            const pinwheelBlades = document.createElement('div');
+            pinwheelBlades.className = 'pinwheel-blades';
+            
+            for (let i = 0; i < 4; i++) {
+                const vane = document.createElement('div');
+                vane.className = 'vane';
+                vane.style.transform = `rotate(${i * 90}deg)`;
+                pinwheelBlades.appendChild(vane);
+            }
+
+            pinwheel.appendChild(pinwheelBlades);
+            pinwheel.appendChild(pinwheelRoof);
+            scenery.appendChild(pinwheel);
+
+            return scenery;
+        }
+
+        function changeWeather(weather) {
+            const body = document.body;
+            const container = document.querySelector('.container');
+            
+            // 获取现有太阳元素
+            const existingSun = document.querySelector('.sun');
+            
+            // 为现有天气效果添加淡出动画
+            const existingEffects = document.querySelectorAll('.rain, .snow, .clouds, .sun');
+            existingEffects.forEach(effect => {
+                if (effect !== existingSun) {
+                    effect.style.opacity = '0';
+                    effect.style.transform = 'scale(1.1)';
+                }
+            });
+
+            // 处理太阳动画
+            if (existingSun) {
+                if (weather === 'sunny') {
+                    // 先移除可能存在的落下动画
+                    existingSun.classList.remove('sun-drop');
+                    // 添加升起动画
+                    existingSun.classList.add('sun-rise');
+                } else {
+                    // 先移除可能存在的升起动画
+                    existingSun.classList.remove('sun-rise');
+                    // 添加落下动画
+                    existingSun.classList.add('sun-drop');
+                }
+            }
+
+            setTimeout(() => {
+                // 清除现有的天气效果（除了太阳）
+                existingEffects.forEach(el => {
+                    if (el !== existingSun) el.remove();
+                });
+
+                // 清除现有的景物
+                const existingScenery = document.querySelector('.scenery');
+                if (existingScenery) {
+                    existingScenery.remove();
+                }
+
+                // 创建新的天气效果
+                let newEffect;
+                let newScenery;
+                switch(weather) {
+                    case 'sunny':
+                        // 先设置背景色为晴天颜色
+                        body.style.backgroundColor = '#FFB700';
+                        
+                        // 创建背景动画
+                        const bgAnimation = document.createElement('div');
+                        bgAnimation.className = 'background-animation';
+                        bgAnimation.style.backgroundColor = '#FFB700';
+                        bgAnimation.style.opacity = '0';
+                        document.body.appendChild(bgAnimation);
+                        
+                        // 触发动画
+                        setTimeout(() => {
+                            bgAnimation.style.opacity = '1';
+                            bgAnimation.classList.add('active');
+                        }, 10);
+                        
+                        // 移除动画元素
+                        setTimeout(() => {
+                            bgAnimation.remove();
+                        }, 800);
+                        
+                        if (!existingSun) {
+                            newEffect = createSun();
+                            newEffect.classList.add('sun-rise');
+                        }
+                        break;
+                    case 'rainy':
+                        body.style.backgroundColor = '#4A5568'; // 更深的蓝色背景
+                        newEffect = createRaindrops();
+                        newScenery = createRainScenery();
+                        break;
+                    case 'cloudy':
+                        body.style.backgroundColor = '#8FA3AD';
+                        newEffect = createClouds();
+                        newScenery = createCloudyScenery();
+                        break;
+                    case 'snowy':
+                        body.style.backgroundColor = '#B8C5CC';
+                        newEffect = createSnowflakes();
+                        newScenery = createSnowScenery();
+                        break;
+                }
+
+                // 添加新效果并设置初始状态
+                if (newEffect) {
+                    newEffect.classList.add('weather-effect');
+                    newEffect.style.opacity = '0';
+                    document.body.appendChild(newEffect);
+
+                    // 触发重排后添加过渡效果
+                    requestAnimationFrame(() => {
+                        newEffect.style.opacity = '1';
+                    });
+                }
+
+                if (newScenery) {
+                    document.body.appendChild(newScenery);
+                }
+            }, 500);
+        }
+
+        // 初始化为晴天
+        changeWeather('sunny');
+    </script>
+</body>
+</html>
