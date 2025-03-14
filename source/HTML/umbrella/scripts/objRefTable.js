@@ -7,6 +7,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Mouse,
 		C3.Plugins.Audio,
 		C3.Plugins.Text,
+		C3.Plugins.Touch,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Sprite.Acts.SetCollisions,
@@ -21,8 +22,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.System.Cnds.EveryTick,
 		C3.Plugins.Sprite.Acts.SetPos,
-		C3.Plugins.Mouse.Exps.X,
-		C3.Plugins.Mouse.Exps.Y,
+		C3.Plugins.Touch.Exps.X,
+		C3.Plugins.Touch.Exps.Y,
 		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.Mouse.Cnds.OnClick,
 		C3.Plugins.System.Acts.RestartLayout
@@ -41,6 +42,7 @@ self.C3_JsPropNameTable = [
 	{文本3: 0},
 	{文本4: 0},
 	{精灵5: 0},
+	{触控: 0},
 	{Sadness: 0},
 	{isGameOpened: 0}
 ];
@@ -55,5 +57,6 @@ self.InstanceType = {
 	文本: class extends self.ITextInstance {},
 	文本3: class extends self.ITextInstance {},
 	文本4: class extends self.ITextInstance {},
-	精灵5: class extends self.ISpriteInstance {}
+	精灵5: class extends self.ISpriteInstance {},
+	触控: class extends self.IInstance {}
 }
